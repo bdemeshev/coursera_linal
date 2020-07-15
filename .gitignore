@@ -1,0 +1,11 @@
+materials/
+*.aux
+*.fls
+*.log
+*.nav
+*.toc
+*.out
+*.fdb_latexmk
+*.snm
+*.xdv
+*.synctex.gz

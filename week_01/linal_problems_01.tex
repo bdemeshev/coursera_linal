@@ -1,0 +1,86 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[top=1.5cm, left=2cm, right=2cm, bottom=1.5cm]{geometry} % размер текста на странице
+
+\usepackage{tikz} % картинки в tikz
+\usepackage{microtype} % свешивание пунктуации
+
+\usepackage{verbatim} % для комментов
+
+\usepackage{array} % для столбцов фиксированной ширины
+
+\usepackage{indentfirst} % отступ в первом параграфе
+
+\usepackage{sectsty} % для центрирования названий частей
+\allsectionsfont{\centering}
+
+\usepackage{amsmath} % куча стандартных математических плюшек
+\usepackage{amssymb} % и символов
+\usepackage{amsthm} % для определения окружений типа теорем
+\usepackage{thmtools} % тонкая настройка окружения теорем
+
+\usepackage{physics} % \abs \norm, переопределяет \cos, \sin, и т.д.
+
+\usepackage{marvosym} % для значка биологической опасности
+\usepackage{bbm} % кажется, двойные символы
+
+\usepackage{multicol} % текст в несколько колонок
+
+\usepackage{lastpage} % чтобы узнать номер последней страницы
+
+\usepackage{enumitem} % дополнительные плюшки для списков
+%  например \begin{enumerate}[resume] позволяет продолжить нумерацию в новом списке
+
+\usepackage{fontspec} % чез (чёрт его знает)
+\usepackage{polyglossia} % для выбора языка в xelatex
+
+\setmainlanguage{russian}
+\setotherlanguages{english}
+
+% download "Linux Libertine" fonts:
+% http://www.linuxlibertine.org/index.php?id=91&L=1
+\setmainfont{Linux Libertine O} % or Helvetica, Arial, Cambria
+% why do we need \newfontfamily:
+% http://tex.stackexchange.com/questions/91507/
+\newfontfamily{\cyrillicfonttt}{Linux Libertine O}
+
+\AddEnumerateCounter{\asbuk}{\russian@alph}{щ} % для списков с русскими буквами
+%\setlist[enumerate, 2]{label=\asbuk*),ref=\asbuk*} % списки уровня 2 будут буквами а) б) ...
+
+\usepackage{todonotes} % для вставки в документ заметок о том, что осталось сделать
+% \todo[inline]{Здесь надо коэффициенты исправить}
+% \missingfigure{Здесь будет картина Последний день Помпеи}
+% команда \listoftodos — печатает все поставленные \todo'шки
+
+\usepackage{booktabs} % красивые таблицы
+% заповеди из документации:
+% 1. Не используйте вертикальные линии
+% 2. Не используйте двойные линии
+% 3. Единицы измерения помещайте в шапку таблицы
+% 4. Не сокращайте .1 вместо 0.1
+% 5. Повторяющееся значение повторяйте, а не говорите "то же"
+
+\usepackage{fancyhdr} % весёлые колонтитулы
+\usepackage{comment} % for long comments
+\usepackage[cache=false]{minted} % для вставки кусков кода
+\usepackage{parskip} % для установки отступов
+% https://tex.stackexchange.com/questions/55015
+% у Блитцштайна в оригинале вообще нет отступов (!)
+\usepackage{csquotes} % для цитирования
+% https://www.overleaf.com/learn/latex/typesetting_quotations#csquotes
+
+
+
+
+\begin{document}
+\section{Неделя 1. Вектор}
+
+\subsection{Видео 1. Вектор}
+
+\begin{enumerate}
+    \item Верно ли, что $\langle a, a \rangle = \norm{a}$?
+    \item Найдите косинус угла между векторами $a = (1, 2, 3)$ и $b = (2, -3, 1)$. 
+    Являются ли вектора ортогональными?
+\end{enumerate}
+
+\end{document}
