@@ -1,0 +1,485 @@
+\documentclass[14 pt,xcolor=dvipsnames]{beamer}
+
+\input{linal_preamble.tex}
+
+
+\begin{document}
+
+% \maketitle
+
+
+\begin{frame} % название лекции
+
+
+\lecturetitle{Векторы и действия с ними}
+
+
+\end{frame}
+
+
+\begin{frame} % название фрагмента
+
+\videotitle{Вектор: длина и скалярное произведение}
+
+
+
+\end{frame}
+
+
+
+
+\begin{frame}{Парадокс Монти Холла}
+
+
+    Рассмотрим этот вопрос с точки зрения вероятности:
+    
+    
+    \begin{block}{\task Задача}
+    С какой вероятностью Вы выиграете автомобиль, если
+    
+    \begin{itemize}[<+->]
+    \item[\bf 1)] не будете менять выбор;
+    
+    \item[\bf 2)] измените выбор случайным образом;
+    
+    \item[\bf 3)] измените свой выбор?
+    \end{itemize}
+    
+    \end{block}
+    
+    \pause[\thebeamerpauses]
+    \quest Какая стратегия является выигрышной на Ваш взгляд?
+    
+    \end{frame}
+    
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+\title{Классическая и дискретная вероятность}
+
+\AtBeginSection[]{\frame{\frametitle{Конечное вероятностное пространство}\tableofcontents[current]}}
+
+\date{}
+%\author{Промыслов Валентин Валерьевич}
+%\institute{ФКН, НИУ ВШЭ}
+
+\begin{document}
+
+\maketitle
+
+\section{Как мы понимаем вероятность?}
+
+\begin{frame}{Как мы будем понимать вероятность?}
+
+
+
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+    \includegraphics[width=0.39\textwidth]{dice.png}
+ 
+\end{wrapfigure}
+
+Все началось с азартных игр. %де Мере
+
+
+\begin{itemize}[<+->]
+\item Стоит ли ставить на то, что \acct{хотя бы раз} из четырех бросков кости выпадет шестерка \epsdice{6}\hspace{1pt}?
+\item А если бросать по две кости $24$ раза и ставить на выпадение \acct{двойной шестерки}?
+
+\end{itemize} 
+
+
+
+\end{frame}
+
+\begin{frame}{Как мы будем понимать вероятность?}
+
+\begin{wrapfigure}{r}{0.35\textwidth}
+
+\vspace{-0 pt}
+\begin{tikzpicture} 
+
+\begin{scope}
+    \clip [rounded corners=.5cm] (0,0) rectangle coordinate (centerpoint) (7.7,7.7cm); 
+    \node [inner sep=0pt] at (centerpoint) {\includegraphics[width=0.33\textwidth]{large-preview-blaise.pascal}}; 
+\end{scope}
+
+
+\end{tikzpicture}
+\caption{ \bf \normalsize Блез Паскаль}
+   
+\end{wrapfigure}
+
+\phantom{Наблюдения Паскаля:}
+
+\pause
+
+Наблюдения Паскаля:
+
+\begin{itemize}[<+->]
+
+\item Всего~существует~$\acctm{6^4=1296}$ различных~способов бросить кость $4$ раза.
+
+\item Шестерка \epsdice{6} выпадает при четырех бросках в $\acctm{\approx 51.77\%}$ случаев.
+
+\item Бросить два кубика $24$ раза можно $\acctm{36^{24}}$ способами.
+
+\item Двойная шестерка \epsdice{6} \epsdice{6} выпадает при $24$ бросках в $\acctm{\approx 49.14 \%}$ случаев.
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Парадокс Монти Холла}
+
+Перед Вами три двери: за одной автомобиль, за двумя другими --- козы. \phantom{ за котоой за котоой находится коза.й находится коза.}
+\vspace{-30 pt}
+\begin{center}
+\includegraphics[width=0.6\textwidth]{doors0-3.png}
+\end{center}
+
+\end{frame}
+
+\begin{frame}{Парадокс Монти Холла}
+
+Вы выбираете одну из дверей, но ведущий не говорит Вам, что за ней находится, а открывает \acct{другую дверь}, за которой находится коза.
+\vspace{-30 pt}
+\begin{center}
+\includegraphics[width=0.6\textwidth]{doors01-3.png}
+\end{center}
+
+
+\end{frame}
+
+
+\begin{frame}{Парадокс Монти Холла}
+
+После этого он задает Вам вопрос:\\
+"Не хотите ли Вы изменить свой выбор?"\\
+\phantom{открывает, за которой находится коза.}
+\vspace{-30 pt}
+\begin{center}
+\includegraphics[width=0.6\textwidth]{doors1-3.png}
+\end{center}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Парадокс Монти Холла}
+
+
+Рассмотрим этот вопрос с точки зрения вероятности:
+
+
+\begin{block}{\task Задача}
+С какой вероятностью Вы выиграете автомобиль, если
+
+\begin{itemize}[<+->]
+\item[\bf 1)] не будете менять выбор;
+
+\item[\bf 2)] измените выбор случайным образом;
+
+\item[\bf 3)] измените свой выбор?
+\end{itemize}
+
+\end{block}
+
+\pause[\thebeamerpauses]
+\quest Какая стратегия является выигрышной на Ваш взгляд?
+
+\end{frame}
+
+\begin{frame}{Парадокс Монти Холла}
+
+Мы будем решать задачу в предположении, что:
+
+\begin{itemize}[<+->]
+\item автомобиль размещён за \acct{любой} из дверей с одинаковой вероятностью;
+\item ведущий \acct{знает, где находится автомобиль};
+\item ведущий в любом случае открывает дверь \acct{с козой} (но не ту, которую выбрал игрок) и предлагает игроку изменить выбор;
+\item если у ведущего есть выбор, то он выбирает \acct{любую} из двух дверей с одинаковой вероятностью.
+
+\end{itemize}
+
+
+
+\end{frame}
+
+
+\begin{frame}{Парадокс Монти Холла}
+
+Если не менять выбор, то выиграть можно только в том случае, если с самого начала была выбрана дверь с автомобилем. \phantom{дверь с автомобилем.}
+
+\centerline{\includegraphics[width=0.6\textwidth]{doors3-3.png}}
+\vspace{-15 mm}
+\acct{Победа обеспечена в $\frac{1}{3}$ случаев.} 
+
+\phantom{Невероятно, но всегда стоит менять свой выбор!}
+
+\end{frame}
+
+\begin{frame}{Парадокс Монти Холла}
+
+%Если не менять выбор, то выиграть можно только в том случае, если с самого начала была выбрана дверь с автомобилем.
+
+Если изменить выбор случайным образом, то придется выбирать из двух дверей. \phantom{была выбрана дверь с автомобилем.}
+
+\centerline{\includegraphics[width=0.6\textwidth]{doors4-3.png}}
+\vspace{-15 mm}
+\acct{Победа обеспечена в половине случаев.}\phantom{$\frac{1}{3}$}
+
+\phantom{Невероятно, но всегда стоит менять свой выбор!}
+
+\end{frame}
+
+\begin{frame}{Парадокс Монти Холла}
+
+Если всегда менять свой выбор, то проиграть можно только в том случае, если в начале была выбрана дверь с автомобилем. \phantom{дверь с автомобилем.}
+
+\centerline{\includegraphics[width=0.6\textwidth]{doors5-3.png}}
+\vspace{-15 mm}
+\acct{Победа обеспечена в $\frac{2}{3}$ случаев.}\phantom{$\frac{1}{3}$}
+\pause
+
+Невероятно, но всегда стоит менять свой выбор!
+
+
+\end{frame}
+
+\begin{frame}{Выводы}
+
+\begin{itemize}[<+->]
+\item Эмпирически можно понимать вероятность как частоту наступления некоторого события.
+\item Вероятность не всегда интуитивна, но эффективна.
+\end{itemize}
+
+\end{frame}
+
+\section{Конечное вероятностное пространство}
+
+\begin{frame}{Элементарные исходы}
+
+Назовем все возможные результаты случайного эксперимента \acc{элементарными исходами}.
+\vskip 10 pt
+\pause 
+
+\begin{wrapfigure}[2]{r}{0.4\textwidth}
+    \vspace{-50 pt} \includegraphics[width=0.38\textwidth]{coins2.png}
+ 
+\end{wrapfigure}
+
+Подбрасывание монеты:
+
+орел или решка.
+
+
+\pause
+
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+    \vspace{-50 pt} \includegraphics[width=0.38\textwidth]{die4.png}
+ 
+\end{wrapfigure}
+
+\vskip 90 pt
+
+Бросок кубика:
+
+\epsdice{1},\epsdice{2},\epsdice{3},\epsdice{4},\epsdice{5} или \epsdice{6}.
+
+\end{frame}
+
+\begin{frame}{Пространство элементарных событий}
+
+\begin{block}{\dfn Определение}
+\acc{Пространство элементарных событий} --- множество $\Omega=\{\omega_1, \omega_2,\dots,\omega_n\}$ всех возможных исходов случайного эксперимента. 
+\end{block}
+\pause
+
+\begin{itemize}[<+->]
+\item При подбрасывании монеты 
+$$\Omega_M=\{\includegraphics[scale=0.11]{coinT1.png},\includegraphics[scale=0.11]{coinH1.png}\}=\{"O", "P"\};$$
+
+\item При броске кубика $$\Omega_K=\{\epsdice{1},\epsdice{2},\epsdice{3},\epsdice{4},\epsdice{5},\epsdice{6} \}=\{1,2,3,4,5,6\}$$
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Конечное вероятностное пространство}
+
+Сопоставим каждому элементарному событию $\omega_i$ его вероятность $P(\omega_i)=p_i$,\quad $0\leqslant p_i\leqslant 1$ так, чтобы $$\sum_{i=1}^n p_i=1.$$
+Функция $P$\ называется \acc{функцией вероятности}.
+
+\pause
+\begin{block}{\dfn Определение}
+\acc{Конечное вероятностное пространство} --- это пространство элементарных событий $\Omega$ вместе с функцией вероятности $P$ на нём.
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}{Конечное вероятностное пространство}
+
+\begin{itemize}[<+->]
+\item Подбрасывание монеты: $$\Omega_M=\{"O", "P"\},\quad P("O")=P("P")=1/2;$$
+
+\item Бросок кубика:
+$$\Omega_K=\{1, 2,3,4,5,6 \},$$
+$$P(1)=P(2)=\dots=P(6)=1/6;$$
+
+\item Подбрасывание двух монет:
+$$\Omega_{MM}=\{"OO","OP","PO", "PP"\},$$
+$$P("OO")=P("OP")=P("PO")=P("PP")=1/4.$$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Событие}
+
+\begin{block}{\dfn Определение}
+\acc{Событие} --- любое подмножество $\Omega.$
+\end{block}
+\pause
+
+
+\begin{itemize}[<+->]
+\item Событие <<на кубике выпало четное число очков>> --- это множество $\{\epsdice{2},\epsdice{4},\epsdice{6}\}=\{2,4,6\}\subset \Omega_K.$
+\item Событие <<при подбрасывании двух монеток выпал хотя бы один орёл>> --- это множество $\{ "OO","OP","PO"\}\subset \Omega_M.$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Вероятность события}
+
+\begin{block}{\dfn Определение}
+\acc{Вероятность события} --- сумма вероятностей всех его элементарных исходов.
+\end{block}
+
+\pause
+
+\begin{itemize}[<+->]
+\item Вероятность события $A$ --- <<на кубике выпало четное число очков>> равняется 
+$P(A)=P(2)+P(4)+ P(6)=$
+
+$=1/6+1/6+1/6=1/2.$
+\end{itemize}
+
+\pause
+\quest Чему равняется вероятность события $B$ --- <<при подбрасывании двух монеток выпал хотя бы один орёл>>?
+
+\pause
+
+$P(B)=P("OO")+P("OP")+P("PO")=$
+$=1/4+1/4+1/4=3/4.$
+
+
+
+%\pause Но не всегда все исходы равновероятны!
+
+\end{frame}
+
+\begin{frame}{Вероятностные пространства}
+
+\begin{center}
+\includegraphics[width=\textwidth]{probspace3.pdf}
+\end{center}
+
+\pause
+
+В классическом вероятностном пространстве найти вероятность события совсем просто:
+$$P(A)=\frac{|A|}{|\Omega|}.$$
+
+
+\end{frame}
+
+\begin{frame}{Выводы}
+
+\begin{itemize}[<+->]
+\item Конечное вероятностное пространство позволяет описать эксперименты с конечным числом исходов.
+\item Простейшая модель конечного вероятностного пространства --- классическая вероятность.
+\item Вероятность события --- сумма вероятностей всех входящих в него исходов.
+\item Не всегда все исходы равновероятны.
+\end{itemize}
+
+\end{frame}
+
+\section{События как множества}
+
+\begin{frame}{События как множества}
+
+Поскольку событие --- это множество, к нему можно применять теоретико-множественные операции!
+
+\begin{block}{\exmpl Пример}
+Пусть $A$ --- <<число очков на кубике четно>>,  $A=\{2,4,6\}$;
+
+$B$ --- <<число очков на кубике больше трех>>, $B=\{4,5,6\}$).
+\pause
+
+\begin{itemize}[<+->]
+\item $A\cap B=\{4,6\}$ --- <<число очков на кубике четно \accex{и} больше трех>>.
+\item $A\cup B=\{2,4,5,6\}$ --- <<число очков на кубике четное \accex{или} больше трех>>.
+\item $A\backslash B=\{2\}$ --- <<число очков на кубике четное \accex{но не} больше трех>>
+\end{itemize}
+
+\end{block}
+ 
+
+
+
+\end{frame}
+
+\begin{frame}{События как множества}
+
+В теории вероятностей используется своя терминология для операций:
+
+\begin{itemize}[<+->]
+\item объединение событий $A\cap B$ называют их \acct{суммой};
+\item пересечение событий $A\cup B$ --- \acct{произведением};
+\item дополнение $A^c=\bar{A}=\Omega \backslash A$ --- \acct{противоположным событием};
+\item если $A \subseteq B$, то говорят, что событие $A$ \acct{влечет} событие $B.$
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}{Основные свойства вероятности}
+
+\begin{itemize}[<+->]
+\item $P(A^c)=1-P(A)$, в частности, $P(\varnothing)=0$ и $P(A)\leqslant 1$ для любого $A$;
+\item если $A \subseteq B$, то $P(A) \leqslant P(B)$ и $ P(B \backslash A)= P(B)- P(A)$;
+\item для любых событий $A$ и $B$
+$$P(A \cup B)=P(A)+P(B)-P(A \cap B).$$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Выводы}
+
+\begin{itemize}[<+->]
+\item Язык множеств имеет точную интерпретацию в терминах вероятности.
+\item Равенства и неравенства на мощности множеств остаются верны, если вместо множества иметь в виду событие, а вместо количества элементов -- вероятность.
+\end{itemize}
+
+\end{frame}
+
+
+\section{Решение задачи кавалера де Мере}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

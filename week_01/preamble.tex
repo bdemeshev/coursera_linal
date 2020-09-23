@@ -1,0 +1,144 @@
+\documentclass[14 pt,xcolor=dvipsnames]{beamer}
+
+\usepackage{epsdice}
+
+\usepackage[absolute,overlay]{textpos}
+
+\usepackage[orientation=portrait,size=custom,width=25.4,height=19.05]{beamerposter}
+
+%25,4 см 19,05 см размеры слайда в powerpoint
+
+\usetheme{metropolis}
+\metroset{
+  %progressbar=none,
+  numbering=none,
+  subsectionpage=progressbar,
+  block=fill
+}
+
+%\usecolortheme{seahorse}
+
+\usepackage{fontspec}
+\usepackage[fixed]{fontawesome5}
+\setmainfont[Ligatures=TeX]{Myriad Pro}
+\usepackage{polyglossia}
+\setmainlanguage{russian}
+
+\usepackage{amssymb,amsmath,amsxtra,amsthm}
+
+\setmainfont{Myriad Pro}
+\setsansfont{Myriad Pro}
+
+\usepackage{unicode-math}
+\usepackage{centernot}
+
+\usepackage{graphicx}
+\graphicspath{{img/}}
+
+\usepackage{wrapfig}
+\usepackage{animate}
+\usepackage{tikz}
+%\usetikzlibrary{shapes.geometric,patterns,positioning,matrix,calc,arrows,shapes,fit,decorations,decorations.pathmorphing}
+\usepackage{pifont}
+\usepackage{comment}
+\usepackage[font=small,labelfont=bf]{caption}
+\captionsetup[figure]{labelformat=empty}
+\includecomment{techno}
+
+\usefonttheme[onlymath]{serif}
+
+
+%Расположение
+
+\setbeamersize{text margin left=15 mm,text margin right=5mm} 
+\setlength{\leftmargini}{38 pt}
+
+%\usepackage{showframe}
+%\usepackage{enumitem}
+%\setlist{leftmargin=5.5mm}
+
+
+%Цвета от дирекции
+
+\definecolor{dirblack}{RGB}{58, 58, 58}
+\definecolor{dirwhite}{RGB}{245, 245, 245}
+\definecolor{dirred}{RGB}{149, 55, 53}
+\definecolor{dirblue}{RGB}{0, 90, 171}
+\definecolor{dirorange}{RGB}{235, 143, 76}
+\definecolor{dirlightblue}{RGB}{75, 172, 198}
+\definecolor{dirgreen}{RGB}{155, 187, 89}
+\definecolor{dircomment}{RGB}{128, 100, 162}
+
+\setbeamercolor{title separator}{bg=dirlightblue!50, fg=dirblue}
+
+%Цвета блоков
+
+\setbeamercolor{block title}{bg=dirblue!30,fg=dirblack}
+
+\setbeamercolor{block title example}{bg=dirlightblue!50,fg=dirblack}
+
+\setbeamercolor{block body example}{bg=dirlightblue!20,fg=dirblack}
+
+\AtBeginEnvironment{exampleblock}{\setbeamercolor{itemize item}{fg=dirblack}}
+%\setbeamertemplate{blocks}[rounded][shadow]
+
+% Набор команд для удобства верстки
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\la}{\lambda}
+
+% Набор команд для структуризации
+
+%\newcommand{\quest}{\faQuestionCircleO}
+%\faPencilSquareO \faPuzzlePiece \faQuestionCircleO  \faIcon*[regular]{file} {\textcolor{dirblue}
+%\newcommand{\quest}{\textcolor{dirblue}{\boxed{\textbf{?}}}
+\newcommand{\task}{\faIcon{tasks}}
+\newcommand{\exmpl}{\faPuzzlePiece}
+\newcommand{\dfn}{\faIcon{pen-square}}
+\newcommand{\quest}{\textcolor{dirblue}{\faQuestionCircle[regular]}}
+\newcommand{\acc}[1]{\textcolor{dirred}{#1}}
+\newcommand{\accm}[1]{\textcolor{dirred}{#1}}
+\newcommand{\acct}[1]{\textcolor{dirblue}{#1}}
+\newcommand{\acctm}[1]{\textcolor{dirblue}{#1}}
+\newcommand{\accex}[1]{\textcolor{dirblack}{\bf #1}}
+\newcommand{\accexm}[1]{\textcolor{dirblack}{ \mathbf{#1}}}
+\newcommand{\acclp}[1]{\textcolor{dirorange}{\it #1}}
+
+
+
+
+\newcommand{\todo}[1]{\textcolor{dircomment}{\bf #1}}
+
+\newcommand{\spcbig}{\vspace{-10 pt}}
+\newcommand{\spcsmall}{\vspace{-5 pt}}
+
+%\usepackage{listings}
+%\lstset{
+%xleftmargin=0 pt,
+%  basicstyle=\small, 
+%  language=Python,
+  %tabsize = 2,
+%  backgroundcolor=\color{mc!20!white}
+%}
+
+
+
+%\newcommand{\mypart}[1]{\begin{frame}[standout]{\huge #1}\end{frame}}
+
+\setbeamercolor{background canvas}{bg=}
+
+% frame title setup
+\setbeamercolor{frametitle}{bg=,fg=dirblue}
+\setbeamertemplate{frametitle}[default][left]
+
+\addtobeamertemplate{frametitle}{\hspace*{-0.5 cm}}{\vspace*{0.25cm}}
+
+
+%Шрифты
+\setbeamerfont{frametitle}{family=\rmfamily,series=\bfseries,size={\fontsize{33}{30}}}
+\setbeamerfont{framesubtitle}{family=\rmfamily,series=\bfseries,size={\fontsize{26}{20}}}
+
+
+
+
