@@ -1,3 +1,5 @@
+% !TEX root = linal_lecture_01.tex
+
 \usepackage{epsdice}
 
 \usepackage[absolute,overlay]{textpos}
@@ -25,11 +27,25 @@
 \setmainfont[Ligatures=TeX]{Myriad Pro}
 \setsansfont{Myriad Pro}
 
+% why do we need \newfontfamily:
+% http://tex.stackexchange.com/questions/91507/
+\newfontfamily{\cyrillicfonttt}{Myriad Pro}
+\newfontfamily{\cyrillicfont}{Myriad Pro}
+%\newfontfamily{\cyrillicfontbs}{Myriad Pro}
+\newfontfamily{\cyrillicfontsf}{Myriad Pro}
 
-\usepackage{amssymb,amsmath,amsxtra,amsthm}
 
+% https://tex.stackexchange.com/questions/175860/why-does-unicode-math-break-the-kerning-of-accents-in-combination-with-amssymb
+% "You shouldn't be using amssymb together with unicode-math"
+\usepackage{amsmath,amsxtra,amsthm} % amssymb
+
+%\usepackage{bm}
+
+\usepackage{fdsymbol} % \nperp
 
 \usepackage{unicode-math}
+
+
 \usepackage{centernot}
 
 \usepackage{graphicx}
@@ -104,16 +120,19 @@
 \newcommand{\accex}[1]{\textcolor{dirblack}{\bf #1}}
 \newcommand{\accexm}[1]{\textcolor{dirblack}{ \mathbf{#1}}}
 \newcommand{\acclp}[1]{\textcolor{dirorange}{\it #1}}
+\newcommand{\todo}[1]{\textcolor{dircomment}{\bf #1}}
+\newcommand{\graylink}[1]{{\fontsize{11}{12}\selectfont \textcolor{gray}{#1}}}
+\newcommand{\figcaption}[1]{{\fontsize{18}{20}\selectfont #1}}
 
 
 \newcommand{\videotitle}[1]{\begin{center}
-    \textcolor{dirblue}{#1}
+    {\fontsize{33}{30}\selectfont \textcolor{dirblue}{#1} }
 
     \todo{название видеофрагмента}
 \end{center}}
 
 \newcommand{\lecturetitle}[1]{\begin{center}
-    \textcolor{dirblue}{#1}
+  {\fontsize{33}{30}\selectfont \textcolor{dirblue}{#1} }
 
     \todo{название лекции}
 \end{center}}
@@ -121,7 +140,6 @@
 
 
 
-\newcommand{\todo}[1]{\textcolor{dircomment}{\bf #1}}
 
 \newcommand{\spcbig}{\vspace{-10 pt}}
 \newcommand{\spcsmall}{\vspace{-5 pt}}
