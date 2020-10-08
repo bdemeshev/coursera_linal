@@ -1,0 +1,299 @@
+% !TEX root = ../linal_lecture_01.tex
+
+
+\begin{frame} % название фрагмента
+
+\videotitle{Обращение оператора}
+
+\end{frame}
+  
+
+\begin{frame}{Обращение}
+
+
+Исходный оператор $\LL : \R^n \to \R^n$.
+
+
+Определение. 
+
+\alert{Обратным оператором} к $\LL$ называют такой оператор $\LL^{-1}$, 
+что $\LL^{-1} \LL = I$. 
+
+
+\end{frame}
+
+
+\begin{frame}{Обращение растягивания}
+
+\begin{itemize}[<+->]
+    \item 
+Исходный оператор $\LL : \begin{pmatrix}
+  a_1 \\
+  a_2 \\
+\end{pmatrix} \to
+\begin{pmatrix}
+  2a_1 \\
+  -3a_2 \\
+\end{pmatrix}
+$
+
+\item \alert{Обратный оператор}:  
+$\LL^{-1} : \begin{pmatrix}
+    a_1 \\
+    a_2 \\
+  \end{pmatrix} \to
+  \begin{pmatrix}
+    \frac{1}{2}a_1 \\
+    \frac{1}{-3}a_2 \\
+  \end{pmatrix}
+  $
+
+\item $\LL^{-1} \LL = I$
+\end{itemize}
+
+
+\end{frame}
+    
+
+
+\begin{frame}{Обращение перестановки компонент}
+
+\begin{itemize}[<+->]
+    \item 
+Исходный оператор $\LL : \begin{pmatrix}
+  a_1 \\
+  a_2 \\
+  a_3 \\
+\end{pmatrix} \to
+\begin{pmatrix}
+a_3 \\
+a_1 \\
+a_2 \\
+\end{pmatrix}
+$
+
+\item \alert{Обратный оператор}:  
+$\LL^{-1} : \begin{pmatrix}
+a_1 \\
+a_2 \\
+a_3 \\
+    \end{pmatrix} \to
+  \begin{pmatrix}
+a_2 \\
+a_3 \\
+a_1 \\
+    \end{pmatrix}
+  $
+
+\item $\LL^{-1} \LL = I$
+\end{itemize}
+
+
+\end{frame}
+    
+
+
+\begin{frame}{Обращение единичного оператора}
+
+\begin{itemize}[<+->]
+    \item 
+Исходный оператор $I : \begin{pmatrix}
+  a_1 \\
+  a_2 \\
+  a_3 \\
+\end{pmatrix} \to
+\begin{pmatrix}
+a_1 \\
+a_2 \\
+a_3 \\
+\end{pmatrix}
+$
+
+\item \alert{Обратный оператор}:  
+$I : \begin{pmatrix}
+a_1 \\
+a_2 \\
+a_3 \\
+    \end{pmatrix} \to
+  \begin{pmatrix}
+a_1 \\
+a_2 \\
+a_3 \\
+    \end{pmatrix}
+  $
+
+\item $I^{-1} I = I$
+\end{itemize}
+
+
+\end{frame}
+    
+
+
+
+
+
+\begin{frame}{Обращение поворота}
+
+\begin{itemize}[<+->]
+    \item 
+Исходный оператор $R: \R^2 \to \R^2$, поворот на $30^{\circ}$ против часовой стрелки.
+
+\item \alert{Обратный оператор}:  $R^{-1}$, поворот на $30^{\circ}$ по часовой стрелке.
+\item $R^{-1} R = I$
+\end{itemize}
+
+
+\begin{tikzpicture}[
+scale=1.4,
+MyPoints/.style={draw=blue,fill=white,thick},
+Segments/.style={draw=blue!50!red!70,thick},
+MyCircles/.style={blue!50,dashed}, 
+every node/.style={scale=1.2}
+]
+%\grid;
+%\draw[color=gray,step=1.0,dotted] (-7.1,-2.1) grid (7.6,6.1);
+
+
+%%\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
+%\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-1)--(0,5) node[above left]{$x_2$};
+%
+%\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-1,0)--(6.5,0) 
+%node[right]{$x_1$};
+
+% Feel free to change here coordinates of points A and B
+\pgfmathparse{0}		\let\Xa\pgfmathresult
+\pgfmathparse{0}		\let\Ya\pgfmathresult
+\coordinate (A) at (\Xa,\Ya);
+
+\pgfmathparse{1.5}		\let\Xb\pgfmathresult
+\pgfmathparse{3}		\let\Yb\pgfmathresult
+\coordinate (B) at (\Xb,\Yb);
+
+\pgfmathparse{3}		\let\Xc\pgfmathresult
+\pgfmathparse{1}		\let\Yc\pgfmathresult
+\coordinate (C) at (\Xc,\Yc);
+
+\pgfmathparse{3}		\let\Xd\pgfmathresult
+\pgfmathparse{4}		\let\Yd\pgfmathresult
+\coordinate (D) at (\Xd,\Yd);
+
+\pgfmathparse{75}		\let\angle\pgfmathresult;
+\pgfmathparse{sqrt(10)}		\let\rad\pgfmathresult;
+
+
+\pgfmathparse{\Xb*cos(\angle)  - \Yb*sin(\angle)}		\let\Xe\pgfmathresult
+\pgfmathparse{\Xb*sin(\angle)  + \Yb*cos(\angle)}		\let\Ye\pgfmathresult
+\coordinate (E) at (\Xe,\Ye);
+
+\pgfmathparse{\Xd*cos(\angle)  - \Yd*sin(\angle)}		\let\Xf\pgfmathresult
+\pgfmathparse{\Xd*sin(\angle)  + \Yd*cos(\angle)}		\let\Yf\pgfmathresult
+\coordinate (F) at (\Xf,\Yf);
+
+
+% Let I be the midpoint of [AB]
+\pgfmathparse{(\Xb+\Xa)/2} \let\XI\pgfmathresult
+\pgfmathparse{(\Yb+\Ya)/2} \let\YI\pgfmathresult
+\coordinate (I) at (\XI,\YI);	
+
+
+\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, veca,thick] (A)--(B) node[midway,right]{$\bv$};
+
+
+\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,thick] (A)--(E) node[midway,below left]{$\bb$};
+
+\tkzMarkAngle[size=1, mark = none, arrows=->,line width=1.5pt, mkcolor=red ](B,A,E);
+
+\draw[dashed] (B) to[bend right] (E);
+
+\node [above right] at (-0.5, 1) {$\operatorname{R}$}; 
+
+\node [above right] at (-2, 4) {$\operatorname{R} \bv = \bb$ или $\bv = \operatorname{R}^{-1} \bb$}; 
+
+
+\end{tikzpicture}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Не все действия обратимы!}
+    
+    
+
+\begin{itemize}[<+->]
+    \item 
+Исходный оператор $H: \R^2 \to \R^2$, проекция на прямую $x_1 + 2x_2 = 0$.
+
+\item \alert{Обратный оператор}  $H^{-1}$ не существует!
+\end{itemize}
+
+
+
+\begin{tikzpicture}[
+scale=1.6,
+MyPoints/.style={draw=blue,fill=white,thick},
+Segments/.style={draw=blue!50!red!70,thick},
+MyCircles/.style={green!50!blue!50,thin}, 
+every node/.style={scale=1.2}
+]
+%\grid;
+%\clip (-1.5,-1.5) rectangle (5.5,5.5);
+
+\pgfmathparse{2}		\let\Xa\pgfmathresult
+\pgfmathparse{2}		\let\Ya\pgfmathresult
+\coordinate (A) at (\Xa,\Ya);
+
+\pgfmathparse{5}		\let\Xb\pgfmathresult
+\pgfmathparse{5}		\let\Yb\pgfmathresult
+\coordinate (B) at (\Xb,\Yb);
+
+\pgfmathparse{-1}		\let\Xc\pgfmathresult
+\pgfmathparse{5}		\let\Yc\pgfmathresult
+\coordinate (C) at (\Xc,\Yc);
+
+\pgfmathparse{4}		\let\Xd\pgfmathresult
+\pgfmathparse{0}		\let\Yd\pgfmathresult
+\coordinate (D) at (\Xd,\Yd);
+
+\pgfmathparse{0}		\let\Xe\pgfmathresult
+\pgfmathparse{4}		\let\Ye\pgfmathresult
+\coordinate (E) at (\Xe,\Ye);
+
+\pgfmathparse{3.5}		\let\Xf\pgfmathresult
+\pgfmathparse{3.5}		\let\Yf\pgfmathresult
+\coordinate (F) at (\Xf,\Yf);
+
+\pgfmathparse{4}		\let\Xg\pgfmathresult
+\pgfmathparse{4}		\let\Yg\pgfmathresult
+\coordinate (G) at (\Xg,\Yg);
+
+\pgfmathparse{4.5}		\let\Xh\pgfmathresult
+\pgfmathparse{4.5}		\let\Yh\pgfmathresult
+\coordinate (H) at (\Xh,\Yh);
+
+
+\draw[ black,dashed] (D)--(C);
+
+\draw[dashed] (A)--(B);
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (E)--(A) node[midway,below left]{$\bb$};
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca,thick] (E)--(F) node[right]{$\bv ?$};
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca,thick] (E)--(G) node[right]{$\bv ?$};
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca,thick] (E)--(H) node[right]{$\bv ?$};
+
+\node [above right] at (0, 5) {$\operatorname{H} \bv = \bb$}; 
+
+
+\end{tikzpicture}
+
+
+
+
+
+
+\end{frame}

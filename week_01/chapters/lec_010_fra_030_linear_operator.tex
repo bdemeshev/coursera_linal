@@ -1,0 +1,784 @@
+% !TEX root = ../linal_lecture_01.tex
+
+
+\begin{frame} % название фрагмента
+
+\videotitle{Линейный оператор: определение и примеры}
+
+% примеры: R^n -> R^n: перестановка координат, растягивание, проекция, поворот, единичный оператор
+% R^n -> R^k: обрезка, дописывание нулей,
+
+\end{frame}
+
+
+\begin{frame}{Краткий план:}
+
+\begin{itemize}[<+->]
+  \item Определение линейного оператора.
+  \item Примеры линейных операторов.
+  \item Как из двух операторов сделать новый оператор?
+  % Ядерные функции из скалярного произведения. - в упражнения!
+\end{itemize}
+
+\end{frame}
+    
+
+
+\begin{frame}{Линейный оператор}
+
+
+\alert{Идея линейности}:
+  
+Результат действия не изменится, 
+
+если поменять местами действие $\LL$ и
+
+\begin{itemize}[<+->]
+    \item растягивание вектора, например, $\LL(42a)=42\LL(a)$;
+    \item усреднение двух векторов, $\LL(0.5a+0.5b)=0.5\LL(a) + 0.5\LL(b)$.
+  \end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}{Стандартное определение линейности}
+
+Определение. \alert{Линейный оператор} $\LL$ из $\R^n$ в $\R^k$.
+
+\begin{itemize}[<+->]
+  \item Для любого числа $t$ и вектора $a \in \R^n$: $\LL(t a) = t\LL(a)$.
+  \item Для любых двух векторов $a$ и $b$ из $\R^n$: $L(a + b) = \LL(a) + \LL(b)$.
+\item Вместо скобок часто пишут знак умножения, 
+
+$\LL(a) \equiv \LL \cdot a \equiv \LL a$.
+
+\end{itemize}
+
+
+
+\end{frame}
+
+
+\begin{frame}{Линейный оператор}
+
+
+\begin{tikzpicture}[
+scale=2,
+MyPoints/.style={draw=blue,fill=white,thick},
+Segments/.style={draw=blue!50!red!70,thick},
+MyCircles/.style={green!50!blue!50,thin}, 
+every node/.style={scale=1}
+]
+\draw[color=gray,step=1.0,dotted] (-1.9,-0.9) grid (7.5,7.0); 
+% \clip (-1.5,-0.5) rectangle (6.1,6.5);
+
+%{\verb!->!new, arrowhead = 2mm, line width=4pt}
+%, arrowhead = 3mm
+%, arrowhead = 0.2
+
+% Feel free to change here coordinates of points A and B
+\pgfmathparse{0}		\let\Xa\pgfmathresult
+\pgfmathparse{4}		\let\Ya\pgfmathresult
+\coordinate (A) at (\Xa,\Ya);
+
+\pgfmathparse{0}		\let\Xb\pgfmathresult
+\pgfmathparse{5}		\let\Yb\pgfmathresult
+\coordinate (B) at (\Xb,\Yb);
+
+\pgfmathparse{2}		\let\Xc\pgfmathresult
+\pgfmathparse{5}		\let\Yc\pgfmathresult
+\coordinate (C) at (\Xc,\Yc);
+
+\pgfmathparse{2}		\let\Xd\pgfmathresult
+\pgfmathparse{4}		\let\Yd\pgfmathresult
+\coordinate (D) at (\Xd,\Yd);
+
+\pgfmathparse{4}		\let\Xe\pgfmathresult
+\pgfmathparse{4}		\let\Ye\pgfmathresult
+\coordinate (E) at (\Xe,\Ye);
+
+\pgfmathparse{0}		\let\Xf\pgfmathresult
+\pgfmathparse{1}		\let\Yf\pgfmathresult
+\coordinate (F) at (\Xf,\Yf);
+
+\pgfmathparse{4}		\let\Xg\pgfmathresult
+\pgfmathparse{1}		\let\Yg\pgfmathresult
+\coordinate (G) at (\Xg,\Yg);
+
+
+% Let I be the midpoint of [AB]
+\pgfmathparse{(\Xb+\Xa)/2} \let\XI\pgfmathresult
+\pgfmathparse{(\Yb+\Ya)/2} \let\YI\pgfmathresult
+\coordinate (I) at (\XI,\YI);	
+
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca,thick] (A)--(B) node[left]{$\left(\begin{array}{l}0 \\ 1\end{array}\right)$} ;
+
+\draw[black, dashed, thick] (B)--(C);
+\draw[black, dashed, thick] (D)--(C);
+\draw[black, dashed, thick] (F)--(G);
+\draw[black, dashed, thick] (E)--(G);
+
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth,  veca] (A)--(C) node[above right]{$\ba = \begin{pmatrix} 2 \\ 1 \end{pmatrix}$};
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth,  vecb] (A)--(E) node[below]{$\LL  \cdot \left(\begin{array}{l}2 \\ 0\end{array}\right)$};
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth,  veca] (A)--(D) node[below]{$\left(\begin{array}{l}2 \\ 0\end{array}\right)$};
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth,  vecb] (A)--(G) node[below left,pos=1.1]{$\LL  \cdot \ba $};
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth,  vecb] (A)--(F) node[below]{$\LL  \cdot \left(\begin{array}{l}0 \\ 1\end{array}\right)$ };
+
+
+\end{tikzpicture}
+
+
+
+
+\end{frame}
+
+
+\begin{frame}{Растягивание координат}
+
+Обобщаем умножение вектора на число!
+
+  $L : \begin{pmatrix}
+    a_1 \\
+    a_2 \\
+  \end{pmatrix} \to 
+  \begin{pmatrix}
+    2a_1 \\
+    -3a_2 \\
+  \end{pmatrix}$
+
+
+\end{frame}
+
+
+
+\begin{frame}{Перестановка координат вектора}
+
+
+$L : \begin{pmatrix}
+    a_1 \\
+    a_2 \\
+    a_3 \\
+  \end{pmatrix} \to 
+  \begin{pmatrix}
+    a_2 \\
+    a_3 \\
+    a_1 \\
+  \end{pmatrix}$
+
+\vspace{10pt}
+
+Пример. \alert{Отражение относительно $x_1=x_2$}:
+
+
+
+\begin{tikzpicture}[
+scale=1.8,
+MyPoints/.style={draw=black,fill=black,thick},
+Segments/.style={draw=blue!50!red!70,thick},
+MyCircles/.style={green!50!blue!50,thin}, 
+every node/.style={scale=1.2}
+]
+\draw[color=gray,step=1.0,dotted] (-1.5,-1.5) grid (3.5,3.5); 
+% \clip (-1.5,-3.5) rectangle (3.5,3.5);
+
+\pgfmathparse{0}		\let\Xa\pgfmathresult
+\pgfmathparse{0}		\let\Ya\pgfmathresult
+\coordinate (A) at (\Xa,\Ya);
+
+\pgfmathparse{2}		\let\Xb\pgfmathresult
+\pgfmathparse{1}		\let\Yb\pgfmathresult
+\coordinate (B) at (\Xb,\Yb);
+
+\pgfmathparse{3}		\let\Xc\pgfmathresult
+\pgfmathparse{3}		\let\Yc\pgfmathresult
+\coordinate (C) at (\Xc,\Yc);
+
+\pgfmathparse{-1}		\let\Xd\pgfmathresult
+\pgfmathparse{-1}		\let\Yd\pgfmathresult
+\coordinate (D) at (\Xd,\Yd);
+
+\pgfmathparse{1}		\let\Xe\pgfmathresult
+\pgfmathparse{2}		\let\Ye\pgfmathresult
+\coordinate (E) at (\Xe,\Ye);
+
+
+
+\draw[ black,dashed] (D)--(C);
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca,thick] (A)--(B) node[below right]{$\left(\begin{array}{l}2 \\ 1\end{array}\right)$};
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (A)--(E) node[above left]{$\LL  \cdot \left(\begin{array}{l}2 \\ 1\end{array}\right) = \begin{pmatrix} 1 \\ 2 \end{pmatrix}$ };
+
+% \node [right,darkgray] at (-1,-2.5) {$L:\left(\begin{array}{l}a_{1} \\ a_{2}\end{array}\right) \rightarrow\left(\begin{array}{l}a_{2} \\ a_{1}\end{array}\right)$ }; 
+
+
+\fill[MyPoints]  (0,0) circle (0.8mm) node [below] {$0$};
+
+
+\end{tikzpicture}
+
+
+\end{frame}
+
+
+
+\begin{frame}{Первый поворот}
+
+\alert{Поворот} на $30^{\circ}$ против часовой стрелки
+
+Оператор $R: \R^2 \to \R^2$ 
+
+\begin{tikzpicture}[
+scale=1.4,
+MyPoints/.style={draw=blue,fill=white,thick},
+Segments/.style={draw=blue!50!red!70,thick},
+MyCircles/.style={blue!50,dashed}, 
+every node/.style={scale=1.2}
+]
+%\grid;
+%\draw[color=gray,step=1.0,dotted] (-7.1,-2.1) grid (7.6,6.1);
+%\clip (-5.5,-.5) rectangle (5.5,5.5);
+
+
+%%\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
+%\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-1)--(0,5) node[above left]{$x_2$};
+%
+%\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-1,0)--(6.5,0) 
+%node[right]{$x_1$};
+
+% Feel free to change here coordinates of points A and B
+\pgfmathparse{0}		\let\Xa\pgfmathresult
+\pgfmathparse{0}		\let\Ya\pgfmathresult
+\coordinate (A) at (\Xa,\Ya);
+
+\pgfmathparse{1}		\let\Xb\pgfmathresult
+\pgfmathparse{3}		\let\Yb\pgfmathresult
+\coordinate (B) at (\Xb,\Yb);
+
+\pgfmathparse{3}		\let\Xc\pgfmathresult
+\pgfmathparse{1}		\let\Yc\pgfmathresult
+\coordinate (C) at (\Xc,\Yc);
+
+\pgfmathparse{3}		\let\Xd\pgfmathresult
+\pgfmathparse{4}		\let\Yd\pgfmathresult
+\coordinate (D) at (\Xd,\Yd);
+
+\pgfmathparse{75}		\let\angle\pgfmathresult;
+\pgfmathparse{sqrt(10)}		\let\rad\pgfmathresult;
+
+
+\pgfmathparse{\Xb*cos(\angle)  - \Yb*sin(\angle)}		\let\Xe\pgfmathresult
+\pgfmathparse{\Xb*sin(\angle)  + \Yb*cos(\angle)}		\let\Ye\pgfmathresult
+\coordinate (E) at (\Xe,\Ye);
+
+\pgfmathparse{\Xd*cos(\angle)  - \Yd*sin(\angle)}		\let\Xf\pgfmathresult
+\pgfmathparse{\Xd*sin(\angle)  + \Yd*cos(\angle)}		\let\Yf\pgfmathresult
+\coordinate (F) at (\Xf,\Yf);
+
+
+% Let I be the midpoint of [AB]
+\pgfmathparse{(\Xb+\Xa)/2} \let\XI\pgfmathresult
+\pgfmathparse{(\Yb+\Ya)/2} \let\YI\pgfmathresult
+\coordinate (I) at (\XI,\YI);	
+
+
+\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, veca,thick] (A)--(B) node[midway,left]{$\ba$};
+
+\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, veca,thick] (B)--(D) node[midway,above]{$\bb$};
+
+\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, veca,thick] (A)--(D) node[midway,below right]{$\ba+\bb$};
+
+\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,thick] (A)--(E) node[midway,below left]{$\operatorname{R} \ba$};
+
+\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,thick] (E)--(F) node[midway,below left]{$\operatorname{R} \bb$};
+
+\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,thick] (A)--(F) node[midway,above right]{$\operatorname{R} (\ba+\bb)$};
+
+\draw[MyCircles] (A) circle ({\rad});
+
+\draw[MyCircles] (A) circle ({5});
+
+\tkzMarkAngle[size=1, mark = none, arrows=->,line width=1.5pt, mkcolor=red ](B,A,E);
+
+
+\end{tikzpicture}
+
+    
+
+
+\end{frame}
+    
+
+
+\begin{frame}{Первая проекция}
+
+\alert{Проекция} на прямую $x_1 + 2x_2 = 0$
+
+Оператор $H: \R^2 \to \R^2$ 
+
+
+
+\begin{tikzpicture}[
+scale=1.6,
+MyPoints/.style={draw=blue,fill=blue,thick},
+MyPoints2/.style={draw=red,fill=red,thick},
+Segments/.style={draw=blue!50!red!70,thick},
+MyCircles/.style={green!50!blue!50,thin}, 
+every node/.style={scale=1.2}
+]
+%\grid;
+% \clip (-1.5,-2.5) rectangle (6.5,5.5);
+
+
+%%\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
+%\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-1)--(0,5) node[above left]{$x_2$};
+%
+%\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-1,0)--(6.5,0) 
+%node[right]{$x_1$};
+
+% Feel free to change here coordinates of points A and B
+\pgfmathparse{0}		\let\Xa\pgfmathresult
+\pgfmathparse{0}		\let\Ya\pgfmathresult
+\coordinate (A) at (\Xa,\Ya);
+
+\pgfmathparse{2}		\let\Xb\pgfmathresult
+\pgfmathparse{3}		\let\Yb\pgfmathresult
+\coordinate (B) at (\Xb,\Yb);
+
+\pgfmathparse{3}		\let\Xc\pgfmathresult
+\pgfmathparse{1}		\let\Yc\pgfmathresult
+\coordinate (C) at (\Xc,\Yc);
+
+\pgfmathparse{5}		\let\Xd\pgfmathresult
+\pgfmathparse{4}		\let\Yd\pgfmathresult
+\coordinate (D) at (\Xd,\Yd);
+
+\pgfmathparse{2}		\let\Xe\pgfmathresult
+\pgfmathparse{0}		\let\Ye\pgfmathresult
+\coordinate (E) at (\Xe,\Ye);
+
+\pgfmathparse{5}		\let\Xf\pgfmathresult
+\pgfmathparse{0}		\let\Yf\pgfmathresult
+\coordinate (F) at (\Xf,\Yf);
+
+\pgfmathparse{5}		\let\Xg\pgfmathresult
+\pgfmathparse{-1.5}		\let\Yg\pgfmathresult
+\coordinate (G) at (\Xg,\Yg);
+
+\pgfmathparse{0}		\let\Xh\pgfmathresult
+\pgfmathparse{-1.5}		\let\Yh\pgfmathresult
+\coordinate (H) at (\Xh,\Yh);
+
+\pgfmathparse{-1.5}		\let\Xj\pgfmathresult
+\pgfmathparse{0}		\let\Yj\pgfmathresult
+\coordinate (J) at (\Xj,\Yj);
+
+\pgfmathparse{6.5}		\let\Xk\pgfmathresult
+\pgfmathparse{0}		\let\Yk\pgfmathresult
+\coordinate (K) at (\Xk,\Yk);
+
+\pgfmathparse{0}		\let\Xl\pgfmathresult
+\pgfmathparse{-1}		\let\Yl\pgfmathresult
+\coordinate (L) at (\Xl,\Yl);
+
+\pgfmathparse{5}		\let\Xm\pgfmathresult
+\pgfmathparse{-1}		\let\Ym\pgfmathresult
+\coordinate (M) at (\Xm,\Ym);
+
+
+
+% Let I be the midpoint of [AB]
+\pgfmathparse{(\Xb+\Xa)/2} \let\XI\pgfmathresult
+\pgfmathparse{(\Yb+\Ya)/2} \let\YI\pgfmathresult
+\coordinate (I) at (\XI,\YI);	
+
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca,thick] (A)--(B) node[midway,left]{$\ba$};
+
+\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, veca,thick] (B)--(D) node[midway,above]{$\bb$};
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecc,thick] (A)--(D) node[below right]{$\ba+\bb$};
+
+\draw[dashed] (B)--(E);
+\draw[dashed] (D)--(F);
+\draw[dashed] (J)--(K);
+
+\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,thick] (A)--(E) node[midway,below]{$\operatorname{H} \ba$};
+
+\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,thick] (E)--(F) node[midway,below]{$\operatorname{H} \bb$};
+
+\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,thick] (L)--(M) node[midway,below]{$\operatorname{H} (\ba+\bb)$};
+
+
+
+\draw[thick] (F)--(G);
+\draw[thick] (A)--(H);
+
+
+\fill[MyPoints]  (L) circle (0.8mm);
+\fill[MyPoints2]  (A) circle (0.8mm);
+
+
+\end{tikzpicture}
+
+
+
+
+\end{frame}
+    
+
+
+
+
+\begin{frame}{Обрезка компонент вектора}
+
+\alert{Уменьшаем размерность}, $\LL : \begin{pmatrix}
+  a_1 \\
+  a_2 \\
+  a_3 \\
+\end{pmatrix} \to 
+\begin{pmatrix}
+  a_1 \\
+  a_2 \\
+\end{pmatrix}$
+    
+
+
+    \begin{minipage}{0.60\linewidth}
+		
+			
+		\begin{tikzpicture}[
+		scale=1.2,
+		MyPoints/.style={draw=black,fill=black,thick},
+		Segments/.style={draw=blue!50!red!70,thick},
+		MyCircles/.style={green!50!blue!50,thin}, 
+		every node/.style={scale=1}
+		]
+
+		%\clip (-4.5,-4.5) rectangle (4.5,6.5);
+
+		\begin{scope}[cm={1,0.5,1,0,(0,0)}]
+		\draw[draw=blue!30, dashed] (-2.2,-1.2) grid[step=1] (4,5);
+		\end{scope}
+			
+		\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-1)--(0,4) node[above left]{$x_3$};
+	
+		
+		\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-1,0)--(4,0) 
+		node[below ]{$x_1$};
+		
+		\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-2,-1)--(4,2) node[above left]{$x_2$};
+		
+		
+		%{\verb!->!new, arrowhead = 2mm, line width=4pt}
+		%, arrowhead = 3mm
+		%, arrowhead = 0.2
+		
+		% Feel free to change here coordinates of points A and B
+		\pgfmathparse{0}		\let\Xa\pgfmathresult
+		\pgfmathparse{0}		\let\Ya\pgfmathresult
+		\coordinate (A) at (\Xa,\Ya);
+		
+		\pgfmathparse{3}		\let\Xb\pgfmathresult
+		\pgfmathparse{0.5}		\let\Yb\pgfmathresult
+		\coordinate (B) at (\Xb,\Yb);
+
+		\pgfmathparse{3}		\let\Xd\pgfmathresult
+		\pgfmathparse{3}		\let\Yd\pgfmathresult
+		\coordinate (D) at (\Xd,\Yd);
+
+		
+		\pgfmathparse{4}		\let\Xc\pgfmathresult
+		\pgfmathparse{0}		\let\Yc\pgfmathresult
+		\coordinate (C) at (\Xc,\Yc);
+		
+		
+		\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca, thick] (A)--(B) node[right]{$\widetilde{\ba}$};
+
+		\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca, thick] (A)--(D) node[above left]{$\ba$};
+
+		
+		\draw[black, dashed] (B)--(D);
+				
+		\fill[MyPoints]  (0,0) circle (0.8mm);
+		
+		\node [right,darkgray] at (-2.5,-3.0) {$\ba=\left(\begin{array}{c}a_{1} \\ a_{2} \\ a_{3}\end{array}\right) \quad \widetilde{\ba}=\left(\begin{array}{c}a_{1} \\ a_{2} \\ 0\end{array}\right)$}; 
+		
+		
+		\end{tikzpicture}
+		
+		
+    \end{minipage}\hfill
+	\begin{minipage}{0.35\linewidth}
+		
+		
+		\begin{tikzpicture}[
+		scale=1.2,
+		MyPoints/.style={draw=blue,fill=blue,thick},
+		Segments/.style={draw=blue!50!red!70,thick},
+		MyCircles/.style={green!50!blue!50,thin}, 
+		every node/.style={scale=1}
+		]
+		%\clip (-4.5,-4.5) rectangle (4.5,6.5);
+		
+		\draw[color=blue!30,step=1.0,dashed] (-1.5,-1.5) grid (4.5,4.5);
+		
+		%\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
+		
+		
+		\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-1)--(0,4) node[above left]{$x_2$};
+		
+		\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-1,0)--(4,0) 
+		node[below]{$x_1$};
+		
+		
+		%{\verb!->!new, arrowhead = 2mm, line width=4pt}
+		%, arrowhead = 3mm
+		%, arrowhead = 0.2
+		
+			\pgfmathparse{0}		\let\Xa\pgfmathresult
+		\pgfmathparse{0}		\let\Ya\pgfmathresult
+		\coordinate (A) at (\Xa,\Ya);
+		
+		\pgfmathparse{2}		\let\Xb\pgfmathresult
+		\pgfmathparse{1}		\let\Yb\pgfmathresult
+		\coordinate (B) at (\Xb,\Yb);
+		
+		\pgfmathparse{3}		\let\Xd\pgfmathresult
+		\pgfmathparse{3}		\let\Yd\pgfmathresult
+		\coordinate (D) at (\Xd,\Yd);
+		
+		
+		\pgfmathparse{4}		\let\Xc\pgfmathresult
+		\pgfmathparse{0}		\let\Yc\pgfmathresult
+		\coordinate (C) at (\Xc,\Yc);
+		
+		
+		\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca, thick] (A)--(B) node[above right]{$\LL  \cdot \ba$};
+		
+		
+		%\draw[black] (A)--(C) node[midway,below]{$4$};
+		
+	
+		\node [right,darkgray] at (0,-2.5) {$\LL  \ba =\left(\begin{array}{l}a_{1} \\ a_{2} \end{array}\right) $}; 
+		
+		
+		
+		\end{tikzpicture}
+		
+	\end{minipage}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}{Дописывание нулей}
+
+\alert{Увеличиваем размерность} пространства, $\LL : \begin{pmatrix}
+    a_1 \\
+    a_2 \\
+  \end{pmatrix} \to 
+  \begin{pmatrix}
+    a_1 \\
+    a_2 \\
+    0  \\
+  \end{pmatrix}$
+    
+
+
+\begin{minipage}{0.35\linewidth}
+
+
+\begin{tikzpicture}[
+scale=1,
+MyPoints/.style={draw=blue,fill=blue,thick},
+Segments/.style={draw=blue!50!red!70,thick},
+MyCircles/.style={green!50!blue!50,thin}, 
+every node/.style={scale=1}
+]
+%\clip (-1.5,-4.5) rectangle (4.5,6.5);
+
+\draw[color=blue!30,step=1.0,dashed] (-1.5,-1.5) grid (4.5,4.5);
+
+%\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
+
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-1)--(0,4) node[above left]{$x_2$};
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-1,0)--(4,0) 
+node[below]{$x_1$};
+
+
+%{\verb!->!new, arrowhead = 2mm, line width=4pt}
+%, arrowhead = 3mm
+%, arrowhead = 0.2
+
+\pgfmathparse{0}		\let\Xa\pgfmathresult
+\pgfmathparse{0}		\let\Ya\pgfmathresult
+\coordinate (A) at (\Xa,\Ya);
+
+\pgfmathparse{2}		\let\Xb\pgfmathresult
+\pgfmathparse{1}		\let\Yb\pgfmathresult
+\coordinate (B) at (\Xb,\Yb);
+
+\pgfmathparse{3}		\let\Xd\pgfmathresult
+\pgfmathparse{3}		\let\Yd\pgfmathresult
+\coordinate (D) at (\Xd,\Yd);
+
+
+\pgfmathparse{4}		\let\Xc\pgfmathresult
+\pgfmathparse{0}		\let\Yc\pgfmathresult
+\coordinate (C) at (\Xc,\Yc);
+
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca, thick] (A)--(B) node[above right]{$ \ba$};
+
+
+%\draw[black] (A)--(C) node[midway,below]{$4$};
+
+
+\node [right,darkgray] at (0,-3.0) {$ \ba =\left(\begin{array}{l}a_{1} \\ a_{2} \end{array}\right) $}; 
+
+
+
+\end{tikzpicture}
+\end{minipage}
+\begin{minipage}{0.60\linewidth}
+
+
+
+
+\begin{tikzpicture}[
+scale=1,
+MyPoints/.style={draw=black,fill=black,thick},
+Segments/.style={draw=blue!50!red!70,thick},
+MyCircles/.style={green!50!blue!50,thin}, 
+every node/.style={scale=1}
+]
+
+%\clip (-3.5,-4.5) rectangle (4.5,6.5);
+
+\begin{scope}[cm={1,0.5,1,0,(0,0)}]
+\draw[draw=blue!30, dashed] (-2.2,-1.2) grid[step=1] (4,5);
+\end{scope}
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-1)--(0,4) node[above left]{$x_3$};
+
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-1,0)--(4,0) 
+node[below ]{$x_1$};
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-2,-1)--(4,2) node[above left]{$x_2$};
+
+
+%{\verb!->!new, arrowhead = 2mm, line width=4pt}
+%, arrowhead = 3mm
+%, arrowhead = 0.2
+
+% Feel free to change here coordinates of points A and B
+\pgfmathparse{0}		\let\Xa\pgfmathresult
+\pgfmathparse{0}		\let\Ya\pgfmathresult
+\coordinate (A) at (\Xa,\Ya);
+
+\pgfmathparse{3}		\let\Xb\pgfmathresult
+\pgfmathparse{0.5}		\let\Yb\pgfmathresult
+\coordinate (B) at (\Xb,\Yb);
+
+\pgfmathparse{3}		\let\Xd\pgfmathresult
+\pgfmathparse{3}		\let\Yd\pgfmathresult
+\coordinate (D) at (\Xd,\Yd);
+
+
+\pgfmathparse{4}		\let\Xc\pgfmathresult
+\pgfmathparse{0}		\let\Yc\pgfmathresult
+\coordinate (C) at (\Xc,\Yc);
+
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca, thick] (A)--(B) node[right]{$\LL  \ba$};
+
+%		\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca, thick] (A)--(D) node[above left]{$\ba$};
+    
+%		\draw[black, dashed] (B)--(D);
+
+\fill[MyPoints]  (0,0) circle (0.8mm);
+
+\node [right,darkgray] at (0,-3.0) {$\LL  \ba=\left(\begin{array}{c}a_{1} \\ a_{2} \\ 0\end{array}\right)$}; 
+
+
+\end{tikzpicture}
+
+\end{minipage}
+
+
+\end{frame}
+
+
+\begin{frame}{Ничегонеделание}
+
+    Определение. \alert{Единичный} оператор, $I$,
+
+    $I(\ba) = \ba$
+
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}{Композиция линейных операторов}
+
+\alert{Делай раз, делай два!}
+
+\begin{itemize}[<+->]
+    \item Если последовательно применить два линейных оператора, 
+    то получится линейный оператор, $\LL_2 (\LL_1 (\ba)) = \LL(\ba)$.
+\item Важно: $\LL_1 : \R^n \to \R^k$, $\LL_2 : \R^k \to \R^p$.
+    \item \alert{доказательство}
+\begin{itemize}
+  \item $\LL_2 (\LL_1 (t \ba)) = \LL_2 (t \LL_1 (\ba)) = t \LL_2(\LL_1(\ba))$
+  \item $\LL_2 (\LL_1 (\ba + \bb)) = \LL_2 (\LL_1 (\ba) + \LL_1(\bb)) = \LL_2(\LL_1(\ba)) + \LL_2(\LL_1(\bb))$
+\end{itemize}
+\item Композицию также называют умножением.
+
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Сумма линейных операторов}
+
+
+
+
+\begin{itemize}[<+->]
+    \item Если сложить результаты двух линейных операторов, 
+    то получится линейный линейный оператор, $\LL_1(\ba) + \LL_2(\ba) = \LL(\ba)$. 
+\item Важно: $\LL_1 : \R^n \to \R^k$, $\LL_2 : \R^n \to \R^k$.
+    \item \alert{доказательство}
+\begin{itemize}
+  \item $\LL_1(t\ba) + \LL_2(t\ba) = t\LL_1(\ba) + t\LL_2(\ba)=t(\LL_1(\ba) + \LL_2(\ba))$
+  \item $\LL(\ba + \bb) = \LL_1(\ba + \bb) + \LL_2(\ba + \bb) = \LL_1(\ba ) + \LL_2(\ba ) + \LL_1( \bb) + \LL_2(\bb) = \LL(\ba) + \LL(\bb)$
+\end{itemize}
+
+\end{itemize}
+
+    
+
+
+
+
+
+\end{frame}
+
+    

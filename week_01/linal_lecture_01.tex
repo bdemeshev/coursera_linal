@@ -25,6 +25,7 @@
 \newcommand{\grid}{\draw[color=gray,step=1.0,dotted] (-2.1,-2.1) grid (9.6,6.1)}
 
 \newcommand{\ba}{\symbf{a}}
+\newcommand{\be}{\symbf{e}}
 \newcommand{\bb}{\symbf{b}}
 \newcommand{\bc}{\symbf{c}}
 \newcommand{\bd}{\symbf{d}}
@@ -32,6 +33,8 @@
 \newcommand{\bv}{\symbf{v}}
 \newcommand{\Lin}{\mathrm{Lin}}
 
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\LL}{L}
 
 %\tikzset{>=latex}
 
@@ -62,326 +65,28 @@
 \input{chapters/lec_010_fra_010_vectors_and_geometry.tex}
 
 
+\input{chapters/lec_010_fra_020_line_and_plane.tex}
 
 
 
+  
+\input{chapters/lec_010_fra_030_linear_operator.tex}
 
-\begin{frame} % название фрагмента
 
-\videotitle{Прямая, порожденная вектором, гиперплоскость}
+\input{chapters/lec_010_fra_040_rotation.tex}
 
-\end{frame}
-
-
-\begin{frame}{Краткий план:}
-
-\begin{itemize}[<+->]
-  \item Да будет больше разных расстояний!
-  \item Делаем из вектора прямую и гиперплоскость.
-  \item Ядерные функции из скалярного произведения.
-\end{itemize}
-
-\end{frame}
-
-
-\begin{frame}{Больше метрик в студию!}
- \begin{block}{Манхэттэнская метрика}
-  Расстояние по Майкопски:
-  \[
-  d(a, b) = \abs{a_1 - b_1}  + \abs{a_2 - b_2} + \ldots + \abs{a_n - b_n}
-  \]
- \end{block}
-
-\end{frame}
-
-
-
-
-\begin{frame}{У нас и у них}
-
- \begin{block}{TODO:}
- Рядом картинки Манхэттэна и Майкопа
- \end{block}
-
-\end{frame}
-
-
-\begin{frame}{Ещё больше метрик!}
-%\begin{block}{Метрика Чебышёва}
-%  \[
-%      d(a, b) = \max\left\{\abs{a_1 - b_1}, \abs{a_2 - b_2}, \ldots, \abs{a_n - b_n}\right\}
-%  \]
-%\end{block}
-
-\begin{block}{Метрика Минковского}
-  \[
-      d_p(\ba, \bb) = \left(\sum_{i=1}^n \abs{a_i - b_i}^p \right)^{1/p}
-  \]
-\end{block}
-\end{frame}
-
-\begin{frame}{Частные случаи метрики Минковского}
-
-\alert{Евклидова метрика, $p=2$}
-$
-   d_2(\ba, \bb) = \sqrt{(a_1 - b_1)^2 + \ldots + (a_n - b_n)^2} 
-$
-
-\alert{Манхэттэнская метрика, $p=1$}
-$
-d_1(\ba, \bb) = \abs{a_1 - b_1}  + \abs{a_2 - b_2} + \ldots + \abs{a_n - b_n} 
-$
-
-%\begin{block}{Метрика Чебышёва, $p\to \infty$}
-%$
-    %\max\left\{\abs{a_1 - b_1}, \ldots, \abs{a_n - b_n}\right\} = \lim_{p\to\infty} d_p(a, b)
-%$
-%\end{block}
-\end{frame}
-
-
-\begin{frame}{Частные случаи метрики Минковского}
-
-\begin{tikzpicture}[
-scale=1.2,
-MyPoints/.style={draw=blue,fill=white,thick},
-Segments/.style={draw=blue!50!red!70,thick},
-MyCircles/.style={green!50!blue!50,thin}, 
-every node/.style={scale=1.2}
-]
-\grid;
-%\clip (-.5,-.5) rectangle (5.5,5.5);
-
-
-%%\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
-%\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-1)--(0,5) node[above left]{$x_2$};
-%
-%\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-1,0)--(6.5,0) 
-%node[right]{$x_1$};
-
-% Feel free to change here coordinates of points A and B
-\pgfmathparse{0}		\let\Xa\pgfmathresult
-\pgfmathparse{0}		\let\Ya\pgfmathresult
-\coordinate (A) at (\Xa,\Ya);
-
-\pgfmathparse{1}		\let\Xb\pgfmathresult
-\pgfmathparse{4}		\let\Yb\pgfmathresult
-\coordinate (B) at (\Xb,\Yb);
-
-\pgfmathparse{5}		\let\Xc\pgfmathresult
-\pgfmathparse{1}		\let\Yc\pgfmathresult
-\coordinate (C) at (\Xc,\Yc);
-
-\pgfmathparse{5}		\let\Xd\pgfmathresult
-\pgfmathparse{4}		\let\Yd\pgfmathresult
-\coordinate (D) at (\Xd,\Yd);
-
-
-
-
-% Let I be the midpoint of [AB]
-\pgfmathparse{(\Xb+\Xa)/2} \let\XI\pgfmathresult
-\pgfmathparse{(\Yb+\Ya)/2} \let\YI\pgfmathresult
-\coordinate (I) at (\XI,\YI);	
-
-
-\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, darkgray,thick] (A)--(B) node[midway,left]{$\ba$};
-
-
-\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, darkgray,thick] (A)--(C) node[midway,below]{$\bb$};
-
-\draw[veca,thick, line width=0.35mm] (D)--(B);
-\draw[veca,thick, line width=0.35mm] (C)--(D);
-
-
-\draw[vecb,thick, line width=0.35mm] (C)--(B) node[midway,below left ]{$d_2(\ba,\bb)$};
-
-\draw[vecc,thick, line width=0.35mm] (C) to[bend right] (B);
-
-\node [above, vecc] at (4,3) {$d_p(\ba,\bb)$};
-
-
-
-\node [above right, veca] at (4, 4) {$d_1(\ba,\bb)$}; 
-
-\end{tikzpicture}
-
-    
-
-
-\end{frame}
-
-
-
-\begin{frame}{Вектор порождает прямую}
-
-\begin{block}{Прямая порождённая вектором $a$, $\Lin a$}
-множество векторов, получаемых при домножении вектора $a$ на произвольное число,
-\end{block}
-\[
-\Lin \ba = \left\{t\cdot \ba \middle| t \in \R \right\}  
-\]
-
-\begin{block}{TODO: картинка прямой порожденной вектором}
-\end{block}
-
-\end{frame}
-
-
-\begin{frame}{Вектор задаёт гиперплоскость}
-
-Вектор $\ba$ фиксирован, например, $\ba=(1, 2, 3)$.
-
-\begin{block}{TODO: две картинки рядом}
-$\langle \ba, \bv \rangle = 0$ и $\langle \ba, \bv \rangle = 1$   
-\end{block}
-
-
-\end{frame}
-
-
-\begin{frame}{Ядерные функции}
-
-Векторная функция $f$ фиксирована, например, 
-\[
-  f : \begin{pmatrix}
-    v_1 \\
-    v_2 \\
-  \end{pmatrix} \to 
-  \begin{pmatrix}
-    -1 \\
-    v_1^2 + v_2^2 \\
-  \end{pmatrix}
-\]
-
-\begin{block}{Ядерная функция, ядро $K$}
-Скалярное произведение в спрямляющем пространстве:
-$K(a, b) = \langle f(a), f(b) \rangle$.
-\end{block}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Спрямляющее пространство:}
-
-\begin{block}{TODO: картинка с исходным и спрямляющим пространством} 
-
-\end{block}
-
-
-\end{frame}
+\input{chapters/lec_010_fra_050_projection.tex}
 
   
 
+\input{chapters/lec_010_fra_060_inversion.tex}
+
+\input{chapters/lec_010_fra_070_transpose.tex}
 
 
-\begin{frame} % название фрагмента
+\input{chapters/lec_010_fra_080_eigen.tex}
 
-\videotitle{Линейный оператор: определение и примеры}
-
-% примеры: R^n -> R^n: перестановка координат, растягивание, проекция, поворот, единичный оператор
-% R^n -> R^k: обрезка, дописывание нулей,
-
-\end{frame}
-
-
-
-
-
-
-
-\begin{frame} % название фрагмента
-
-\videotitle{Вывод формулы поворота}
-\todo{видеофрагмент с прозрачной доской}
-
-\end{frame}
-
-\begin{frame} % название фрагмента
-
-\videotitle{Вывод формулы проекции}
-\todo{видеофрагмент с прозрачной доской}
-
-\end{frame}
-
-
-\begin{frame} % название фрагмента
-
-\videotitle{Композиция операторов, ортогональный оператор}
-% проверка ортогональности рассмотренных, композиция некоторых рассмотренных
-
-\end{frame}
-
-\begin{frame} % название фрагмента
-
-\videotitle{Транспонирование оператора}
-
-\end{frame}
-
-\begin{frame} % название фрагмента
-
-\videotitle{Обращение оператора}
-
-\end{frame}
-
-
-\begin{frame} % название фрагмента
-
-\videotitle{Собственные векторы и собственные числа}
-
-\end{frame}
-
-
-\begin{frame} % название фрагмента
-
-\videotitle{Игра Ним}
-\todo{это видео является бонусным, поэтому ничего нет страшного, что с ним выходит много видео, 
-или оно будет долгое}
-
-\todo{В начале фрагмента идёт слайд с правилами}
-\todo{затем видеофрагмент с прозрачной доской}
-
-
-\end{frame}
-
-
-\begin{frame}{Игра Ним} % название фрагмента
-
-\begin{itemize}
-    \item Есть три кучки с камнями: 3, 5 и 8 камней;
-    \item Два игрока ходят по очереди;
-    \item За ход: \\
-    \quad игрок выбирает одну кучку; \\
-    \quad берёт из неё положительное число камней;
-    \item Выигрывает берущий последний камень.
-\end{itemize}
-
-Какой ход сделать первому игроку?
-
-\end{frame}
-    
-        
-\begin{frame}{видео с доской}
-
-\todo{Краткое содержание:}
-
-\todo{закодируем каждую кучку двоичным вектором}
-
-\todo{стоимость позиции — сумма этих двух векторов}
-
-\todo{финальная позиция имеет стоимость ноль}
-
-\todo{любой ход из нулевой позиции ведёт в положительную}
-
-\todo{Из положительной позиции можно попасть в нулевую}
-
-\todo{С помощью нижней единички убиваем остальные}
-
-\todo{Выигрышный ход: взять 2 камня из кучки в 8 камней}
-
-
-\end{frame}
-
-
+\input{chapters/lec_010_fra_090_nim.tex}
 
 
 \end{document}
