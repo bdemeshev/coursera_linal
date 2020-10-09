@@ -5,8 +5,314 @@
 
 \videotitle{Транспонирование оператора и ортогональность}
 
-% (!) мы говорим, что оператор ортогональный, если он сохраняет длины и углы
-% (!) мы говорим, что оператор ортогональный, если он сохраняет скалярное произведение
-% (!) мы говорим, что оператор ортогональный, если Q^T = Q^{-1}
+\end{frame}
+
+\begin{frame}{Транспонирование}
+
+У любого оператора $\LL$ есть брат $\LL^T$.
+
+Определение. \alert{Транспонированным оператором}, $\LL^T$, называется оператор, для которого
+
+$\langle \LL \ba, \bb\rangle = \langle \ba, \LL^T \bb\rangle$
+    
 
 \end{frame}
+
+
+
+\begin{frame}{Транспонирование}
+
+
+Почему $\LL$ и $\LL^T$ братья? 
+
+\begin{itemize}[<+->]
+    \item $(\LL^T)^T = \LL$
+    \item Доказательство:
+    
+    \item $\langle \LL \ba , \bb \rangle = \langle  \ba , \LL^T \bb \rangle$  
+    
+    \item $\langle \ba , \LL \bb \rangle = \langle \LL^T \ba,  \bb \rangle$  
+
+    \item $\langle \LL^T \ba,  \bb \rangle = \langle \ba , \LL \bb \rangle $  
+
+\end{itemize}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}{Транспонирование растяжения}
+
+
+\begin{itemize}[<+->]
+    \item 
+Исходный оператор $\LL : \begin{pmatrix}
+  a_1 \\
+  a_2 \\
+\end{pmatrix} \to
+\begin{pmatrix}
+  2a_1 \\
+  -3a_2 \\
+\end{pmatrix}
+$
+
+\item 
+$\langle \LL \ba , \bb \rangle = 2a_1 b_1 - 3a_2 b_2 = \langle  \ba , \LL \bb \rangle$
+
+\item $\LL^T = \LL$
+
+\end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Транспонирование поворота}
+
+
+\begin{itemize}[<+->]
+    \item 
+Исходный оператор $\LL$ — поворот на плоскоти на $30^{\circ}$ против часовой стрелки.
+
+\item $\langle \LL \ba , \bb \rangle = \langle \ba , \LL^T \bb \rangle$
+
+\item Поворот не меняет длины. 
+
+\item $\angle (\LL \ba , \bb ) = \angle (\ba , \LL^T \bb)$
+
+\item $\LL^T$  — поворот на плоскоти на $30^{\circ}$ по часовой стрелке.
+
+\item $\LL^T=\LL^{1}$
+
+\end{itemize}
+
+\end{frame}
+    
+
+
+\begin{frame}{Транспонирование дописывания нуля}
+
+
+\begin{itemize}[<+->]
+\item Исходный оператор $\LL: \R^2 \to \R^3$, $\ba \in \R^2$, $\bb\in \R^3$:
+
+$\LL: \begin{pmatrix}
+    a_1 \\
+    a_2 \\
+\end{pmatrix} \to \begin{pmatrix}
+    a_1 \\
+    a_2 \\
+    0 \\
+\end{pmatrix}$
+
+\item $\langle \LL \ba , \bb \rangle = \langle (a_1, a_2, 0) , (b_1, b_2, b_3) \rangle =  a_1 b_1 + a_2 b_2 + 0 b_3$
+
+
+\item Третья компонента $\bb$ не важна!
+
+
+\item $\LL^T  : \R^3 \to \R^2$:
+
+$\LL: \begin{pmatrix}
+    b_1 \\
+    b_2 \\
+    b_3
+\end{pmatrix} \to \begin{pmatrix}
+    b_1 \\
+    b_2 \\
+\end{pmatrix}$
+
+
+\item $\langle \ba , \LL \bb \rangle = \langle (a_1, a_2) , (b_1, b_2) \rangle =  a_1 b_1 + a_2 b_2$
+
+\item $\LL^T$ — удаление третьей компоненты вектора.
+
+\end{itemize}
+
+\end{frame}
+    
+
+\begin{frame}{Транспонирование проекции}
+
+\begin{itemize}[<+->]
+
+    \item 
+Исходный оператор $H: \R^2 \to \R^2$, проекция на прямую $x_1 + 2x_2 = 0$.
+
+    \item Временно $\norm{\ba} = \norm{\bb} = 1$.
+    
+    \item  $\langle H \ba ,  \bb \rangle  =  \langle \ba ,  H\bb \rangle$
+    \item $H^T = H$.
+\end{itemize}
+
+\begin{tikzpicture}[
+scale=1.2,
+MyPoints/.style={draw=blue,fill=white,thick},
+Segments/.style={draw=blue!50!red!70,thick},
+MyCircles/.style={green!50!blue!50,thin}, 
+every node/.style={scale=1.2}
+]
+%\grid;
+
+%\clip (-1.5,-1.5) rectangle (7.5,5.5);
+
+
+%%\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
+%\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-1)--(0,5) node[above left]{$x_2$};
+%
+%\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-1,0)--(6.5,0) 
+%node[right]{$x_1$};
+
+% Feel free to change here coordinates of points A and B
+\pgfmathparse{0}		\let\Xa\pgfmathresult
+\pgfmathparse{0}		\let\Ya\pgfmathresult
+\coordinate (A) at (\Xa,\Ya);
+
+\pgfmathparse{5.5}		\let\Xb\pgfmathresult
+\pgfmathparse{5.5}		\let\Yb\pgfmathresult
+\coordinate (B) at (\Xb,\Yb);
+
+\pgfmathparse{5}		\let\Xc\pgfmathresult
+\pgfmathparse{2}		\let\Yc\pgfmathresult
+\coordinate (C) at (\Xc,\Yc);
+
+\pgfmathparse{-1}		\let\Xd\pgfmathresult
+\pgfmathparse{1}		\let\Yd\pgfmathresult
+\coordinate (D) at (\Xd,\Yd);
+
+\pgfmathparse{3}		\let\Xe\pgfmathresult
+\pgfmathparse{5}		\let\Ye\pgfmathresult
+\coordinate (E) at (\Xe,\Ye);
+
+\pgfmathparse{-0.75}		\let\Xf\pgfmathresult
+\pgfmathparse{0.75}		\let\Yf\pgfmathresult
+\coordinate (F) at (\Xf,\Yf);
+
+\pgfmathparse{3.25}		\let\Xg\pgfmathresult
+\pgfmathparse{4.75}		\let\Yg\pgfmathresult
+\coordinate (G) at (\Xg,\Yg);
+
+\pgfmathparse{4}		\let\Xh\pgfmathresult
+\pgfmathparse{4}		\let\Yh\pgfmathresult
+\coordinate (H) at (\Xh,\Yh);
+
+\pgfmathparse{6}		\let\Xj\pgfmathresult
+\pgfmathparse{2}		\let\Yj\pgfmathresult
+\coordinate (J) at (\Xj,\Yj);
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (A)--(B) node[midway,left]{$\ba$};
+
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca,thick] (A)--(J) node[midway,below]{$\bb$};
+
+\draw[thick] (A)--(D);
+\draw[thick] (H)--(E);
+
+\draw[thick, dashed] (J)--(E);
+
+
+\draw[{Latex[length=4.5mm, width=2.5mm]}-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, thick] (F)--(G) node[midway,above left]{$\langle \ba, \bb \rangle$};
+
+
+
+
+\tkzMarkRightAngle[size=0.3, mark = none](A,H,J);
+
+\tkzMarkAngle[size=1, mark = none](C,A,B);
+
+
+%\node [below, darkgray] at (1,1) {$\varphi$}; 
+
+%\node [below right, darkgray] at (-1.5,-1) {если  $\| \ba \| = 1 $, то $\langle \ba, \bb \rangle$  -- длина* проекции $\bb$ на $\ba$}; 
+
+
+
+%\draw
+%(3,-1) coordinate (a) node[right] {$a$}
+%-- (0,0) coordinate (b) node[left] {b}
+%-- (2,2) coordinate (c) node[above right] {c}
+
+
+\end{tikzpicture}
+    
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}{Ортогональный оператор}
+
+\begin{itemize}[<+->]
+\item 
+Определение. Оператор $\LL: \R^n \to \R^n$ называется \alert{ортогональным}, если
+\begin{itemize}
+    \item оператор сохраняет длины, $\norm{\LL \ba} = \norm{\ba}$
+    \item оператор сохраняет углы, $\angle(\LL\ba, \LL \bb) = \angle(\ba, \bb)$
+\end{itemize}
+\item Эквивалентное определение-2: 
+
+$\langle \LL \ba, \LL \bb\rangle = \langle \ba, \bb \rangle$.
+
+\item Эквивалентное определение-3: 
+
+$\LL^T = \LL^{-1}$.
+
+
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}{Ортогональный оператор: примеры}
+
+
+\begin{itemize}[<+->]
+    \item Перестановка двух компонент вектора
+    
+    $\LL: \begin{pmatrix}
+        a_1 \\
+        a_2
+    \end{pmatrix} \to
+    \begin{pmatrix}
+        a_2 \\
+        a_1
+    \end{pmatrix}$
+
+    \item Поворот на плоскости на $30^{\circ}$ против часовой стрелки.
+
+\end{itemize}
+
+\end{frame}
+    
+
+
+\begin{frame}{Полтора доказательства}
+
+
+\begin{itemize}[<+->]
+    \item Определения 1 и 2 эквивалентны.
+    
+    \item Скалярное произведение задаёт углы и длины:
+
+    $\norm{\ba} = \sqrt{\langle \ba, \ba\rangle} \quad \cos\angle (\ba, \bb)= \frac{\langle \ba, \bb\rangle} {\norm{\ba} \norm{\bb}}$
+
+    \item Длина и угол задают скалярное произведение:
+
+    $\langle \ba, \bb \rangle = \norm{\ba} \norm{\bb} \cos \angle (\ba, \bb)$
+    \item Из определения 3 следует определение 1.
+    
+    \item $\langle \LL \ba, \bb \rangle = \langle \ba, \LL^T \bb \rangle= \langle \ba, \LL^{-1}\bb \rangle$
+
+    \item $\langle \LL \ba, \LL \bc \rangle = \langle \ba, \bc \rangle$
+
+\end{itemize}
+    
+\end{frame}
+
