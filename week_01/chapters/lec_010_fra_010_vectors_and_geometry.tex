@@ -37,9 +37,7 @@
 \begin{frame}{Вектор}
 
 
-\begin{itemize}[<+->]
-\item Рабочее определение. 
-
+\begin{block}{Рабочее определение}
 \alert{Вектор} — столбец из нескольких чисел.   
 
 \[
@@ -49,14 +47,20 @@
   -3.45
 \end{pmatrix}
 \]
+\end{block}
 
-\item Идея вектора. Вектор — всё, что можно описать столбцом из нескольких чисел. 
+\pause
 
-\item Мы не пишем стрелочку над вектором.
+\begin{block}{Идея вектора}
+Вектор — всё, что можно описать столбцом из нескольких чисел. 
+\end{block}
 
-\item Вектор из нулей обозначаем $\bzero$.
+\pause
+Мы не пишем стрелочку над вектором.
 
-\end{itemize}
+\pause
+Вектор из нулей обозначаем $\bzero$.
+
 
 \end{frame}
 
@@ -64,8 +68,8 @@
 
 \begin{frame}{Пространство $\R^n$}
 
-\begin{itemize}[<+->]
-  \item Определение. \alert{Пространство $\R^n$:}
+\begin{block}{Определение} 
+\alert{Пространство $\R^n$:}
 
      Множество всех возможных векторов из $n$ чисел. 
  \[
@@ -77,11 +81,15 @@
  \end{pmatrix} \middle| x_1 \in \R, \ldots, x_n \in \R
    \right\}  
  \]
+\end{block}
 
-\item Определение. \alert{Размерность} пространства $\R^n$:
+\pause
+
+\begin{block}{Определение} 
+  \alert{Размерность} пространства $\R^n$:
 
     Количество чисел в каждом векторе, $n$.
-\end{itemize}
+\end{block}
 \end{frame}
 
 
@@ -100,11 +108,13 @@
 \end{minipage}%
 \hfill%
 \begin{minipage}{0.6\textwidth}
-Определение. 
 
+\begin{block}{Определение} 
 \alert{Евклидова длина} или \alert{норма} вектора 
-
-$\norm{\bx} = \sqrt{x_1^2 + x_2^2 + \ldots + x_n^2}$.
+\[
+  \norm{\bx} = \sqrt{x_1^2 + x_2^2 + \ldots + x_n^2}.
+\]
+\end{block}
 \end{minipage}
 
 \figcaption{Евклид, около 300 лет до н.э.}
@@ -117,7 +127,7 @@ $\norm{\bx} = \sqrt{x_1^2 + x_2^2 + \ldots + x_n^2}$.
 
 
 
-\begin{frame}
+\begin{frame}{Длина вектора}
 \begin{tikzpicture}[
 scale=1.6,
 MyPoints/.style={draw=blue,fill=white,thick},
@@ -181,7 +191,8 @@ node[right]{$x_1$};
 
 \begin{frame}{Сложение и вычитание двух векторов}
 
- Определение. \alert{Сложение и вычитание} двух векторов выполняем поэлементно:
+ \begin{block}{Определение} 
+ \alert{Сложение и вычитание} двух векторов выполняем поэлементно:
     \[
     \begin{pmatrix}
       2 \\
@@ -197,7 +208,7 @@ node[right]{$x_1$};
       0 
     \end{pmatrix}
     \]  
-
+  \end{block}
 
 \begin{tikzpicture}[
 scale=1.2,
@@ -264,7 +275,8 @@ every node/.style={scale=1.2}
 \begin{frame}{Умножение вектора на число}
 
 
-Определение. \alert{Умножение} вектора на число выполняем поэлеметно:
+\begin{block}{Определение} 
+\alert{Умножение} вектора на число выполняем поэлеметно:
     \[
     4 \cdot \begin{pmatrix}
       2 \\
@@ -276,7 +288,7 @@ every node/.style={scale=1.2}
       -4 
     \end{pmatrix}  
     \]
-
+  \end{block}
 
 
 \begin{tikzpicture}[
@@ -316,16 +328,18 @@ every node/.style={scale=1.2}
 
 \begin{frame}{Расстояние между векторами}
 
-Определение. \alert{Евклидово расстояние} между векторами
+\begin{block}{Определение} 
+\alert{Евклидово расстояние} между векторами
   \[
   d(\ba, \bb) = \norm{\ba - \bb} = \sqrt{(a_1 - b_1)^2 + \ldots + (a_n - b_n)^2}
   \]
+\end{block}
 
-\begin{itemize}
-  \item по определению, $d(\ba, \bb) \geq 0$. 
-  \item также говорят \alert{Евклидова метрика}
-\end{itemize}
+\pause
+По определению, $d(\ba, \bb) \geq 0$. 
 
+Также говорят \alert{Евклидова метрика}.
+\pause
 
 \begin{tikzpicture}[
 scale=1.2,
@@ -388,17 +402,25 @@ every node/.style={scale=1.2}
 
 \begin{frame}{Скалярное произведение и угол}
 
-\begin{itemize}[<+->]
-\item Определение. \alert{Скалярное произведение} векторов $\ba$ и $\bb$:
-  $\langle \ba, \bb \rangle = a_1 b_1 + a_2 b_2 + \ldots + a_n b_n$.
+\begin{block}{Определение} 
+\alert{Скалярное произведение} векторов $\ba$ и $\bb$:
 
-\item Определение. 
+  \[
+    \langle \ba, \bb \rangle = a_1 b_1 + a_2 b_2 + \ldots + a_n b_n.
+  \]
+\end{block}
+\pause
+
+\begin{block}{Определение} 
 \alert{Косинус угла} и \alert{угол} между векторами $\ba$ и $\bb$:
 % Косинусная близость, cosine similarity:  
   \[
   \cos \angle (\ba, \bb) =  \frac{\langle \ba, \bb \rangle}{ \norm{\ba} \norm{\bb}} \quad   \angle (\ba, \bb) =  \arccos \frac{\langle \ba, \bb \rangle}{ \norm{\ba} \norm{\bb}} 
   \]
-\end{itemize}
+\end{block}
+
+Угол определён, если $\norm{\ba} > 0$ и $\norm{\bb} > 0$.
+
 
 \begin{tikzpicture}[
 scale=1.2,
@@ -452,122 +474,24 @@ every node/.style={scale=1.2}
 
 \end{tikzpicture}
   
-Угол определён, если $\norm{\ba} > 0$ и $\norm{\bb} > 0$.
-
-
-\end{frame}
 
 
 
-\begin{frame}{Скалярное произведение и проекция}
 
-  Если вектор $\ba$ имеет единичную длину, $\norm{\ba} = 1$, то 
-
-
-  $\langle \ba, \bb \rangle = \norm{\bb} \cos \phi$ — длина$^*$ проекции $b$ на $a$.
   
 
-\begin{tikzpicture}[
-scale=1.2,
-MyPoints/.style={draw=blue,fill=white,thick},
-Segments/.style={draw=blue!50!red!70,thick},
-MyCircles/.style={green!50!blue!50,thin}, 
-every node/.style={scale=1.2}
-]
-%\grid;
-
-%\clip (-1.5,-1.5) rectangle (7.5,5.5);
-
-
-%%\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
-%\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-1)--(0,5) node[above left]{$x_2$};
-%
-%\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-1,0)--(6.5,0) 
-%node[right]{$x_1$};
-
-% Feel free to change here coordinates of points A and B
-\pgfmathparse{0}		\let\Xa\pgfmathresult
-\pgfmathparse{0}		\let\Ya\pgfmathresult
-\coordinate (A) at (\Xa,\Ya);
-
-\pgfmathparse{5.5}		\let\Xb\pgfmathresult
-\pgfmathparse{5.5}		\let\Yb\pgfmathresult
-\coordinate (B) at (\Xb,\Yb);
-
-\pgfmathparse{5}		\let\Xc\pgfmathresult
-\pgfmathparse{2}		\let\Yc\pgfmathresult
-\coordinate (C) at (\Xc,\Yc);
-
-\pgfmathparse{-1}		\let\Xd\pgfmathresult
-\pgfmathparse{1}		\let\Yd\pgfmathresult
-\coordinate (D) at (\Xd,\Yd);
-
-\pgfmathparse{3}		\let\Xe\pgfmathresult
-\pgfmathparse{5}		\let\Ye\pgfmathresult
-\coordinate (E) at (\Xe,\Ye);
-
-\pgfmathparse{-0.75}		\let\Xf\pgfmathresult
-\pgfmathparse{0.75}		\let\Yf\pgfmathresult
-\coordinate (F) at (\Xf,\Yf);
-
-\pgfmathparse{3.25}		\let\Xg\pgfmathresult
-\pgfmathparse{4.75}		\let\Yg\pgfmathresult
-\coordinate (G) at (\Xg,\Yg);
-
-\pgfmathparse{4}		\let\Xh\pgfmathresult
-\pgfmathparse{4}		\let\Yh\pgfmathresult
-\coordinate (H) at (\Xh,\Yh);
-
-\pgfmathparse{6}		\let\Xj\pgfmathresult
-\pgfmathparse{2}		\let\Yj\pgfmathresult
-\coordinate (J) at (\Xj,\Yj);
-
-\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (A)--(B) node[midway,left]{$\ba$};
-
-
-\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca,thick] (A)--(J) node[midway,below]{$\bb$};
-
-\draw[thick] (A)--(D);
-\draw[thick] (H)--(E);
-
-\draw[thick, dashed] (J)--(E);
-
-
-\draw[{Latex[length=4.5mm, width=2.5mm]}-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, thick] (F)--(G) node[midway,above left]{$\langle \ba, \bb \rangle$};
-
-
-
-
-\tkzMarkRightAngle[size=0.3, mark = none](A,H,J);
-
-\tkzMarkAngle[size=1, mark = none](C,A,B);
-
-
-%\node [below, darkgray] at (1,1) {$\varphi$}; 
-
-%\node [below right, darkgray] at (-1.5,-1) {если  $\| \ba \| = 1 $, то $\langle \ba, \bb \rangle$  -- длина* проекции $\bb$ на $\ba$}; 
-
-
-
-%\draw
-%(3,-1) coordinate (a) node[right] {$a$}
-%-- (0,0) coordinate (b) node[left] {b}
-%-- (2,2) coordinate (c) node[above right] {c}
-
-
-\end{tikzpicture}
-
-
-
 
 \end{frame}
+
+
+
 
 
 \begin{frame}{Свойства скалярного произведения}
 
   
   \begin{itemize}[<+->]
-  \item Скалярное вектора на себя равно квадрату длины
+  \item Скалярное произведение вектора на себя равно квадрату длины
   $\langle \ba, \ba \rangle = \norm{\ba}^2$
 
   \item Линейность по каждому аргументу
@@ -578,9 +502,128 @@ every node/.style={scale=1.2}
   \item Симметричность
   
   $\langle \ba, \bb \rangle = \langle \bb, \ba \rangle$
+
+  \item Скалярное произведение для ненулевых векторов
+  
+  $\langle \ba, \bb \rangle = \norm{\ba}\norm{\bb} \cos \angle(\ba, \bb)$
   \end{itemize}
   
   
+
+\end{frame}
+
+
+
+
+\begin{frame}{Скалярное произведение и проекция}
+
+\begin{itemize}[<+->]
+  \item Следствие формулы $\langle \ba, \bb \rangle = \norm{\ba}\norm{\bb} \cos \angle(\ba, \bb)$
+
+\item Если вектор $\ba$ имеет единичную длину, $\norm{\ba} = 1$, то 
+
+
+$\langle \ba, \bb \rangle = \norm{\bb} \cos  \angle(\ba, \bb)$ — длина$^*$ проекции $b$ на $a$.
+  
+
+
+\begin{tikzpicture}[
+  scale=1.2,
+  MyPoints/.style={draw=blue,fill=white,thick},
+  Segments/.style={draw=blue!50!red!70,thick},
+  MyCircles/.style={green!50!blue!50,thin}, 
+  every node/.style={scale=1.2}
+  ]
+  %\grid;
+  
+  %\clip (-1.5,-1.5) rectangle (7.5,5.5);
+  
+  
+  %%\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
+  %\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-1)--(0,5) node[above left]{$x_2$};
+  %
+  %\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-1,0)--(6.5,0) 
+  %node[right]{$x_1$};
+  
+  % Feel free to change here coordinates of points A and B
+  \pgfmathparse{0}		\let\Xa\pgfmathresult
+  \pgfmathparse{0}		\let\Ya\pgfmathresult
+  \coordinate (A) at (\Xa,\Ya);
+  
+  \pgfmathparse{5.5}		\let\Xb\pgfmathresult
+  \pgfmathparse{5.5}		\let\Yb\pgfmathresult
+  \coordinate (B) at (\Xb,\Yb);
+  
+  \pgfmathparse{5}		\let\Xc\pgfmathresult
+  \pgfmathparse{2}		\let\Yc\pgfmathresult
+  \coordinate (C) at (\Xc,\Yc);
+  
+  \pgfmathparse{-1}		\let\Xd\pgfmathresult
+  \pgfmathparse{1}		\let\Yd\pgfmathresult
+  \coordinate (D) at (\Xd,\Yd);
+  
+  \pgfmathparse{3}		\let\Xe\pgfmathresult
+  \pgfmathparse{5}		\let\Ye\pgfmathresult
+  \coordinate (E) at (\Xe,\Ye);
+  
+  \pgfmathparse{-0.75}		\let\Xf\pgfmathresult
+  \pgfmathparse{0.75}		\let\Yf\pgfmathresult
+  \coordinate (F) at (\Xf,\Yf);
+  
+  \pgfmathparse{3.25}		\let\Xg\pgfmathresult
+  \pgfmathparse{4.75}		\let\Yg\pgfmathresult
+  \coordinate (G) at (\Xg,\Yg);
+  
+  \pgfmathparse{4}		\let\Xh\pgfmathresult
+  \pgfmathparse{4}		\let\Yh\pgfmathresult
+  \coordinate (H) at (\Xh,\Yh);
+  
+  \pgfmathparse{6}		\let\Xj\pgfmathresult
+  \pgfmathparse{2}		\let\Yj\pgfmathresult
+  \coordinate (J) at (\Xj,\Yj);
+  
+  \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (A)--(B) node[midway,left]{$\ba$};
+  
+  
+  \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca,thick] (A)--(J) node[midway,below]{$\bb$};
+  
+  \draw[thick] (A)--(D);
+  \draw[thick] (H)--(E);
+  
+  \draw[thick, dashed] (J)--(E);
+  
+  
+  \draw[{Latex[length=4.5mm, width=2.5mm]}-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, thick] (F)--(G) node[midway,above left]{$\langle \ba, \bb \rangle$};
+  
+  
+  
+  
+  \tkzMarkRightAngle[size=0.3, mark = none](A,H,J);
+  
+  \tkzMarkAngle[size=1, mark = none](C,A,B);
+  
+  
+  %\node [below, darkgray] at (1,1) {$\varphi$}; 
+  
+  %\node [below right, darkgray] at (-1.5,-1) {если  $\| \ba \| = 1 $, то $\langle \ba, \bb \rangle$  -- длина* проекции $\bb$ на $\ba$}; 
+  
+  
+  
+  %\draw
+  %(3,-1) coordinate (a) node[right] {$a$}
+  %-- (0,0) coordinate (b) node[left] {b}
+  %-- (2,2) coordinate (c) node[above right] {c}
+  
+  
+  \end{tikzpicture}
+  
+
+
+\end{itemize}
+
+  
+
+
 
 \end{frame}
 
@@ -612,16 +655,25 @@ every node/.style={scale=1.2}
 
 \begin{frame}{Ортогональность векторов}
 
-Определение. Векторы $\ba$ и $\bb$ \alert{ортогональны}, $a\perp b$, если
+\begin{block}{Определение}
+Векторы $\ba$ и $\bb$ \alert{ортогональны}, $a\perp b$, если
 \[
   \langle \ba, \bb \rangle =0
 \]
+\end{block}
 
 Также говорят «\alert{перпендикулярны}».
 
+\end{frame}
+
+
+\begin{frame}{Ортогональность векторов}
+
+Для ненулевых векторов $\langle \ba, \bb \rangle \norm{\ba}\norm{\bb}\cos\angle(\ba, \bb) = 0$: 
+
 
 \begin{tikzpicture}[
-scale=1.8,
+scale=1.6,
 MyPoints/.style={draw=blue,fill=white,thick},
 Segments/.style={draw=blue!50!red!70,thick},
 MyCircles/.style={green!50!blue!50,thin}, 
@@ -629,7 +681,7 @@ every node/.style={scale=1.2}
 ]
 %\grid;
 
-\clip (-1.5,-1.5) rectangle (8.5,5.5);
+\clip (-2,-1.5) rectangle (10.5,5.5);
 
 
 %%\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
@@ -668,11 +720,7 @@ every node/.style={scale=1.2}
 \tkzMarkRightAngle[size=0.5](C,A,B);
 
 
-\node [above right, darkgray] at (2, 2) {$\begin{array}{l}
-  \ba \perp \bb \text{ так как } \langle \ba, \bb \rangle =0 \\
-  \ba \nperp \bc  \text{ так как } 
-  \langle \ba, \bc \rangle  \neq 0
-  \end{array}$}; 
+\node [above right, darkgray] at (2, 2) {$\ba\perp \bb$ и $\ba\nperp \bc$}; 
 
 
 

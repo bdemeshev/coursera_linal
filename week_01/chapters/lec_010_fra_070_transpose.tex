@@ -11,9 +11,14 @@
 
 У любого оператора $\LL$ есть брат $\LL^T$.
 
-Определение. \alert{Транспонированным оператором}, $\LL^T$, называется оператор, для которого
+\begin{block}{Определение} 
+    
+\alert{Транспонированным оператором}, $\LL^T$, называется оператор, для которого
 
-$\langle \LL \ba, \bb\rangle = \langle \ba, \LL^T \bb\rangle$
+\[
+    \langle \LL \ba, \bb\rangle = \langle \ba, \LL^T \bb\rangle.
+\]
+\end{block}
     
 
 \end{frame}
@@ -23,17 +28,23 @@ $\langle \LL \ba, \bb\rangle = \langle \ba, \LL^T \bb\rangle$
 \begin{frame}{Транспонирование}
 
 
-Почему $\LL$ и $\LL^T$ братья? 
+Почему $\LL$ и $\LL^T$ операторы-«братья»?
+
+\pause
+\[
+    (\LL^T)^T = \LL    
+\]
+\pause
+Доказательство:
+
+\pause
 
 \begin{itemize}[<+->]
-    \item $(\LL^T)^T = \LL$
-    \item Доказательство:
-    
     \item $\langle \LL \ba , \bb \rangle = \langle  \ba , \LL^T \bb \rangle$  
     
     \item $\langle \ba , \LL \bb \rangle = \langle \LL^T \ba,  \bb \rangle$  
 
-    \item $\langle \LL^T \ba,  \bb \rangle = \langle \ba , \LL \bb \rangle $  
+    \item $\langle \LL^T \ba,  \bb \rangle = \langle \ba , \LL \bb \rangle$  
 
 \end{itemize}
 
@@ -248,23 +259,31 @@ every node/.style={scale=1.2}
 
 \begin{frame}{Ортогональный оператор}
 
-\begin{itemize}[<+->]
-\item 
-Определение. Оператор $\LL: \R^n \to \R^n$ называется \alert{ортогональным}, если
+\begin{block}{Определение}
+Оператор $\LL: \R^n \to \R^n$ называется \alert{ортогональным}, если
 \begin{itemize}
-    \item оператор сохраняет длины, $\norm{\LL \ba} = \norm{\ba}$
-    \item оператор сохраняет углы, $\angle(\LL\ba, \LL \bb) = \angle(\ba, \bb)$
+    \item оператор сохраняет длины, $\norm{\LL \ba} = \norm{\ba}$;
+    \item оператор сохраняет углы, $\angle(\LL\ba, \LL \bb) = \angle(\ba, \bb)$.
 \end{itemize}
-\item Эквивалентное определение-2: 
+\end{block}
 
-$\langle \LL \ba, \LL \bb\rangle = \langle \ba, \bb \rangle$.
+\pause
 
-\item Эквивалентное определение-3: 
+\begin{block}{Эквивалентное определение} 
+Оператор $\LL: \R^n \to \R^n$ называется \alert{ортогональным}, если
+\[
+    \langle \LL \ba, \LL \bb\rangle = \langle \ba, \bb \rangle.
+\]
+\end{block}
 
-$\LL^T = \LL^{-1}$.
+\pause
 
-
-\end{itemize}
+\begin{block}{Эквивалентное определение} 
+Оператор $\LL: \R^n \to \R^n$ называется \alert{ортогональным}, если
+\[
+    \LL^T = \LL^{-1}.
+\]
+\end{block}
 
 
 \end{frame}
@@ -296,8 +315,11 @@ $\LL^T = \LL^{-1}$.
 \begin{frame}{Полтора доказательства}
 
 
+Сохранение длин и углов эквивалентно сохранению скалярного произведения.
+
+\pause
+
 \begin{itemize}[<+->]
-    \item Определения 1 и 2 эквивалентны.
     
     \item Скалярное произведение задаёт углы и длины:
 
@@ -306,13 +328,20 @@ $\LL^T = \LL^{-1}$.
     \item Длина и угол задают скалярное произведение:
 
     $\langle \ba, \bb \rangle = \norm{\ba} \norm{\bb} \cos \angle (\ba, \bb)$
-    \item Из определения 3 следует определение 1.
     
-    \item $\langle \LL \ba, \bb \rangle = \langle \ba, \LL^T \bb \rangle= \langle \ba, \LL^{-1}\bb \rangle$
-
-    \item $\langle \LL \ba, \LL \bc \rangle = \langle \ba, \bc \rangle$
-
 \end{itemize}
-    
+
+\pause
+
+Из условия $\LL^T = \LL^{-1}$ следует сохранение скалярного произведения.
+
+\begin{itemize}[<+->]
+
+\item $\langle \LL \ba, \bb \rangle = \langle \ba, \LL^T \bb \rangle= \langle \ba, \LL^{-1}\bb \rangle$
+
+\item Обозначаем $\bc = \LL^{-1} \bb$ и $\langle \LL \ba, \LL \bc \rangle = \langle \ba, \bc \rangle$
+\end{itemize}
+
+
 \end{frame}
 

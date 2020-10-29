@@ -44,16 +44,21 @@
 
 \begin{frame}{Стандартное определение линейности}
 
-Определение. \alert{Линейный оператор} $\LL$ из $\R^n$ в $\R^k$.
+\begin{block}{Определение}
+
+\alert{Линейный оператор} $\LL$ из $\R^n$ в $\R^k$.
 
 \begin{itemize}[<+->]
   \item Для любого числа $t$ и вектора $a \in \R^n$: $\LL(t a) = t\LL(a)$.
-  \item Для любых двух векторов $a$ и $b$ из $\R^n$: $L(a + b) = \LL(a) + \LL(b)$.
-\item Вместо скобок часто пишут знак умножения, 
+  \item Для любых двух векторов $a$ и $b$ из $\R^n$: $L(a + b) = \LL(a) + \LL(b)$. 
+\end{itemize}
+\end{block}
+
+\pause
+\vspace{10pt}
+Вместо скобок часто пишут знак умножения, 
 
 $\LL(a) \equiv \LL \cdot a \equiv \LL a$.
-
-\end{itemize}
 
 
 
@@ -724,9 +729,13 @@ node[below ]{$x_1$};
 
 \begin{frame}{Ничегонеделание}
 
-    Определение. \alert{Единичный} оператор, $I$,
+	\begin{block}{Определение}
+	\alert{Единичный} оператор, $I$, не меняет ни один вектор:
 
-    $I(\ba) = \ba$
+    \[
+		I(\ba) = \ba.
+	\]
+	\end{block}
 
 
 \end{frame}
@@ -744,7 +753,7 @@ node[below ]{$x_1$};
     \item Если последовательно применить два линейных оператора, 
     то получится линейный оператор, $\LL_2 (\LL_1 (\ba)) = \LL(\ba)$.
 \item Важно: $\LL_1 : \R^n \to \R^k$, $\LL_2 : \R^k \to \R^p$.
-    \item \alert{доказательство}
+    \item \alert{Доказательство}
 \begin{itemize}
   \item $\LL_2 (\LL_1 (t \ba)) = \LL_2 (t \LL_1 (\ba)) = t \LL_2(\LL_1(\ba))$
   \item $\LL_2 (\LL_1 (\ba + \bb)) = \LL_2 (\LL_1 (\ba) + \LL_1(\bb)) = \LL_2(\LL_1(\ba)) + \LL_2(\LL_1(\bb))$
@@ -765,7 +774,7 @@ node[below ]{$x_1$};
     \item Если сложить результаты двух линейных операторов, 
     то получится линейный линейный оператор, $\LL_1(\ba) + \LL_2(\ba) = \LL(\ba)$. 
 \item Важно: $\LL_1 : \R^n \to \R^k$, $\LL_2 : \R^n \to \R^k$.
-    \item \alert{доказательство}
+    \item \alert{Доказательство}
 \begin{itemize}
   \item $\LL_1(t\ba) + \LL_2(t\ba) = t\LL_1(\ba) + t\LL_2(\ba)=t(\LL_1(\ba) + \LL_2(\ba))$
   \item $\LL(\ba + \bb) = \LL_1(\ba + \bb) + \LL_2(\ba + \bb) = \LL_1(\ba ) + \LL_2(\ba ) + \LL_1( \bb) + \LL_2(\bb) = \LL(\ba) + \LL(\bb)$
