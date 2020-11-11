@@ -210,6 +210,7 @@ node[right]{$x_1$};
     \]  
   \end{block}
 
+\begin{center}
 \begin{tikzpicture}[
 scale=1.2,
 MyPoints/.style={draw=blue,fill=white,thick},
@@ -266,7 +267,7 @@ every node/.style={scale=1.2}
 
 
 \end{tikzpicture}
-
+\end{center}
 
 \end{frame}
 
@@ -291,6 +292,7 @@ every node/.style={scale=1.2}
   \end{block}
 
 
+\begin{center}
 \begin{tikzpicture}[
   scale=1.2,
   MyPoints/.style={draw=blue,fill=white,thick},
@@ -319,7 +321,7 @@ every node/.style={scale=1.2}
 
 
   \end{tikzpicture}
-
+\end{center}
 
 \end{frame}
 
@@ -340,6 +342,8 @@ every node/.style={scale=1.2}
 
 Также говорят \alert{Евклидова метрика}.
 \pause
+
+\begin{center}
 
 \begin{tikzpicture}[
 scale=1.2,
@@ -390,7 +394,7 @@ every node/.style={scale=1.2}
 
 
 \end{tikzpicture}
-    
+\end{center}    
 
 
 \end{frame}
@@ -404,7 +408,6 @@ every node/.style={scale=1.2}
 
 \begin{block}{Определение} 
 \alert{Скалярное произведение} векторов $\ba$ и $\bb$:
-
   \[
     \langle \ba, \bb \rangle = a_1 b_1 + a_2 b_2 + \ldots + a_n b_n.
   \]
@@ -419,9 +422,7 @@ every node/.style={scale=1.2}
   \]
 \end{block}
 
-Угол определён, если $\norm{\ba} > 0$ и $\norm{\bb} > 0$.
-
-
+\begin{minipage}{0.3\textwidth}
 \begin{tikzpicture}[
 scale=1.2,
 MyPoints/.style={draw=blue,fill=white,thick},
@@ -473,6 +474,10 @@ every node/.style={scale=1.2}
 
 
 \end{tikzpicture}
+\end{minipage}
+\begin{minipage}{0.69\textwidth}
+Угол определён, если $\norm{\ba} > 0$ и $\norm{\bb} > 0$.  
+\end{minipage}
   
 
 
@@ -517,16 +522,17 @@ every node/.style={scale=1.2}
 
 \begin{frame}{Скалярное произведение и проекция}
 
-\begin{itemize}[<+->]
-  \item Следствие формулы $\langle \ba, \bb \rangle = \norm{\ba}\norm{\bb} \cos \angle(\ba, \bb)$
+Следствие формулы $\langle \ba, \bb \rangle = \norm{\ba}\norm{\bb} \cos \angle(\ba, \bb)$:
 
-\item Если вектор $\ba$ имеет единичную длину, $\norm{\ba} = 1$, то 
+\pause
 
+\begin{block}{Утверждение}
+Если вектор $\ba$ имеет единичную длину, $\norm{\ba} = 1$, то 
 
 $\langle \ba, \bb \rangle = \norm{\bb} \cos  \angle(\ba, \bb)$ — длина$^*$ проекции $b$ на $a$.
-  
+\end{block}  
 
-
+\begin{center}
 \begin{tikzpicture}[
   scale=1.2,
   MyPoints/.style={draw=blue,fill=white,thick},
@@ -616,10 +622,9 @@ $\langle \ba, \bb \rangle = \norm{\bb} \cos  \angle(\ba, \bb)$ — длина$^*
   
   
   \end{tikzpicture}
-  
+\end{center}
 
 
-\end{itemize}
 
   
 
@@ -656,22 +661,22 @@ $\langle \ba, \bb \rangle = \norm{\bb} \cos  \angle(\ba, \bb)$ — длина$^*
 \begin{frame}{Ортогональность векторов}
 
 \begin{block}{Определение}
-Векторы $\ba$ и $\bb$ \alert{ортогональны}, $a\perp b$, если
+Векторы $\ba$ и $\bb$ \alert{ортогональны} (или \alert{перпендикулярны}), $a\perp b$, если
 \[
   \langle \ba, \bb \rangle =0
 \]
 \end{block}
-
-Также говорят «\alert{перпендикулярны}».
 
 \end{frame}
 
 
 \begin{frame}{Ортогональность векторов}
 
-Для ненулевых векторов $\langle \ba, \bb \rangle \norm{\ba}\norm{\bb}\cos\angle(\ba, \bb) = 0$: 
+Для ненулевых векторов $\langle \ba, \bb \rangle = \norm{\ba}\norm{\bb}\cos\angle(\ba, \bb)$.
 
+Условие $\langle \ba, \bb \rangle = 0$ превращается в $\cos \angle(\ba, \bb) = 0$.
 
+\begin{center}
 \begin{tikzpicture}[
 scale=1.6,
 MyPoints/.style={draw=blue,fill=white,thick},
@@ -731,7 +736,7 @@ every node/.style={scale=1.2}
 
 
 \end{tikzpicture}
-
+\end{center}
 
 \end{frame}
 

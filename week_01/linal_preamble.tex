@@ -124,17 +124,17 @@
 \newcommand{\figcaption}[1]{{\fontsize{18}{20}\selectfont #1}}
 
 
-\newcommand{\videotitle}[1]{\begin{center}
-    {\fontsize{33}{30}\selectfont \textcolor{dirblue}{#1} }
+\newcommand{\videotitle}[1]{
+    {\fontsize{33}{30}\selectfont \textcolor{dirblue}{\textbf{#1}} }
 
     %\todo{название видеофрагмента}
-\end{center}}
+}
 
-\newcommand{\lecturetitle}[1]{\begin{center}
-  {\fontsize{33}{30}\selectfont \textcolor{dirblue}{#1} }
+\newcommand{\lecturetitle}[1]{
+  {\fontsize{33}{30}\selectfont \textcolor{dirblue}{\textbf{#1}} }
 
     %\todo{название лекции}
-\end{center}}
+}
 
 
 
@@ -170,5 +170,21 @@
 \setbeamerfont{framesubtitle}{family=\rmfamily,series=\bfseries,size={\fontsize{26}{20}}}
 
 
+% удобнее знать номер слайда, чтобы вносить правки!  
 
+\setbeamercolor{footline}{fg=dircomment}
+\setbeamerfont{footline}{series=\bfseries, size={\fontsize{12}{14}}}
+%\setbeamertemplate{footline}[page number]
 
+\defbeamertemplate{footline}{custom footline}
+{%
+  \hspace*{\fill}%
+  \usebeamercolor[fg]{page number in head/foot}%
+  \usebeamerfont{page number in head/foot}%
+  page: \insertpagenumber\,/\,\insertpresentationendpage%
+  \hspace{20pt}%
+  slide: \insertframenumber\,/\,\inserttotalframenumber%
+  %\hspace*{\fill}
+  \vskip2pt%
+}
+\setbeamertemplate{footline}[custom footline]

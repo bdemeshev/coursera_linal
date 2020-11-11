@@ -1,0 +1,285 @@
+\documentclass[14 pt,xcolor=dvipsnames]{beamer}
+
+\input{../linal_preamble.tex}
+\usepackage{physics}
+\newcommand{\R}{\mathbb{R}}
+
+\usepackage[outline]{contour}
+
+
+
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{quotes,angles}
+\usetikzlibrary{arrows}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{positioning,intersections,decorations.markings}
+\usetikzlibrary{patterns}
+
+\usepackage{tkz-euclide} 
+
+\newcommand{\grid}{\draw[color=gray,step=1.0,dotted] (-2.1,-2.1) grid (9.6,6.1)}
+
+\newcommand{\ba}{\symbf{a}}
+\newcommand{\be}{\symbf{e}}
+\newcommand{\bb}{\symbf{b}}
+\newcommand{\bc}{\symbf{c}}
+\newcommand{\bd}{\symbf{d}}
+\newcommand{\bx}{\symbf{x}}
+\newcommand{\bv}{\symbf{v}}
+\newcommand{\Lin}{\mathrm{Lin}}
+
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\LL}{L}
+
+%\tikzset{>=latex}
+
+\colorlet{veca}{red}
+\colorlet{vecb}{blue}
+\colorlet{vecc}{olive}
+
+
+
+\begin{document}
+
+
+\begin{frame} % название лекции
+
+\lecturetitle{Шаблон для тестов и экспериментов}
+
+\end{frame}
+
+
+\begin{frame}{RX1}
+
+
+\begin{figure}[H]
+\noindent\makebox[\textwidth][c]{%
+		\begin{minipage}[H]{0.5\linewidth}
+		\begin{tikzpicture}[
+		scale=2.2,
+		MyPoints/.style={draw=blue,fill=white,thick},
+		Segments/.style={draw=blue!50!red!70,thick},
+		MyCircles/.style={blue!50,dashed}, 
+		every node/.style={scale=1.2}
+		]
+		%		\grid;
+		%\draw[color=gray,step=1.0,dotted] (-7.1,-2.1) grid (7.6,6.1);
+		\clip (-0.5,-.5) rectangle (5.5,3.5);
+		
+		
+		%%\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
+		%\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-1)--(0,5) node[above left]{$x_2$};
+		%
+		%\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-1,0)--(6.5,0) 
+		%node[right]{$x_1$};
+		
+		% Feel free to change here coordinates of points A and B
+		\pgfmathparse{0}		\let\Xa\pgfmathresult
+		\pgfmathparse{0}		\let\Ya\pgfmathresult
+		\coordinate (A) at (\Xa,\Ya);
+		
+		\pgfmathparse{1}		\let\Xb\pgfmathresult
+		\pgfmathparse{3}		\let\Yb\pgfmathresult
+		\coordinate (B) at (\Xb,\Yb);
+		
+		\pgfmathparse{3}		\let\Xc\pgfmathresult
+		\pgfmathparse{1}		\let\Yc\pgfmathresult
+		\coordinate (C) at (\Xc,\Yc);
+		
+		\pgfmathparse{4}		\let\Xd\pgfmathresult
+		\pgfmathparse{1}		\let\Yd\pgfmathresult
+		\coordinate (D) at (\Xd,\Yd);
+		
+		\pgfmathparse{-30}		\let\angle\pgfmathresult;
+		\pgfmathparse{sqrt(10)}		\let\rad\pgfmathresult;
+		
+		
+		\pgfmathparse{\Xb*cos(\angle)  - \Yb*sin(\angle)}		\let\Xe\pgfmathresult
+		\pgfmathparse{\Xb*sin(\angle)  + \Yb*cos(\angle)}		\let\Ye\pgfmathresult
+		\coordinate (E) at (\Xe,\Ye);
+		
+		\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, veca,thick] (A)--(B) node[above,left]{$\ba$};
+		
+		\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,thick] (A)--(D) node[below right]{$\bb$};
+		
+		
+		\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, veca,dashed] (A)--(E) node[above,right]{$\operatorname{L} \cdot \ba$};
+		
+		%
+		%\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,thick] (E)--(F) node[midway,below left]{$\operatorname{R} \bb$};
+		%
+		%\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,thick] (A)--(F) node[midway,above right]{$\operatorname{R} (\ba+\bb)$};
+		
+		\tkzMarkAngle[size=1, mark = none, arrows=<-,line width=1.5pt, mkcolor=red ](E,A,B);
+		
+		\node [above,darkgray] at (1,1) {$\varphi$};
+		
+		\end{tikzpicture}
+		
+		
+	\end{minipage}
+	\begin{minipage}[H]{0.5\linewidth}
+		
+	
+		\begin{tikzpicture}[
+		scale=2.2,
+		MyPoints/.style={draw=blue,fill=white,thick},
+		Segments/.style={draw=blue!50!red!70,thick},
+		MyCircles/.style={blue!50,dashed}, 
+		every node/.style={scale=1.2}
+		]
+		%		\grid;
+		%\draw[color=gray,step=1.0,dotted] (-7.1,-2.1) grid (7.6,6.1);
+		\clip (-0.5,-.5) rectangle (5.5,3.5);
+		
+		
+		%%\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
+		%\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-1)--(0,5) node[above left]{$x_2$};
+		%
+		%\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-1,0)--(6.5,0) 
+		%node[right]{$x_1$};
+		
+		% Feel free to change here coordinates of points A and B
+		\pgfmathparse{0}		\let\Xa\pgfmathresult
+		\pgfmathparse{0}		\let\Ya\pgfmathresult
+		\coordinate (A) at (\Xa,\Ya);
+		
+		\pgfmathparse{1}		\let\Xb\pgfmathresult
+		\pgfmathparse{3}		\let\Yb\pgfmathresult
+		\coordinate (B) at (\Xb,\Yb);
+		
+		\pgfmathparse{3}		\let\Xc\pgfmathresult
+		\pgfmathparse{1}		\let\Yc\pgfmathresult
+		\coordinate (C) at (\Xc,\Yc);
+		
+		\pgfmathparse{4}		\let\Xd\pgfmathresult
+		\pgfmathparse{1}		\let\Yd\pgfmathresult
+		\coordinate (D) at (\Xd,\Yd);
+		
+		\pgfmathparse{30}		\let\angle\pgfmathresult;
+		\pgfmathparse{sqrt(10)}		\let\rad\pgfmathresult;
+		
+		
+		\pgfmathparse{\Xd*cos(\angle)  - \Yd*sin(\angle)}		\let\Xe\pgfmathresult
+		\pgfmathparse{\Xd*sin(\angle)  + \Yd*cos(\angle)}		\let\Ye\pgfmathresult
+		\coordinate (E) at (\Xe,\Ye);
+		
+		\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, veca,thick] (A)--(B) node[above,left]{$\ba$};
+		
+		\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,thick] (A)--(D) node[midway,below right]{$\bb$};
+		
+		
+		\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,dashed] (A)--(E) node[below right]{$\operatorname{L}^\top \cdot \bb$};
+		
+		%
+		%\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,thick] (E)--(F) node[midway,below left]{$\operatorname{R} \bb$};
+		%
+		%\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,thick] (A)--(F) node[midway,above right]{$\operatorname{R} (\ba+\bb)$};
+		
+		\tkzMarkAngle[size=1, mark = none, arrows=->,line width=1.5pt, mkcolor=red ](D,A,E);
+		
+		\node [right,darkgray] at (1,0.6) {$\varphi$};
+		
+		\end{tikzpicture}
+		
+		
+		
+		
+	\end{minipage}
+	\hfill
+}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}{RX2}
+	
+\begin{center}
+
+\begin{tikzpicture}[
+scale=1.9,
+MyPoints/.style={draw=blue,fill=white,thick},
+Segments/.style={draw=blue!50!red!70,thick},
+MyCircles/.style={green!50!blue!50,thin}, 
+every node/.style={scale=0.8}
+]
+%\grid;
+\clip (-5.5,-2.5) rectangle (7.5,5.5);
+
+
+%\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
+%\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-1)--(0,5) node[above left]{$x_2$};
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, dashed] (-5,0)--(6.5,0) 
+node[below right]{$l$};
+
+
+%{\verb!->!new, arrowhead = 2mm, line width=4pt}
+%, arrowhead = 3mm
+%, arrowhead = 0.2
+
+% Feel free to change here coordinates of points A and B
+\pgfmathparse{0}		\let\Xa\pgfmathresult
+\pgfmathparse{0}		\let\Ya\pgfmathresult
+\coordinate (A) at (\Xa,\Ya);
+
+\pgfmathparse{-3}		\let\Xb\pgfmathresult
+\pgfmathparse{4}		\let\Yb\pgfmathresult
+\coordinate (B) at (\Xb,\Yb);
+
+\pgfmathparse{-3}		\let\Xc\pgfmathresult
+\pgfmathparse{0}		\let\Yc\pgfmathresult
+\coordinate (C) at (\Xc,\Yc);
+
+
+\pgfmathparse{5}		\let\Xd\pgfmathresult
+\pgfmathparse{2}		\let\Yd\pgfmathresult
+\coordinate (D) at (\Xd,\Yd);
+
+\pgfmathparse{3}		\let\Xe\pgfmathresult
+\pgfmathparse{0}		\let\Ye\pgfmathresult
+\coordinate (E) at (\Xe,\Ye);
+
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca,thick] (A)--(B) node[above right]{$\ba$};
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca,thick] (A)--(C) node[below]{$\operatorname{H} \ba$};
+
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (A)--(D) node[above]{$\bb$};
+
+
+\draw[black, dotted, thick] (B)--(C);
+
+\tkzMarkAngle[size=0.9, mark = none](B,A,C);
+
+\tkzMarkAngle[size=1, mark = none](E,A,D);
+\tkzMarkAngle[size=1.1, mark = none](E,A,D);
+
+
+\node [above right,darkgray] at (-4,-2) {$\langle \operatorname{H} \ba, \bb \rangle = \|\operatorname{H} \ba \| \cdot  \|\bb\|  \cdot \cos ( \operatorname{H} \ba, \bb)=\|\ba\| \cdot\|\bb\| \cdot \cos \alpha \cos \beta$};
+
+
+\node [left,darkgray] at (-1,0.5) {$\alpha$};
+
+\node [above right,darkgray] at (1.3,0) {$\beta$};
+
+
+
+\end{tikzpicture}
+
+\end{center}
+
+
+\end{frame}
+
+
+
+
+\end{document}

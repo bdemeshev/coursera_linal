@@ -11,15 +11,17 @@
 
 У любого оператора $\LL$ есть брат $\LL^T$.
 
+\pause
 \begin{block}{Определение} 
     
 \alert{Транспонированным оператором}, $\LL^T$, называется оператор, для которого
-
 \[
-    \langle \LL \ba, \bb\rangle = \langle \ba, \LL^T \bb\rangle.
+    \langle \LL \ba, \bb\rangle = \langle \ba, \LL^T \bb\rangle, \text{ и } \langle \ba, \LL  \bb\rangle = \langle \LL^T \ba,  \bb\rangle.
 \]
 \end{block}
     
+
+
 
 \end{frame}
 
@@ -31,23 +33,21 @@
 Почему $\LL$ и $\LL^T$ операторы-«братья»?
 
 \pause
+\begin{block}{Утверждение}
 \[
     (\LL^T)^T = \LL    
 \]
-\pause
-Доказательство:
-
+\end{block}
 \pause
 
-\begin{itemize}[<+->]
-    \item $\langle \LL \ba , \bb \rangle = \langle  \ba , \LL^T \bb \rangle$  
-    
-    \item $\langle \ba , \LL \bb \rangle = \langle \LL^T \ba,  \bb \rangle$  
-
-    \item $\langle \LL^T \ba,  \bb \rangle = \langle \ba , \LL \bb \rangle$  
-
-\end{itemize}
-
+\begin{block}{Доказательство}
+$\langle \LL \ba, \bb\rangle = \langle \ba, \LL^T \bb\rangle =
+\langle \LL^T \bb, \ba\rangle = \langle \bb, (\LL^T)^T \ba\rangle =
+\langle (\LL^T)^T \ba, \bb\rangle$
+\pause
+Если $\langle \bc, \bb\rangle = \langle \bd, \bb\rangle$ для всех $\bb$, 
+то $\bc = \bd$. 
+\end{block}
 
 \end{frame}
 
@@ -57,9 +57,7 @@
 \begin{frame}{Транспонирование растяжения}
 
 
-\begin{itemize}[<+->]
-    \item 
-Исходный оператор $\LL : \begin{pmatrix}
+Исходный оператор, $\LL : \begin{pmatrix}
   a_1 \\
   a_2 \\
 \end{pmatrix} \to
@@ -67,14 +65,14 @@
   2a_1 \\
   -3a_2 \\
 \end{pmatrix}
-$
+$.
+\pause
 
-\item 
-$\langle \LL \ba , \bb \rangle = 2a_1 b_1 - 3a_2 b_2 = \langle  \ba , \LL \bb \rangle$
+$\langle \LL \ba , \bb \rangle = 2a_1 b_1 - 3a_2 b_2 = \langle  \ba , \LL \bb \rangle$.
+\pause
 
-\item $\LL^T = \LL$
+Транспонированный оператор равен исходному, $\LL^T = \LL$.
 
-\end{itemize}
 
 \end{frame}
 
@@ -84,21 +82,162 @@ $\langle \LL \ba , \bb \rangle = 2a_1 b_1 - 3a_2 b_2 = \langle  \ba , \LL \bb \r
 \begin{frame}{Транспонирование поворота}
 
 
-\begin{itemize}[<+->]
-    \item 
-Исходный оператор $\LL$ — поворот на плоскоти на $30^{\circ}$ против часовой стрелки.
 
-\item $\langle \LL \ba , \bb \rangle = \langle \ba , \LL^T \bb \rangle$
+Исходный оператор $\LL$ — поворот на плоскости на $30^{\circ}$ против часовой стрелки.
+\pause Поворот не меняет длины векторов. 
+\pause
+ 
+Для равенства
+$\langle \LL \ba , \bb \rangle = \langle \ba , \LL^T \bb \rangle$
+достаточно условия $\angle (\LL \ba , \bb ) = \angle (\ba , \LL^T \bb)$.
+\pause
 
-\item Поворот не меняет длины. 
+\noindent\makebox[\textwidth][c]{%
+	\begin{minipage}[H]{0.5\linewidth}
+		
+	
+		\begin{tikzpicture}[
+		scale=1.6,
+		MyPoints/.style={draw=blue,fill=white,thick},
+		Segments/.style={draw=blue!50!red!70,thick},
+		MyCircles/.style={blue!50,dashed}, 
+		every node/.style={scale=1.2}
+		]
+		%		\grid;
+		%\draw[color=gray,step=1.0,dotted] (-7.1,-2.1) grid (7.6,6.1);
+		\clip (-0.5,-.5) rectangle (5.5,3.5);
+		
+		
+		%%\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
+		%\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-1)--(0,5) node[above left]{$x_2$};
+		%
+		%\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-1,0)--(6.5,0) 
+		%node[right]{$x_1$};
+		
+		% Feel free to change here coordinates of points A and B
+		\pgfmathparse{0}		\let\Xa\pgfmathresult
+		\pgfmathparse{0}		\let\Ya\pgfmathresult
+		\coordinate (A) at (\Xa,\Ya);
+		
+		\pgfmathparse{1}		\let\Xb\pgfmathresult
+		\pgfmathparse{3}		\let\Yb\pgfmathresult
+		\coordinate (B) at (\Xb,\Yb);
+		
+		\pgfmathparse{3}		\let\Xc\pgfmathresult
+		\pgfmathparse{1}		\let\Yc\pgfmathresult
+		\coordinate (C) at (\Xc,\Yc);
+		
+		\pgfmathparse{4}		\let\Xd\pgfmathresult
+		\pgfmathparse{1}		\let\Yd\pgfmathresult
+		\coordinate (D) at (\Xd,\Yd);
+		
+		\pgfmathparse{30}		\let\angle\pgfmathresult;
+		\pgfmathparse{sqrt(10)}		\let\rad\pgfmathresult;
+		
+		
+		\pgfmathparse{\Xd*cos(\angle)  - \Yd*sin(\angle)}		\let\Xe\pgfmathresult
+		\pgfmathparse{\Xd*sin(\angle)  + \Yd*cos(\angle)}		\let\Ye\pgfmathresult
+		\coordinate (E) at (\Xe,\Ye);
+		
+		\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, veca,thick] (A)--(B) node[above,left]{$\bb$};
+		
+		\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,thick] (A)--(D) node[midway,below right]{$\ba$};
+		
+		
+		\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,dashed] (A)--(E) node[below right]{$\operatorname{L} \cdot \ba$};
+		
+		%
+		%\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,thick] (E)--(F) node[midway,below left]{$\operatorname{R} \bb$};
+		%
+		%\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,thick] (A)--(F) node[midway,above right]{$\operatorname{R} (\ba+\bb)$};
+		
+		\tkzMarkAngle[size=1, mark = none, arrows=->,line width=1.5pt, mkcolor=red ](D,A,E);
+		
+		\node [right,darkgray] at (1,0.6) {$\varphi$};
+		
+		\end{tikzpicture}
+		
 
-\item $\angle (\LL \ba , \bb ) = \angle (\ba , \LL^T \bb)$
+		
+		
+	\end{minipage}
+	\begin{minipage}[H]{0.5\linewidth}
+		\begin{tikzpicture}[
+		scale=1.6,
+		MyPoints/.style={draw=blue,fill=white,thick},
+		Segments/.style={draw=blue!50!red!70,thick},
+		MyCircles/.style={blue!50,dashed}, 
+		every node/.style={scale=1.2}
+		]
+		%		\grid;
+		%\draw[color=gray,step=1.0,dotted] (-7.1,-2.1) grid (7.6,6.1);
+		\clip (-0.5,-.5) rectangle (5.5,3.5);
 
-\item $\LL^T$  — поворот на плоскоти на $30^{\circ}$ по часовой стрелке.
 
-\item $\LL^T=\LL^{1}$
+		%%\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
+		%\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-1)--(0,5) node[above left]{$x_2$};
+		%
+		%\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-1,0)--(6.5,0) 
+		%node[right]{$x_1$};
 
-\end{itemize}
+		% Feel free to change here coordinates of points A and B
+		\pgfmathparse{0}		\let\Xa\pgfmathresult
+		\pgfmathparse{0}		\let\Ya\pgfmathresult
+		\coordinate (A) at (\Xa,\Ya);
+
+		\pgfmathparse{1}		\let\Xb\pgfmathresult
+		\pgfmathparse{3}		\let\Yb\pgfmathresult
+		\coordinate (B) at (\Xb,\Yb);
+
+		\pgfmathparse{3}		\let\Xc\pgfmathresult
+		\pgfmathparse{1}		\let\Yc\pgfmathresult
+		\coordinate (C) at (\Xc,\Yc);
+
+		\pgfmathparse{4}		\let\Xd\pgfmathresult
+		\pgfmathparse{1}		\let\Yd\pgfmathresult
+		\coordinate (D) at (\Xd,\Yd);
+
+		\pgfmathparse{-30}		\let\angle\pgfmathresult;
+		\pgfmathparse{sqrt(10)}		\let\rad\pgfmathresult;
+
+
+		\pgfmathparse{\Xb*cos(\angle)  - \Yb*sin(\angle)}		\let\Xe\pgfmathresult
+		\pgfmathparse{\Xb*sin(\angle)  + \Yb*cos(\angle)}		\let\Ye\pgfmathresult
+		\coordinate (E) at (\Xe,\Ye);
+
+		\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, veca,thick] (A)--(B) node[above,left]{$\bb$};
+
+		\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,thick] (A)--(D) node[below right]{$\ba$};
+
+
+		\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, veca,dashed] (A)--(E) node[above,right]{$\operatorname{L^T} \cdot \bb$};
+
+		%
+		%\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,thick] (E)--(F) node[midway,below left]{$\operatorname{R} \bb$};
+		%
+		%\draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,thick] (A)--(F) node[midway,above right]{$\operatorname{R} (\ba+\bb)$};
+
+		\tkzMarkAngle[size=1, mark = none, arrows=<-,line width=1.5pt, mkcolor=red ](E,A,B);
+
+		\node [above,darkgray] at (1,1) {$\varphi$};
+
+		\end{tikzpicture}
+
+
+	\end{minipage}
+
+	\hfill
+}
+
+
+
+
+
+
+$\LL^T$  — поворот на плоскости на $30^{\circ}$ по часовой стрелке.
+\pause
+
+Транспонированный оператор совпадает с обратным, $\LL^T=\LL^{-1}$
 
 \end{frame}
     
@@ -107,8 +246,7 @@ $\langle \LL \ba , \bb \rangle = 2a_1 b_1 - 3a_2 b_2 = \langle  \ba , \LL \bb \r
 \begin{frame}{Транспонирование дописывания нуля}
 
 
-\begin{itemize}[<+->]
-\item Исходный оператор $\LL: \R^2 \to \R^3$, $\ba \in \R^2$, $\bb\in \R^3$:
+Исходный оператор $\LL: \R^2 \to \R^3$, $\ba \in \R^2$, $\bb\in \R^3$,
 
 $\LL: \begin{pmatrix}
     a_1 \\
@@ -117,15 +255,18 @@ $\LL: \begin{pmatrix}
     a_1 \\
     a_2 \\
     0 \\
-\end{pmatrix}$
+\end{pmatrix}$.
+\pause
 
-\item $\langle \LL \ba , \bb \rangle = \langle (a_1, a_2, 0) , (b_1, b_2, b_3) \rangle =  a_1 b_1 + a_2 b_2 + 0 b_3$
+$\langle \LL \ba , \bb \rangle = \langle (a_1, a_2, 0) , (b_1, b_2, b_3) \rangle = 
+ a_1 b_1 + a_2 b_2 + 0 \cdot b_3$.
+\pause
 
 
-\item Третья компонента $\bb$ не важна!
+Третья компонента вектора $\bb$ не важна!
+\pause
 
-
-\item $\LL^T  : \R^3 \to \R^2$:
+$\LL^T  : \R^3 \to \R^2$,
 
 $\LL: \begin{pmatrix}
     b_1 \\
@@ -134,120 +275,106 @@ $\LL: \begin{pmatrix}
 \end{pmatrix} \to \begin{pmatrix}
     b_1 \\
     b_2 \\
-\end{pmatrix}$
+\end{pmatrix}$.
+\pause
 
+$\langle \ba , \LL \bb \rangle = \langle (a_1, a_2) , (b_1, b_2) \rangle =  a_1 b_1 + a_2 b_2$.
+\pause
 
-\item $\langle \ba , \LL \bb \rangle = \langle (a_1, a_2) , (b_1, b_2) \rangle =  a_1 b_1 + a_2 b_2$
-
-\item $\LL^T$ — удаление третьей компоненты вектора.
-
-\end{itemize}
+Транспонированный оператор $\LL^T$ — удаление третьей компоненты вектора.
 
 \end{frame}
     
 
 \begin{frame}{Транспонирование проекции}
 
-\begin{itemize}[<+->]
+Исходный оператор $\HH: \R^2 \to \R^2$, проекция на прямую $\ell$.
+\pause
 
-    \item 
-Исходный оператор $H: \R^2 \to \R^2$, проекция на прямую $x_1 + 2x_2 = 0$.
-
-    \item Временно $\norm{\ba} = \norm{\bb} = 1$.
-    
-    \item  $\langle H \ba ,  \bb \rangle  =  \langle \ba ,  H\bb \rangle$
-    \item $H^T = H$.
-\end{itemize}
+\begin{center}
 
 \begin{tikzpicture}[
-scale=1.2,
+scale=1.6,
 MyPoints/.style={draw=blue,fill=white,thick},
 Segments/.style={draw=blue!50!red!70,thick},
 MyCircles/.style={green!50!blue!50,thin}, 
-every node/.style={scale=1.2}
+every node/.style={scale=0.8}
 ]
 %\grid;
+\clip (-5.5,-2.2) rectangle (7.5,4.5);
 
-%\clip (-1.5,-1.5) rectangle (7.5,5.5);
 
-
-%%\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
+%\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
 %\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-1)--(0,5) node[above left]{$x_2$};
-%
-%\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-1,0)--(6.5,0) 
-%node[right]{$x_1$};
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, dashed] (-5,0)--(6.5,0) 
+node[below right]{$\ell$};
+
+
+%{\verb!->!new, arrowhead = 2mm, line width=4pt}
+%, arrowhead = 3mm
+%, arrowhead = 0.2
 
 % Feel free to change here coordinates of points A and B
 \pgfmathparse{0}		\let\Xa\pgfmathresult
 \pgfmathparse{0}		\let\Ya\pgfmathresult
 \coordinate (A) at (\Xa,\Ya);
 
-\pgfmathparse{5.5}		\let\Xb\pgfmathresult
-\pgfmathparse{5.5}		\let\Yb\pgfmathresult
+\pgfmathparse{-3}		\let\Xb\pgfmathresult
+\pgfmathparse{4}		\let\Yb\pgfmathresult
 \coordinate (B) at (\Xb,\Yb);
 
-\pgfmathparse{5}		\let\Xc\pgfmathresult
-\pgfmathparse{2}		\let\Yc\pgfmathresult
+\pgfmathparse{-3}		\let\Xc\pgfmathresult
+\pgfmathparse{0}		\let\Yc\pgfmathresult
 \coordinate (C) at (\Xc,\Yc);
 
-\pgfmathparse{-1}		\let\Xd\pgfmathresult
-\pgfmathparse{1}		\let\Yd\pgfmathresult
+
+\pgfmathparse{5}		\let\Xd\pgfmathresult
+\pgfmathparse{2}		\let\Yd\pgfmathresult
 \coordinate (D) at (\Xd,\Yd);
 
 \pgfmathparse{3}		\let\Xe\pgfmathresult
-\pgfmathparse{5}		\let\Ye\pgfmathresult
+\pgfmathparse{0}		\let\Ye\pgfmathresult
 \coordinate (E) at (\Xe,\Ye);
 
-\pgfmathparse{-0.75}		\let\Xf\pgfmathresult
-\pgfmathparse{0.75}		\let\Yf\pgfmathresult
-\coordinate (F) at (\Xf,\Yf);
 
-\pgfmathparse{3.25}		\let\Xg\pgfmathresult
-\pgfmathparse{4.75}		\let\Yg\pgfmathresult
-\coordinate (G) at (\Xg,\Yg);
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca,thick] (A)--(B) node[above right]{$\ba$};
 
-\pgfmathparse{4}		\let\Xh\pgfmathresult
-\pgfmathparse{4}		\let\Yh\pgfmathresult
-\coordinate (H) at (\Xh,\Yh);
-
-\pgfmathparse{6}		\let\Xj\pgfmathresult
-\pgfmathparse{2}		\let\Yj\pgfmathresult
-\coordinate (J) at (\Xj,\Yj);
-
-\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (A)--(B) node[midway,left]{$\ba$};
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca,thick] (A)--(C) node[below]{$\operatorname{H} \ba$};
 
 
-\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca,thick] (A)--(J) node[midway,below]{$\bb$};
-
-\draw[thick] (A)--(D);
-\draw[thick] (H)--(E);
-
-\draw[thick, dashed] (J)--(E);
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (A)--(D) node[above]{$\bb$};
 
 
-\draw[{Latex[length=4.5mm, width=2.5mm]}-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, thick] (F)--(G) node[midway,above left]{$\langle \ba, \bb \rangle$};
+\draw[black, dotted, thick] (B)--(C);
+
+\tkzMarkAngle[size=0.9, mark = none](B,A,C);
+
+\tkzMarkAngle[size=1, mark = none](E,A,D);
+\tkzMarkAngle[size=1.1, mark = none](E,A,D);
 
 
+\node [above right,darkgray] at (-5.5,-2) {$\langle \operatorname{H} \ba, \bb \rangle = \|\operatorname{H} \ba \| \cdot  \|\bb\|  \cdot \cos ( \operatorname{H} \ba, \bb)=\|\ba\| \cdot\|\bb\| \cdot \cos \alpha \cos \beta = \langle \ba, \HH \bb\rangle$};
 
 
-\tkzMarkRightAngle[size=0.3, mark = none](A,H,J);
+\node [left,darkgray] at (-1,0.5) {$\alpha$};
 
-\tkzMarkAngle[size=1, mark = none](C,A,B);
+\node [above right,darkgray] at (1.3,0) {$\beta$};
 
-
-%\node [below, darkgray] at (1,1) {$\varphi$}; 
-
-%\node [below right, darkgray] at (-1.5,-1) {если  $\| \ba \| = 1 $, то $\langle \ba, \bb \rangle$  -- длина* проекции $\bb$ на $\ba$}; 
-
-
-
-%\draw
-%(3,-1) coordinate (a) node[right] {$a$}
-%-- (0,0) coordinate (b) node[left] {b}
-%-- (2,2) coordinate (c) node[above right] {c}
 
 
 \end{tikzpicture}
+
+\end{center}
+
+
+
+
+\pause
+Транспонированный оператор равен исходному, $\HH^T = \HH$.
+
+
+
     
 
 \end{frame}
@@ -302,7 +429,7 @@ every node/.style={scale=1.2}
     \begin{pmatrix}
         a_2 \\
         a_1
-    \end{pmatrix}$
+    \end{pmatrix}$.
 
     \item Поворот на плоскости на $30^{\circ}$ против часовой стрелки.
 
@@ -312,35 +439,41 @@ every node/.style={scale=1.2}
     
 
 
-\begin{frame}{Полтора доказательства}
+\begin{frame}{Полтора доказательства эквивалентности}
 
-
+\begin{block}{Утверждение}
 Сохранение длин и углов эквивалентно сохранению скалярного произведения.
-
+\end{block}
 \pause
 
-\begin{itemize}[<+->]
-    
-    \item Скалярное произведение задаёт углы и длины:
 
-    $\norm{\ba} = \sqrt{\langle \ba, \ba\rangle} \quad \cos\angle (\ba, \bb)= \frac{\langle \ba, \bb\rangle} {\norm{\ba} \norm{\bb}}$
+\begin{block}{Доказательство}
+Скалярное произведение задаёт углы и длины:
 
-    \item Длина и угол задают скалярное произведение:
-
-    $\langle \ba, \bb \rangle = \norm{\ba} \norm{\bb} \cos \angle (\ba, \bb)$
-    
-\end{itemize}
+$\norm{\ba} = \sqrt{\langle \ba, \ba\rangle}, \quad \cos\angle (\ba, \bb)= \frac{\langle \ba, \bb\rangle} {\norm{\ba} \norm{\bb}}$
 
 \pause
+Длина и угол задают скалярное произведение:
 
-Из условия $\LL^T = \LL^{-1}$ следует сохранение скалярного произведения.
+$\langle \ba, \bb \rangle = \norm{\ba} \norm{\bb} \cos \angle (\ba, \bb)$
+\end{block}
+\end{frame}
 
-\begin{itemize}[<+->]
+\begin{frame}{Полтора доказательства эквивалентности}
 
-\item $\langle \LL \ba, \bb \rangle = \langle \ba, \LL^T \bb \rangle= \langle \ba, \LL^{-1}\bb \rangle$
 
-\item Обозначаем $\bc = \LL^{-1} \bb$ и $\langle \LL \ba, \LL \bc \rangle = \langle \ba, \bc \rangle$
-\end{itemize}
+
+\begin{block}{Утверждение}
+Условие $\LL^T = \LL^{-1}$ эквивалентно сохранению скалярного произведения.
+\end{block}
+\pause
+
+\begin{block}{Половина доказательства}
+$\langle \LL \ba, \bb \rangle = \langle \ba, \LL^T \bb \rangle= \langle \ba, \LL^{-1}\bb \rangle$.
+\pause
+
+Обозначаем $\bc = \LL^{-1} \bb$ и получаем $\langle \LL \ba, \LL \bc \rangle = \langle \ba, \bc \rangle$.
+\end{block}
 
 
 \end{frame}

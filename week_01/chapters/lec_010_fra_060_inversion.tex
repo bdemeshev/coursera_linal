@@ -25,15 +25,15 @@
 
 \pause
 
-Мы не обращаем операторы $\LL: \R^n \to \R^k$ при $n \neq k$.
+Операторы $\LL: \R^n \to \R^k$ при $n \neq k$ не обратимы!
 
 \pause
 
-Даже для $\LL: \R^n \to \R^n$ обратный оператор не всегда существует!
+Даже оператор $\LL: \R^n \to \R^n$ не всегда обратим!
 
 \pause
 
-В определении достаточно потребовать $\LL \cdot \LL^{-1} = I$.
+Для оператора $\LL: \R^n \to \R^n$ в определении достаточно условия $\LL \cdot \LL^{-1} = I$.
 
 
 \end{frame}
@@ -41,9 +41,8 @@
 
 \begin{frame}{Обращение растягивания}
 
-\begin{itemize}[<+->]
-    \item 
-Исходный оператор $\LL : \begin{pmatrix}
+
+Исходный оператор, $\LL : \begin{pmatrix}
   a_1 \\
   a_2 \\
 \end{pmatrix} \to
@@ -51,9 +50,10 @@
   2a_1 \\
   -3a_2 \\
 \end{pmatrix}
-$
+$.
+\pause
 
-\item \alert{Обратный оператор}:  
+Обратный оператор,  
 $\LL^{-1} : \begin{pmatrix}
     a_1 \\
     a_2 \\
@@ -62,10 +62,10 @@ $\LL^{-1} : \begin{pmatrix}
     \frac{1}{2}a_1 \\
     \frac{1}{-3}a_2 \\
   \end{pmatrix}
-  $
+  $.
 
-\item $\LL^{-1} \LL = I$
-\end{itemize}
+\pause
+$\LL^{-1} \LL = \Id$.
 
 
 \end{frame}
@@ -73,9 +73,7 @@ $\LL^{-1} : \begin{pmatrix}
 
 \begin{frame}{Обращение перестановки двух компонент}
 
-\begin{itemize}[<+->]
-    \item 
-Исходный оператор $\LL : \begin{pmatrix}
+Исходный оператор, $\LL : \begin{pmatrix}
   a_1 \\
   a_2 \\
 \end{pmatrix} \to
@@ -83,9 +81,10 @@ $\LL^{-1} : \begin{pmatrix}
 a_2 \\
 a_1 \\
 \end{pmatrix}
-$
+$.
+\pause
 
-\item \alert{Обратный оператор}:  
+Обратный оператор,  
 $\LL^{-1} : \begin{pmatrix}
 a_1 \\
 a_2 \\
@@ -94,11 +93,13 @@ a_2 \\
 a_2 \\
 a_1 \\
     \end{pmatrix}
-  $
+  $.
+\pause
 
-\item $\LL^{-1} \LL = I$
-\item $\LL^{-1} = \LL$
-\end{itemize}
+$\LL^{-1} \LL = \Id$.
+\pause
+
+Обратный оператор равен исходному, $\LL^{-1} = \LL$.
 
 
 \end{frame}
@@ -108,9 +109,7 @@ a_1 \\
 
 \begin{frame}{Обращение перестановки компонент}
 
-\begin{itemize}[<+->]
-    \item 
-Исходный оператор $\LL : \begin{pmatrix}
+Исходный оператор, $\LL : \begin{pmatrix}
   a_1 \\
   a_2 \\
   a_3 \\
@@ -120,9 +119,10 @@ a_3 \\
 a_1 \\
 a_2 \\
 \end{pmatrix}
-$
+$.
+\pause
 
-\item \alert{Обратный оператор}:  
+Обратный оператор,
 $\LL^{-1} : \begin{pmatrix}
 a_1 \\
 a_2 \\
@@ -133,10 +133,10 @@ a_2 \\
 a_3 \\
 a_1 \\
     \end{pmatrix}
-  $
+  $.
+\pause
 
-\item $\LL^{-1} \LL = I$
-\end{itemize}
+$\LL^{-1} \LL = \Id$.
 
 
 \end{frame}
@@ -148,9 +148,7 @@ a_1 \\
 
 \begin{frame}{Обращение единичного оператора}
 
-\begin{itemize}[<+->]
-    \item 
-Исходный оператор $I : \begin{pmatrix}
+Исходный оператор, $\Id : \begin{pmatrix}
   a_1 \\
   a_2 \\
   a_3 \\
@@ -160,10 +158,11 @@ a_1 \\
 a_2 \\
 a_3 \\
 \end{pmatrix}
-$
+$.
+\pause
 
-\item \alert{Обратный оператор}:  
-$I : \begin{pmatrix}
+\alert{Обратный оператор},  
+$\Id^{-1} : \begin{pmatrix}
 a_1 \\
 a_2 \\
 a_3 \\
@@ -173,10 +172,13 @@ a_1 \\
 a_2 \\
 a_3 \\
     \end{pmatrix}
-  $
+  $.
+\pause
 
-\item $I^{-1} I = I$
-\end{itemize}
+$\Id^{-1} \Id = \Id$.
+\pause
+
+Обратный оператор равен исходному, $\Id^{-1} = \Id$.
 
 
 \end{frame}
@@ -188,15 +190,9 @@ a_3 \\
 
 \begin{frame}{Обращение поворота}
 
-\begin{itemize}[<+->]
-    \item 
-Исходный оператор $R: \R^2 \to \R^2$, поворот на $30^{\circ}$ против часовой стрелки.
+Исходный оператор, $\Rot: \R^2 \to \R^2$, поворот плоскости на $30^{\circ}$ против часовой стрелки.
 
-\item \alert{Обратный оператор}:  $R^{-1}$, поворот на $30^{\circ}$ по часовой стрелке, $R^{-1} R = I$
-\end{itemize}
-
-\pause
-
+\begin{center}
 \begin{tikzpicture}[
 scale=1.4,
 MyPoints/.style={draw=blue,fill=white,thick},
@@ -265,6 +261,14 @@ every node/.style={scale=1.2}
 
 
 \end{tikzpicture}
+\end{center}
+  
+
+\pause
+
+Обратный оператор,  $\Rot^{-1}: \R^2 \to \R^2$, 
+поворот плоскости на $30^{\circ}$ по часовой стрелке, $\Rot^{-1} \Rot = \Id$.
+
 
 \end{frame}
 
@@ -275,17 +279,16 @@ every node/.style={scale=1.2}
     
     
 
-\begin{itemize}[<+->]
-    \item По определению, исходный оператор $\LL : \R^n \to \R^n$.
+По определению, исходный оператор $\LL : \R^n \to \R^n$.
+\pause
 
-    \item 
-Исходный оператор $H: \R^2 \to \R^2$, проекция на прямую $x_1 + 2x_2 = 0$.
+Исходный оператор $\HH: \R^2 \to \R^2$, проекция на прямую $\ell$.
+\pause
 
-\item \alert{Обратный оператор}  $H^{-1}$ не существует!
-\end{itemize}
-
+Обратный оператор  $\HH^{-1}$ \alert{не существует}!
 
 
+\begin{center}
 \begin{tikzpicture}[
 scale=1.6,
 MyPoints/.style={draw=blue,fill=white,thick},
@@ -345,7 +348,7 @@ every node/.style={scale=1.2}
 
 
 \end{tikzpicture}
-
+\end{center}
 
 
 

@@ -29,7 +29,7 @@
 
 \alert{Идея линейности}:
   
-Результат действия не изменится, 
+Результат действия $\LL$ не изменится, 
 
 если поменять местами действие $\LL$ и
 
@@ -45,12 +45,12 @@
 \begin{frame}{Стандартное определение линейности}
 
 \begin{block}{Определение}
-
-\alert{Линейный оператор} $\LL$ из $\R^n$ в $\R^k$.
+Функция $\LL$, превращающая векторы из $\R^n$ в векторы $\R^k$, называется 
+\alert{линейным оператором} если:
 
 \begin{itemize}[<+->]
-  \item Для любого числа $t$ и вектора $a \in \R^n$: $\LL(t a) = t\LL(a)$.
-  \item Для любых двух векторов $a$ и $b$ из $\R^n$: $L(a + b) = \LL(a) + \LL(b)$. 
+  \item для любого числа $t$ и вектора $a \in \R^n$: $\LL(t a) = t\LL(a)$;
+  \item для любых двух векторов $a$ и $b$ из $\R^n$: $\LL(a + b) = \LL(a) + \LL(b)$. 
 \end{itemize}
 \end{block}
 
@@ -60,14 +60,12 @@
 
 $\LL(a) \equiv \LL \cdot a \equiv \LL a$.
 
-
-
 \end{frame}
 
 
 \begin{frame}{Линейный оператор}
 
-
+\begin{center}
 \begin{tikzpicture}[
 scale=2,
 MyPoints/.style={draw=blue,fill=white,thick},
@@ -138,7 +136,7 @@ every node/.style={scale=1}
 
 
 \end{tikzpicture}
-
+\end{center}
 
 
 
@@ -149,7 +147,7 @@ every node/.style={scale=1}
 
 Обобщаем умножение вектора на число!
 
-  $L : \begin{pmatrix}
+  $\LL : \begin{pmatrix}
     a_1 \\
     a_2 \\
   \end{pmatrix} \to 
@@ -166,7 +164,7 @@ every node/.style={scale=1}
 \begin{frame}{Перестановка координат вектора}
 
 
-$L : \begin{pmatrix}
+$\LL : \begin{pmatrix}
     a_1 \\
     a_2 \\
     a_3 \\
@@ -182,7 +180,7 @@ $L : \begin{pmatrix}
 Пример. \alert{Отражение относительно $x_1=x_2$}:
 
 
-
+\begin{center}
 \begin{tikzpicture}[
 scale=1.8,
 MyPoints/.style={draw=black,fill=black,thick},
@@ -228,7 +226,7 @@ every node/.style={scale=1.2}
 
 
 \end{tikzpicture}
-
+\end{center}
 
 \end{frame}
 
@@ -236,10 +234,11 @@ every node/.style={scale=1.2}
 
 \begin{frame}{Первый поворот}
 
-\alert{Поворот} на $30^{\circ}$ против часовой стрелки
+\alert{Поворот} на $30^{\circ}$ против часовой стрелки.
 
-Оператор $R: \R^2 \to \R^2$ 
+Оператор $\Rot: \R^2 \to \R^2$.
 
+\begin{center}
 \begin{tikzpicture}[
 scale=1.4,
 MyPoints/.style={draw=blue,fill=white,thick},
@@ -314,7 +313,7 @@ every node/.style={scale=1.2}
 
 
 \end{tikzpicture}
-
+\end{center}
     
 
 
@@ -324,12 +323,12 @@ every node/.style={scale=1.2}
 
 \begin{frame}{Первая проекция}
 
-\alert{Проекция} на прямую $x_1 + 2x_2 = 0$
+\alert{Проекция} на прямую $\ell$.
 
-Оператор $H: \R^2 \to \R^2$ 
+Оператор $\HH: \R^2 \to \R^2$.
 
 
-
+\begin{center}
 \begin{tikzpicture}[
 scale=1.6,
 MyPoints/.style={draw=blue,fill=blue,thick},
@@ -432,7 +431,7 @@ every node/.style={scale=1.2}
 
 
 \end{tikzpicture}
-
+\end{center}
 
 
 
@@ -452,7 +451,7 @@ every node/.style={scale=1.2}
 \begin{pmatrix}
   a_1 \\
   a_2 \\
-\end{pmatrix}$
+\end{pmatrix}$.
     
 
 
@@ -596,7 +595,7 @@ every node/.style={scale=1.2}
     a_1 \\
     a_2 \\
     0  \\
-  \end{pmatrix}$
+  \end{pmatrix}$.
     
 
 
@@ -730,10 +729,10 @@ node[below ]{$x_1$};
 \begin{frame}{Ничегонеделание}
 
 	\begin{block}{Определение}
-	\alert{Единичный} оператор, $I$, не меняет ни один вектор:
+	\alert{Единичный} оператор, $\Id$, не меняет ни один вектор:
 
     \[
-		I(\ba) = \ba.
+		\Id(\ba) = \ba.
 	\]
 	\end{block}
 
@@ -748,19 +747,28 @@ node[below ]{$x_1$};
 \begin{frame}{Композиция линейных операторов}
 
 \alert{Делай раз, делай два!}
-
-\begin{itemize}[<+->]
-    \item Если последовательно применить два линейных оператора, 
+\pause
+\begin{block}{Утверждение}
+Если последовательно применить два линейных оператора, 
     то получится линейный оператор, $\LL_2 (\LL_1 (\ba)) = \LL(\ba)$.
-\item Важно: $\LL_1 : \R^n \to \R^k$, $\LL_2 : \R^k \to \R^p$.
-    \item \alert{Доказательство}
-\begin{itemize}
-  \item $\LL_2 (\LL_1 (t \ba)) = \LL_2 (t \LL_1 (\ba)) = t \LL_2(\LL_1(\ba))$
-  \item $\LL_2 (\LL_1 (\ba + \bb)) = \LL_2 (\LL_1 (\ba) + \LL_1(\bb)) = \LL_2(\LL_1(\ba)) + \LL_2(\LL_1(\bb))$
-\end{itemize}
-\item Композицию также называют умножением.
+\end{block}
 
-\end{itemize}
+Оператор $\LL$ называется \alert{композицией} или \alert{произведением} операторов $\LL_1$ и $\LL_2$.
+
+\pause
+Важно: $\LL_1 : \R^n \to \R^k$, $\LL_2 : \R^k \to \R^p$.
+\pause
+\begin{block}{Доказательство}
+$
+\LL_2 (\LL_1 (t \ba)) = \LL_2 (t \LL_1 (\ba)) = t \LL_2(\LL_1(\ba))
+$ \pause
+
+$
+\LL_2 (\LL_1 (\ba + \bb)) = \LL_2 (\LL_1 (\ba) + \LL_1(\bb)) = \LL_2(\LL_1(\ba)) + \LL_2(\LL_1(\bb))
+$
+\end{block}
+
+
 
 \end{frame}
 
@@ -770,23 +778,25 @@ node[below ]{$x_1$};
 
 
 
-\begin{itemize}[<+->]
-    \item Если сложить результаты двух линейных операторов, 
-    то получится линейный линейный оператор, $\LL_1(\ba) + \LL_2(\ba) = \LL(\ba)$. 
-\item Важно: $\LL_1 : \R^n \to \R^k$, $\LL_2 : \R^n \to \R^k$.
-    \item \alert{Доказательство}
-\begin{itemize}
-  \item $\LL_1(t\ba) + \LL_2(t\ba) = t\LL_1(\ba) + t\LL_2(\ba)=t(\LL_1(\ba) + \LL_2(\ba))$
-  \item $\LL(\ba + \bb) = \LL_1(\ba + \bb) + \LL_2(\ba + \bb) = \LL_1(\ba ) + \LL_2(\ba ) + \LL_1( \bb) + \LL_2(\bb) = \LL(\ba) + \LL(\bb)$
-\end{itemize}
+\begin{block}{Утверждение}
+Если сложить результаты двух линейных операторов, 
+	то получится линейный оператор, 
+\[
+	\LL_1(\ba) + \LL_2(\ba) = \LL(\ba).
+\]
+\end{block}
+\pause
+Важно: $\LL_1 : \R^n \to \R^k$, $\LL_2 : \R^n \to \R^k$.
 
-\end{itemize}
+\pause
+\begin{block}{Доказательство}
+$\LL_1(t\ba) + \LL_2(t\ba) = t\LL_1(\ba) + t\LL_2(\ba)=t(\LL_1(\ba) + \LL_2(\ba))$
+\pause
+
+$\LL(\ba + \bb) = \LL_1(\ba + \bb) + \LL_2(\ba + \bb) = \LL_1(\ba ) + \LL_2(\ba ) + \LL_1( \bb) + \LL_2(\bb) = \LL(\ba) + \LL(\bb)$
+\end{block}
 
     
-
-
-
-
 
 \end{frame}
 

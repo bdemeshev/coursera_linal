@@ -11,7 +11,7 @@
 \begin{frame}{Собственные векторы и собственные числа}
 
 \begin{block}{Определение}
-Если для действия $\LL: \R^n \to \R^n$ найдётся такой вектор $v$, 
+Если для оператора $\LL: \R^n \to \R^n$ найдётся такой вектор $v$, 
 что $\LL v=\lambda \cdot v$, где $\lambda \in \R$, то:
   \begin{itemize}
     \item вектор $v$ называется \alert{собственным};
@@ -19,6 +19,7 @@
   \end{itemize} 
 \end{block}
 
+\begin{center}
 \begin{tikzpicture}[
 scale=1.6,
 MyPoints/.style={draw=blue,fill=white,thick},
@@ -77,7 +78,7 @@ every node/.style={scale=1.2}
 
 
 \end{tikzpicture}
-    
+\end{center}    
 
 
 \end{frame}
@@ -86,9 +87,7 @@ every node/.style={scale=1.2}
 
 \begin{frame}{Собственные вектора: растягивание осей}
 
-\begin{itemize}[<+->]
-\item Оператор 
-
+Оператор 
 $\LL : \begin{pmatrix}
   a_1 \\
   a_2 \\
@@ -97,23 +96,25 @@ $\LL : \begin{pmatrix}
   2a_1 \\
   -3a_2 \\
 \end{pmatrix}
-$
+$.
+\pause
 
-\item Собственные векторы с $\lambda = 2$
-
-$v=\begin{pmatrix}
+Собственные векторы, домножаемые на $\lambda = 2$:
+\[
+v=\begin{pmatrix}
     x \\
     0 \\
-  \end{pmatrix}$
+  \end{pmatrix}
+\]
+\pause
 
-
-\item Собственные векторы с $\lambda = -3$
-
-$v=\begin{pmatrix}
+Собственные векторы, домножаемые на $\lambda = -3$:
+\[
+  v=\begin{pmatrix}
     0 \\
     x \\
-  \end{pmatrix}$
-\end{itemize}
+  \end{pmatrix}
+\]
 
 
 \end{frame}
@@ -123,9 +124,7 @@ $v=\begin{pmatrix}
 
 \begin{frame}{Собственные вектора: перестановка $a_i$}
 
-\begin{itemize}[<+->]
-\item Оператор $\LL$ — перестановка компонент вектора:
-
+Оператор $\LL$ — перестановка компонент вектора:
 $\LL : \begin{pmatrix}
     a_1 \\
     a_2 \\
@@ -137,20 +136,20 @@ $\LL : \begin{pmatrix}
     a_4 \\
     a_3\\
     a_2 \\
-\end{pmatrix}$
+\end{pmatrix}$.
+\pause
 
-\item Собственные векторы с $\lambda = 1$
+Собственные векторы, домножаемые на $\lambda = 1$:
 
-Одинаковые числа на переставляемых местах:
-
-$\begin{pmatrix}
+Cодержат одинаковые числа на переставляемых местах,
+\[
+v=\begin{pmatrix}
     a_1 \\
     x \\
     a_3 \\
     x \\
-\end{pmatrix}$
-
-\end{itemize}
+\end{pmatrix}
+\]
 
 \end{frame}
 
@@ -158,15 +157,13 @@ $\begin{pmatrix}
 
 \begin{frame}{Собственные векторы: поворот}
 
-\begin{itemize}[<+->]
-    \item Не у каждого линейного оператора есть собственные векторы!
-    \item 
-    Исходный оператор $R: \R^2 \to \R^2$, поворот на $30^{\circ}$ против часовой стрелки.
-    \item Ни собственных векторов, ни чисел нет!
-\end{itemize}
-    
+Не у каждого линейного оператора есть собственные векторы!
 \pause
+  
+Исходный оператор $\Rot: \R^2 \to \R^2$, поворот на $30^{\circ}$ против часовой стрелки.
 
+
+\begin{center}
 \begin{tikzpicture}[
 scale=1.4,
 MyPoints/.style={draw=blue,fill=white,thick},
@@ -235,7 +232,13 @@ every node/.style={scale=1.2}
 
 
 \end{tikzpicture}
-    
+\end{center}    
+  
+\pause
+
+
+Ни собственных векторов, ни чисел нет!
+
 
 
 \end{frame}
@@ -245,23 +248,23 @@ every node/.style={scale=1.2}
 
 \begin{frame}{Собственные вектора: проекция}
 
-\begin{itemize}[<+->]
-\item Оператор $\LL$ — проекция на прямую $\ell: x_1 + 2x_2 = 0$.
+Оператор $\LL$ — проекция на прямую $\ell$.
+\pause
 
-\item Собственные векторы с $\lambda = 1$
+Собственные векторы, домножаемые на $\lambda = 1$:
 
-Любой вектор на прямой $\ell$.
+Любой вектор $v$, лежащий на прямой $\ell$.
+\pause
 
-\item Собственные векторы с $\lambda = 0$
+Собственные векторы, домножаемые на  $\lambda = 0$:
 
-Любой вектор ортогональный прямой $\ell$.
-\end{itemize}
+Любой вектор $v$, ортогональный прямой $\ell$.
+
 
 \end{frame}
     
 
 \begin{frame}{Резюме}
-
 
 
 \begin{itemize}[<+->]
@@ -271,8 +274,11 @@ every node/.style={scale=1.2}
 \item Примеры: поворот, проекция, перестановка компонент, растягивание осей.
 \item Обращение и транспонирование. 
 \item Собственные векторы растягиваются в собственное число раз.  
-\item \alert{Бонусное видео}: как выиграть в Ним?
+\item Бонус: как выиграть в Ним?
 \end{itemize}
+\pause
+\alert{Следующая лекция:} запись оператора с помощью матрицы.
+
 
 
 \end{frame}
