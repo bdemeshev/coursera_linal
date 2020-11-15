@@ -10,9 +10,8 @@
 
 \begin{frame}{Краткий план:}
   \begin{itemize}[<+->]
-    \item Вектор — это столбец чисел.
-    \item Сложение двух векторов и умножение на число.
-    \item Расстояние и косинус угла между векторами.
+    \item Линейная комбинация векторов;
+    \item Зависимые и независимые наборы векторов.
   \end{itemize}
 
 \end{frame}
@@ -20,15 +19,16 @@
 
 \begin{frame}{Линейная комбинация}
 
-\begin{itemize}[<+->]
-  \item Определение. Вектор $\bv$ называется \alert{линейной комбинацией} векторов $\bx_1$, $\bx_2$, \ldots, $\bx_k$, 
+\begin{block}{Определение} 
+Вектор $\bv$ называется \alert{линейной комбинацией} векторов $\bx_1$, $\bx_2$, \ldots, $\bx_k$, 
 если его можно представить в виде их суммы с некоторыми действительными весами $\alpha_i$:
-
 \[
   \bv = \alpha_1 \bx_1 + \alpha_2 \bx_2 + \ldots + \alpha_k \bx_k
 \]
+\end{block}
 
-\item Пример. Вектор $\begin{pmatrix}
+\pause
+Пример. Вектор $\begin{pmatrix}
   4 \\
   5 \\
 \end{pmatrix}$ — это линейная комбинация векторов $\begin{pmatrix}
@@ -53,18 +53,13 @@
 \]
 
 
-\end{itemize}
-
-
 \end{frame}
 
 
 
 \begin{frame}{Любой вектор — линейная комбинация}
 
-
-\begin{itemize}[<+->]
-  \item Любой вектор $\bv \in \R^2$ — линейная комбинация векторов $\begin{pmatrix}
+Любой вектор $\bv \in \R^2$ — линейная комбинация векторов $\begin{pmatrix}
     1 \\
     0 \\
   \end{pmatrix}$ и $\begin{pmatrix}
@@ -87,7 +82,8 @@ v_1 \begin{pmatrix}
   \end{pmatrix}
 \]
 
-\item Аналогично, для вектора  $\bv \in \R^3$:
+\pause
+Аналогично, любой вектор  $\bv \in \R^3$ представим в виде:
 
 \[
 \begin{pmatrix}
@@ -113,8 +109,6 @@ v_3 \begin{pmatrix}
 \]
 
 
-
-\end{itemize}
   
 
 \end{frame}
@@ -122,36 +116,37 @@ v_3 \begin{pmatrix}
 
 
 \begin{frame}
-  \frametitle{Линейная зависимость}
+\frametitle{Линейная зависимость}
 
 
-  Определение.
+\begin{block}{Определение}
+Набор $A$ из двух и более векторов называется 
+\alert{линейно зависимым}, если хотя бы один вектор является линейной комбинацией остальных.
 
-  \begin{itemize}[<+->]
-    \item Набор $A$ из двух и более векторов называется 
-    \alert{линейно зависимым}, если хотя бы один вектор является линейной комбинацией остальных.
-    \item Набор $A$ из одного нулевого вектора также называется \alert{линейно зависимым}.
-  \end{itemize}
-  
+
+Набор $A = \{\bzero\}$ из одного нулевого вектора также называется \alert{линейно зависимым}.
+\end{block}
+
 
 \end{frame}
 
 
 \begin{frame}
-  \frametitle{Линейная зависимость: пример}
+\frametitle{Линейная зависимость: примеры}
 
 
 
-
-  \begin{itemize}[<+->]
-    \item Набор $A = \left\{ \begin{pmatrix}
+Набор $A = \left\{ \begin{pmatrix}
       0 \\
       2 \\
     \end{pmatrix}, \begin{pmatrix}
       3 \\
       4 \\
     \end{pmatrix} \right\}$ — линейно независимый.
-    \item Набор $A = \left\{ \begin{pmatrix}
+
+\pause
+
+Набор $A = \left\{ \begin{pmatrix}
       0 \\
       2 \\
       0 \\
@@ -183,9 +178,6 @@ v_3 \begin{pmatrix}
       0 \\
     \end{pmatrix}  
     \]
-
-
-  \end{itemize}
   
 
 \end{frame}
@@ -194,13 +186,22 @@ v_3 \begin{pmatrix}
 \begin{frame}
   \frametitle{Линейная зависимость: дубль два}
 
-  Определение-2. Набор векторов $A = \{ \bv_1, \bv_2, \ldots, \bv_k\}$ называется \alert{линейно зависимым},
-  если можно найти такие числа $\alpha_1$, $\alpha_2$, \ldots, $\alpha_k$, что
-  не все из них равны нулю и 
-
+\begin{block}{Эквивалентное пределение} Набор векторов $A = \{ \bv_1, \bv_2, \ldots, \bv_k\}$ называется \alert{линейно зависимым},
+  если можно найти такие веса $\alpha_1$, $\alpha_2$, \ldots, $\alpha_k$, что
   \[
-  \alpha_1 \bv_1 + \alpha_2 \bv_2 + \ldots + \alpha_k \bv_k = \bzero  
+  \alpha_1 \bv_1 + \alpha_2 \bv_2 + \ldots + \alpha_k \bv_k = \bzero,  
   \]
+  и при этом хотя бы одно из чисел $\alpha_i$ отлично от $0$. 
+\end{block}
 
-  
+\pause
+
+\begin{block}{Доказательство эквивалентности}
+Вектор с ненулевым коэффициентом $\alpha_i$ перед ним можно выразить через остальные. 
+\pause
+
+Если вектор $\bv_2$ выражен через $\bv_1$ и $\bv_3$, $\bv_2 = \alpha_1 \bv_1 + \alpha_3 \bv_3$, 
+то искомая нулевая линейная комбинация имеет вид: $\alpha_1 \bv_1 +(-1)\bv_2 + \alpha_3 \bv_3=\bzero$.
+\end{block}
+
 \end{frame}
