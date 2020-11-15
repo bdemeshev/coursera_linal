@@ -2,7 +2,7 @@
 
 \begin{frame} % название фрагмента
 
-\videotitle{Линейное пространство}
+\videotitle{Матрица линейного оператора}
 
 \end{frame}
 
@@ -10,12 +10,106 @@
 
 \begin{frame}{Краткий план:}
   \begin{itemize}[<+->]
-    \item Векторное пространство;
-    \item Базис векторного пространства;
-    \item Размерность векторного пространства.
+    \item Матрица линейного оператора;
+    \item Примеры;
+    \item Обобщение на векторное пространство.
   \end{itemize}
 
 \end{frame}
+
+
+\begin{frame}{Как записать линейный оператор?}
+
+Любой вектор $\bv$ представим в виде:
+\[
+\bv =  \begin{pmatrix}
+    v_1 \\
+    v_2 \\
+    \vdots \\
+    v_n 
+\end{pmatrix} =  
+v_1  \begin{pmatrix}
+    1 \\
+    0 \\
+    \vdots \\
+    0 
+\end{pmatrix} + v_2  \begin{pmatrix}
+    0 \\
+    1 \\
+    \vdots \\
+    0 
+\end{pmatrix} + \ldots +
+v_n  \begin{pmatrix}
+    0 \\
+    0 \\
+    \vdots \\
+    1 
+\end{pmatrix}
+\]
+
+\pause
+По свойству линейности
+\[
+\LL \bv =  \LL \begin{pmatrix}
+    v_1 \\
+    v_2 \\
+    \vdots \\
+    v_n 
+\end{pmatrix} =  
+v_1  \LL \begin{pmatrix}
+    1 \\
+    0 \\
+    \vdots \\
+    0 
+\end{pmatrix} + v_2  \LL \begin{pmatrix}
+    0 \\
+    1 \\
+    \vdots \\
+    0 
+\end{pmatrix} + \ldots +
+v_n  \LL \begin{pmatrix}
+    0 \\
+    0 \\
+    \vdots \\
+    1 
+\end{pmatrix}
+\]
+
+\pause
+Достаточно понять, что оператор $\LL$ делает с векторами, содержащими 
+одну единичку и нули на остальных местах.
+
+\end{frame}
+
+
+\begin{frame}{Запишем оператор по столбцам!}
+
+
+Обозначим $\be_i$ — вектор, у которого на $i$-м месте стоит $1$, а на остальных местах — $0$.
+\[
+\be_i = \begin{pmatrix}
+    0 \\
+    \vdots \\
+    0 \\
+    1 \\
+    0  \\
+    \vdots \\
+    0 \\
+\end{pmatrix}    
+\]
+
+\pause 
+\begin{block}{Определение}
+\alert{Матрицей линейного оператора} $\LL$ назовём прямоугольную табличку чисел
+в которой $i$-ый столбец равен $\LL \be_i$. 
+\end{block}
+\end{frame}
+
+
+
+
+
+
 
 
 \begin{frame}{Векторное пространство}
@@ -85,66 +179,6 @@ V  = \{ f \mid f(t)=0 \text{ для всех } t\neq \pm 1 \}
 Сложение двух таких функций и умножение  число соответствуют операциям над столбцами чисел.
 \end{frame}
     
-
-\begin{frame}{Типичный элемент $V$}
-	
-	\begin{center}
-
-
-\begin{tikzpicture}[
-scale=2,
-MyPoints/.style={draw=blue,fill=blue,thick},
-Segments/.style={draw=blue!50!red!70,thick},
-MyCircles/.style={green!50!blue!50,thin}, 
-every node/.style={scale=1}
-]
-%\grid;
-
-
-\clip (-5.5,-2.5) rectangle (6.5,5);
-
-
-
-
-%\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
-\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-1)--(0,4) node[above right]{$f(t)$};
-
-\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-5,0)--(6,0) 
-node[below ]{$t$};
-
-
-%{\verb!->!new, arrowhead = 2mm, line width=4pt}
-%, arrowhead = 3mm
-%, arrowhead = 0.2
-
-% Feel free to change here coordinates of points A and B
-\pgfmathparse{-5}		\let\Xa\pgfmathresult
-\pgfmathparse{0}		\let\Ya\pgfmathresult
-\coordinate (A) at (\Xa,\Ya);
-
-\pgfmathparse{5.55}		\let\Xb\pgfmathresult
-\pgfmathparse{0}		\let\Yb\pgfmathresult
-\coordinate (B) at (\Xb,\Yb);
-
-\draw[vecb, line width=0.5mm] (A)--(B);
-
-
-\fill[MyPoints]  (-2,2) circle (0.8mm);
-\fill[MyPoints]  (2,3) circle (0.8mm);
-
-
-%\path (0,.5) pic[red] {cross=1pt};
-\draw (-2,0) node[cross=3mm,blue,line width=1mm] {};
-\draw (2,0) node[cross=3mm,blue,line width=1mm] {};
-
-
-\end{tikzpicture}
-
-\end{center}
-
-\end{frame}
-
-
 
 \begin{frame}{Аналогия с $\R^n$}
 

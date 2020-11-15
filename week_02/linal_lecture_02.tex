@@ -48,6 +48,9 @@
 \colorlet{vecc}{olive}
 
 
+\tikzset{cross/.style={cross out, draw=black, minimum size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt},
+%default radius will be 1pt. 
+cross/.default={5pt}}
 
 
 
@@ -70,7 +73,7 @@
 
 \input{chapters/lec_020_fra_030_vector_space.tex}
 
-%\input{chapters/lec_020_fra_040_matrix.tex}
+\input{chapters/lec_020_fra_040_matrix.tex}
 
 
 %\input{chapters/lec_020_fra_050_rank.tex}
