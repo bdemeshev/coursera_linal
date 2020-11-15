@@ -10,106 +10,114 @@
 
 \begin{frame}{Краткий план:}
   \begin{itemize}[<+->]
-    \item Линейная комбинация векторов;
-    \item Зависимые и независимые наборы векторов.
+    \item Линейная оболочка векторов;
+    \item Базис линейной оболочки векторов;
+    \item Размерность линейной оболочки векторов.
   \end{itemize}
 
 \end{frame}
 
 
-\begin{frame}{Линейная комбинация}
+\begin{frame}{Линейная оболочка}
 
 \begin{block}{Определение} 
-Вектор $\bv$ называется \alert{линейной комбинацией} векторов $\bx_1$, $\bx_2$, \ldots, $\bx_k$, 
-если его можно представить в виде их суммы с некоторыми действительными весами $\alpha_i$:
+Множество векторов $V$, содержащее все возможные линейные комбинации векторов $\bv_1$, 
+$\bv_2$, \ldots, $\bv_k$, называется их \alert{линейной оболочкой},
 \[
-  \bv = \alpha_1 \bx_1 + \alpha_2 \bx_2 + \ldots + \alpha_k \bx_k
+  V = \Span\{ \bv_1, \bv_2, \ldots, \bv_k \}
 \]
 \end{block}
-
-\pause
-Пример. Вектор $\begin{pmatrix}
-  4 \\
-  5 \\
-\end{pmatrix}$ — это линейная комбинация векторов $\begin{pmatrix}
-  1 \\
-  0 \\
-\end{pmatrix}$ и $\begin{pmatrix}
-  1 \\
-  1 \\
-\end{pmatrix}$:
-
-\[
-\begin{pmatrix}
-  4 \\
-  5 \\
-\end{pmatrix} = -1 \begin{pmatrix}
-  1 \\
-  0 \\
-\end{pmatrix} + 5 \begin{pmatrix}
-  1 \\
-  1 \\
-\end{pmatrix}  
-\]
-
 
 \end{frame}
 
 
 
-\begin{frame}{Любой вектор — линейная комбинация}
-
-Любой вектор $\bv \in \R^2$ — линейная комбинация векторов $\begin{pmatrix}
-    1 \\
-    0 \\
-  \end{pmatrix}$ и $\begin{pmatrix}
-    0 \\
-    1 \\
-  \end{pmatrix}$:
-
-\[
-\begin{pmatrix}
-  v_1 \\
-  v_2 \\
-\end{pmatrix} = 
-v_1 \begin{pmatrix}
-    1 \\
-    0 \\
-  \end{pmatrix} + 
-  v_2 \begin{pmatrix}
-    0 \\
-    1 \\
-  \end{pmatrix}
-\]
-
-\pause
-Аналогично, любой вектор  $\bv \in \R^3$ представим в виде:
-
-\[
-\begin{pmatrix}
-v_1 \\
-v_2 \\
-v_3 \\
-\end{pmatrix} = 
-v_1 \begin{pmatrix}
-  1 \\
-  0 \\
-  0 \\
-\end{pmatrix} + 
-v_2 \begin{pmatrix}
-  0 \\
-  1 \\
-  0 \\
-\end{pmatrix} +
-v_3 \begin{pmatrix}
-  0 \\
-  0 \\
-  1 \\
-\end{pmatrix} 
-\]
+\begin{frame}{Линейная оболочка векторов: картинка}
 
 
+
+
+\begin{center}
+
+  \begin{tikzpicture}[
+    scale=1.5,
+    MyPoints/.style={draw=black,fill=black,thick},
+    Segments/.style={draw=blue!50!red!70,thick},
+    MyCircles/.style={green!50!blue!50,thin}, 
+    every node/.style={scale=1}
+    ]
+
+    %\grid;
+
+    \clip (-1.5,-1.5) rectangle (5.5,5.5);
+
+    \begin{scope}[cm={1,1,1.5,0,(0,0)}]
+    \draw[draw=blue!30, dashed] (-1.2,-4.2) grid[step=1] (3.5,7);
+    \end{scope}
+
+    %{\verb!->!new, arrowhead = 2mm, line width=4pt}
+    %, arrowhead = 3mm
+    %, arrowhead = 0.2
+
+    % Feel free to change here coordinates of points A and B
+    \pgfmathparse{0}		\let\Xa\pgfmathresult
+    \pgfmathparse{0}		\let\Ya\pgfmathresult
+    \coordinate (A) at (\Xa,\Ya);
+
+    \pgfmathparse{2}		\let\Xb\pgfmathresult
+    \pgfmathparse{0.5}		\let\Yb\pgfmathresult
+    \coordinate (B) at (\Xb,\Yb);
+
+    \pgfmathparse{2}		\let\Xd\pgfmathresult
+    \pgfmathparse{4}		\let\Yd\pgfmathresult
+    \coordinate (D) at (\Xd,\Yd);
+
+    \pgfmathparse{4}		\let\Xc\pgfmathresult
+    \pgfmathparse{0}		\let\Yc\pgfmathresult
+    \coordinate (C) at (\Xc,\Yc);
+
+
+    \pgfmathparse{1}		\let\Xe\pgfmathresult
+    \pgfmathparse{1}		\let\Ye\pgfmathresult
+    \coordinate (E) at (\Xe,\Ye);
+
+    \pgfmathparse{2.5}		\let\Xf\pgfmathresult
+    \pgfmathparse{0}		\let\Yf\pgfmathresult
+    \coordinate (F) at (\Xf,\Yf);
+
+    \pgfmathparse{4}		\let\Xg\pgfmathresult
+    \pgfmathparse{1}		\let\Yg\pgfmathresult
+    \coordinate (G) at (\Xg,\Yg);
+
+
+
+
+    \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, thick] (A)--(D) node[above left]{$\bd$};
+
+    \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb, thick] (A)--(E) node[right]{$\ba$};
+
+    \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb, thick] (A)--(F) node[below]{$\bb$};
+
+    \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca, thick] (A)--(G) node[right]{$\bc$};
+
+
+    \draw[black, dashed] (B)--(D);
+
+    \fill[MyPoints]  (0,0) circle (0.8mm);
+
+    %\node [right,darkgray] at (0.5,-2) {$\bc \in \operatorname{Lin} (\ba, \bb) $ }; 
+
+    %\node [right,darkgray] at (0.5,-3) {$\bd \notin \operatorname{Lin} (\ba, \bb) $ }; 
+
+
+
+    \end{tikzpicture}
+  \end{center}
   
+Вектор $\bc$ лежит в плоскости $\Span\{ \ba, \bb \}$.
+
+Вектор $\bd$ не лежит в плоскости $\Span\{ \ba, \bb \}$.
+
 
 \end{frame}
 
