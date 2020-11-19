@@ -1,0 +1,182 @@
+% !TEX root = ../linal_lecture_02.tex
+
+\begin{frame} % название фрагмента
+
+\videotitle{Системы линейных уравнений}
+
+\end{frame}
+
+
+
+\begin{frame}{Краткий план:}
+  \begin{itemize}[<+->]
+    \item Однородная система и ядро оператора;
+    \item Структура множества решений.
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Варианты записи системы}
+
+Скалярный: 
+$\begin{cases}
+5x_1 + 6x_2 = 8 \\
+3x_1 + 7x_2 = 9 \\
+\end{cases}$
+
+\pause
+
+Векторный:
+$x_1 \begin{pmatrix}
+    5 \\
+    3 
+\end{pmatrix} + 
+x_2 \begin{pmatrix}
+    6 \\
+    7
+\end{pmatrix} = 
+\begin{pmatrix}
+    8 \\
+    9
+\end{pmatrix}$.
+\pause
+
+Матричный:
+$\begin{pmatrix}
+    5 & 6 \\
+    3 & 7 \\
+\end{pmatrix} \cdot 
+\begin{pmatrix}
+    x_1 \\
+    x_2 \\
+\end{pmatrix} = \begin{pmatrix}
+    8 \\
+    9 \\
+\end{pmatrix}$.
+
+
+\end{frame}
+
+
+\begin{frame}{Однородная и неоднородная системы}
+
+\begin{block}{Определение}
+    Система уравнений $A\bx = 0$ называется \alert{однородной}.
+\end{block}
+\pause
+
+Однородная система: 
+$\begin{pmatrix}
+    5 & 6 \\
+    3 & 7 \\
+\end{pmatrix} \cdot 
+\begin{pmatrix}
+    x_1 \\
+    x_2 \\
+\end{pmatrix} = \begin{pmatrix}
+    0 \\
+    0 \\
+\end{pmatrix}$.
+\pause
+
+Неоднородная система: 
+$\begin{pmatrix}
+    5 & 6 \\
+    3 & 7 \\
+\end{pmatrix} \cdot 
+\begin{pmatrix}
+    x_1 \\
+    x_2 \\
+\end{pmatrix} = \begin{pmatrix}
+    8 \\
+    9 \\
+\end{pmatrix}$.
+
+
+\end{frame}
+
+
+
+\begin{frame}{Ядро оператора}
+
+\begin{block}{Определение}
+\alert{Ядром} линейного оператора $\LL: \R^n \to \R^k$ называется множество векторов,
+которые под действием $\LL$ превращаются в $\bzero \in \R^k$: 
+\[
+\ker \LL = \{ \bv \in \R^n \mid \LL \bv = \bzero \}    
+\]
+\end{block}
+
+\pause
+Чтобы найти ядро $\LL$ нужно решить однородную систему $\LL \bv = \bzero$.
+
+\end{frame}
+
+
+
+\begin{frame}{Метод Гаусса}
+
+Основная идея: по очереди избавиться от всех неизвестных.
+\pause
+
+\begin{block}{Алгоритм}
+\begin{enumerate}
+    \item Выберем первое уравнение так, чтобы в нём была переменная $x_1$.
+    \pause
+    \item Вычтем первое уравнение из остальных так, чтобы в них пропала переменная $x_1$.
+    \pause
+    \item Забываем первое уравнение.
+    \pause
+    \item Стало меньше уравнений и неизвестных!
+\end{enumerate}
+
+\end{block}
+
+
+\end{frame}
+
+
+
+\begin{frame}{Структура множества решений}
+\begin{block}{Утверждение}
+Система уравнений $A \bx = \bb$ имеет ноль, одно или бесконечное количество решений. 
+\end{block}
+
+\begin{block}{Доказательство}
+После применения метода Гаусса нижнее уравнение, в котором хотя бы один коэффициент 
+отличен от нуля, окажется одного из трёх видов:
+\[
+\begin{array}{l}
+A: 0x_1 + 0x_2 + 0x_3 + 0x_4 = 7 \\    
+B: 0x_1 + 0x_2 + 0x_3 + 5x_4 = 7 \\
+C: 0x_1 + 3x_2 + 2x_3 + 5x_4 = 7 \\
+\end{array}
+\]
+\end{block}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}{Резюме}
+
+
+\begin{itemize}[<+->]
+\item Линейная комбинация и линейная оболочка
+\item Абстрактное векторное пространство.
+\item Матрица линейного оператора.
+\item Ранг оператора. 
+\item Умножение матрицы на вектор и на матрицу.
+\item Решение системы методом Гаусса.
+\item Бонус: задача о шахматной доске.
+\end{itemize}
+\pause
+\alert{Следующая лекция:} Определитель и обратная матрица.
+
+
+
+\end{frame}
+    
