@@ -162,6 +162,42 @@ $\trace \HH = \rank \HH$.
     
 
 
+\begin{frame}{Ограничения на ранг}
+
+\begin{block}{Утверждение}
+Ранг оператора $\LL: \R^n \to \R^k$ не превосходит ни $n$, ни $k$. 
+\end{block}
+
+\pause
+
+\begin{block}{Доказательство}
+Базис во всём $\R^k$ содержит $k$ элементов, значит базис образа не больше.
+\pause
+
+Образ получается как $\Span\{\LL \be_1, \LL\be_2, \ldots, \LL \be_n \}$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Ранг произведения операторов}
+
+\begin{block}{Утверждение}
+Ранг произведения не превосходит ранга сомножителей, $\rank (\LL_2 \LL_1) \leq \min \{\rank \LL_1, \rank \LL_2 \}$.
+\end{block}
+
+\pause
+\begin{block}{Доказательство}
+\[
+\Image(\LL_2\LL_1) \subset \Image(\LL_2)  
+\]
+\pause
+Если $\Image \LL_1 = \Span\{ \bv_1, \bv_2, \ldots, \bv_p \}$, то $\Image (\LL_2 \LL_1 ) =\Span\{ \LL_2 \bv_1, \LL_2 \bv_2, \ldots, \LL_2 \bv_p \}$.
+
+\end{block}
+\end{frame}
+  
+
+
+
 
 
 
