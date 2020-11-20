@@ -215,20 +215,20 @@ $\LL : \begin{pmatrix}
 
 \begin{frame}{Поворот плоскости}
 
-$\LL : \begin{pmatrix}
+$\Rot : \begin{pmatrix}
   a_1 \\
   a_2 \\
 \end{pmatrix} \to 
 \begin{pmatrix}
-  2a_1 \\
-  -3a_2 \\
+  a_1\cos 30^{\circ} - a_2 \sin 30^{\circ}  \\
+  a_1\sin 30^{\circ} + a_2 \cos 30^{\circ}  \\
 \end{pmatrix}$
 
 \pause
 
-Действие оператора $\LL$ на базисных векторах $\be_1$ и $\be_2$:
+Действие оператора $\Rot$ на базисных векторах $\be_1$ и $\be_2$:
 
-$\LL : \begin{pmatrix}
+$\Rot : \begin{pmatrix}
   1 \\
   0 \\
 \end{pmatrix} \to 
@@ -236,7 +236,7 @@ $\LL : \begin{pmatrix}
 \cos 30^{\circ}  \\
 \sin 30^{\circ}  \\
 \end{pmatrix}, \quad
-\LL : \begin{pmatrix}
+\Rot : \begin{pmatrix}
   0 \\
   1 \\
 \end{pmatrix} \to 
@@ -247,7 +247,7 @@ $\LL : \begin{pmatrix}
 
 \pause
 
-Матрица оператора, $\LL = 
+Матрица оператора, $\Rot = 
 \begin{pmatrix}
   \cos 30^{\circ} & -\sin 30^{\circ}  \\
   \sin 30^{\circ} & \cos 30^{\circ} \\
@@ -262,7 +262,7 @@ $\LL : \begin{pmatrix}
 \begin{frame}{Оператор бездельника!}
 
 
-$\LL : \begin{pmatrix}
+$\Id : \begin{pmatrix}
   a_1 \\
   a_2 \\
 \end{pmatrix} \to 
@@ -273,9 +273,9 @@ $\LL : \begin{pmatrix}
 
 \pause
 
-Действие оператора $\LL$ на базисных векторах $\be_1$ и $\be_2$:
+Действие оператора $\Id$ на базисных векторах $\be_1$ и $\be_2$:
 
-$\LL : \begin{pmatrix}
+$\Id : \begin{pmatrix}
   1 \\
   0 \\
 \end{pmatrix} \to 
@@ -283,7 +283,7 @@ $\LL : \begin{pmatrix}
 1  \\
 0  \\
 \end{pmatrix}, \quad
-\LL : \begin{pmatrix}
+\Id : \begin{pmatrix}
   0 \\
   1 \\
 \end{pmatrix} \to 
@@ -294,7 +294,7 @@ $\LL : \begin{pmatrix}
 
 \pause
 
-Матрица оператора, \alert{единичная матрица}, $\LL = 
+Матрица оператора, \alert{единичная матрица}, $\Id = 
 \begin{pmatrix}
   1 & 0  \\
   0 & 1 \\
