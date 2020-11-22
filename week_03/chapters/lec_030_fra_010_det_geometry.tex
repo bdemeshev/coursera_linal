@@ -42,6 +42,7 @@
     \frametitle{Идея определителя на картинке}
 
 
+    \begin{center}
     \begin{tikzpicture}[
     scale=1.6,
     MyPoints/.style={draw=blue,fill=white,thick},
@@ -140,9 +141,9 @@
 
     \tkzMarkAngle[size=1, mark = none, arrows=<-,line width=1pt, mkcolor=blue ](G,E,I);
 
-    \node [right,darkgray] at (-2.5,1.5) {$\operatorname{LF}$ }; 
+%    \node [right,darkgray] at (-2.5,1.5) {$\operatorname{LF}$ }; 
 
-    \node [right,darkgray] at (2,1.5) {$\operatorname{F}$ }; 
+ %   \node [right,darkgray] at (2,1.5) {$\operatorname{F}$ }; 
 
 
     %\tkzMarkAngle[size=1, mark = none, arrows=->,line width=1.5pt, mkcolor=red ](B,A,E);
@@ -150,7 +151,7 @@
 
 
     \end{tikzpicture}
-
+\end{center}
         
 %    \[
 %    \det \LL  = \frac{S(\LL\ba, \LL\bb)}{S(\ba, \bb)}    
@@ -191,7 +192,7 @@
     \frametitle{Идея определителя}
 
 \begin{block}{Определение}
-    Возьмём любые два вектора $\ba$ и $\bb$ c $S(\ba, \bb)\neq 0$.
+    Возьмём любые два вектора $\ba$ и $\bb$, для которых $S(\ba, \bb)\neq 0$.
 
     \alert{Определитель} оператора $\LL:\R^2 \to \R^2$ показывает во сколько раз изменяется
     ориентированная площадь
@@ -207,7 +208,7 @@
 
 
 \begin{frame}
-    \frametitle{Определитель симметрии}
+    \frametitle{Определитель отражения}
 
 
     Рассмотрим оператор $\LL : \begin{pmatrix}
@@ -217,10 +218,33 @@
     \begin{pmatrix}
       a_2 \\
       a_1 \\
-    \end{pmatrix}$.
+    \end{pmatrix}$, отражение относительно $x_1= x_2$.
     
 
     \pause
+
+    картинка
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Определитель отражения}
+
+
+Рассмотрим оператор $\LL : \begin{pmatrix}
+  a_1 \\
+  a_2 \\
+\end{pmatrix} \to 
+\begin{pmatrix}
+  a_2 \\
+  a_1 \\
+\end{pmatrix}$, отражение относительно $x_1= x_2$.
+
+
+\pause
+
+
 
     Площадь параллелограмма не изменяется. 
 
@@ -280,6 +304,20 @@
 
     \pause
 
+  картинка
+
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Определитель поворота}
+
+
+    Оператор $\Rot: \R^2 \to \R^2$ вращает плоскость на $30^{\circ}$ против часовой стрелки.
+
+    \pause
+
     При вращении не изменяется площадь параллелограмма.
 
     При вращении не изменяется направление поворота от первого вектора ко второму.
@@ -293,11 +331,19 @@
 \end{frame}
 
 
+
+
+
 \begin{frame}
     \frametitle{Определитель проекции}
 
 
     Оператор $\HH: \R^2 \to \R^2$ проецирует векторы на прямую $\ell$.  
+
+
+
+    картинка
+
 
     \pause
 
@@ -463,10 +509,121 @@
 \end{block}
 
 
+\end{frame}
 
+
+\begin{frame}
+    \frametitle{Определитель в пространстве}
+
+
+    \begin{center}
+    \begin{tikzpicture}[
+    scale=1.4,
+    MyPoints/.style={draw=blue,fill=white,thick},
+    Segments/.style={draw=blue!50!red!70,thick},
+    MyCircles/.style={green!50!blue!50,thin}, 
+    every node/.style={scale=1.2}
+    ]
+    %\draw[color=gray,step=1.0,dotted] (-5.5,-6.5) grid (5.5,6.5); 
+    \clip (-5.5,-6.9) rectangle (9.1,6.5);
+
+    %{\verb!->!new, arrowhead = 2mm, line width=4pt}
+    %, arrowhead = 3mm
+    %, arrowhead = 0.2
+
+    % Feel free to change here coordinates of points A and B
+    \pgfmathparse{0}		\let\Xa\pgfmathresult
+    \pgfmathparse{0}		\let\Ya\pgfmathresult
+    \coordinate (A) at (\Xa,\Ya);
+
+    \pgfmathparse{0}		\let\Xb\pgfmathresult
+    \pgfmathparse{3}		\let\Yb\pgfmathresult
+    \coordinate (B) at (\Xb,\Yb);
+
+    \pgfmathparse{2}		\let\Xc\pgfmathresult
+    \pgfmathparse{2}		\let\Yc\pgfmathresult
+    \coordinate (C) at (\Xc,\Yc);
+
+    \pgfmathparse{4}		\let\Xd\pgfmathresult
+    \pgfmathparse{0}		\let\Yd\pgfmathresult
+    \coordinate (D) at (\Xd,\Yd);
+
+    \pgfmathparse{2}		\let\Xe\pgfmathresult
+    \pgfmathparse{5}		\let\Ye\pgfmathresult
+    \coordinate (E) at (\Xe,\Ye);
+
+    \pgfmathparse{6}		\let\Xf\pgfmathresult
+    \pgfmathparse{5}		\let\Yf\pgfmathresult
+    \coordinate (F) at (\Xf,\Yf);
+
+    \pgfmathparse{4}		\let\Xg\pgfmathresult
+    \pgfmathparse{3}		\let\Yg\pgfmathresult
+    \coordinate (G) at (\Xg,\Yg);
+
+    \pgfmathparse{6}		\let\Xg\pgfmathresult
+    \pgfmathparse{2}		\let\Yg\pgfmathresult
+    \coordinate (H) at (\Xg,\Yg);
+
+
+    \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,  thick] (A)--(B) node[midway, left]{$\ba$};
+
+    \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,  thick] (A)--(C) node[midway, above]{$\bb$};
+
+    \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,  thick] (A)--(D) node[midway, below]{$\bc$};
+
+    \draw[vecb, dashed] (C)--(E);
+    \draw[vecb, dashed] (B)--(E);
+    \draw[vecb, dashed] (E)--(F);
+    \draw[vecb, dashed] (G)--(F);
+    \draw[vecb, dashed] (G)--(B);
+    \draw[vecb, dashed] (G)--(D);
+    \draw[vecb, dashed] (D)--(H);
+    \draw[vecb, dashed] (F)--(H);
+    \draw[vecb, dashed] (C)--(H);
+
+    \begin{scope}[cm={0.1,-0.9,-1,0,(0,0)}]
+    \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth,   thick] (0,0)--(0,3) node[midway, above]{$\operatorname{L} \ba$};
+    \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth,   thick] (0,0)--(2,2) node[midway, above left ]{$\operatorname{L} \bb$};
+    \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth,   thick] (0,0)--(4,0) node[midway, right]{$\operatorname{L} \bc$};
+    \draw[vecb, dashed] (2,2)--(2,5);
+    \draw[vecb, dashed] (0,3)--(2,5);
+    \draw[vecb, dashed] (2,5)--(6,5);
+    \draw[vecb, dashed] (4,3)--(6,5);
+    \draw[vecb, dashed] (4,3)--(0,3);
+    \draw[vecb, dashed] (4,3)--(4,0);
+    \draw[vecb, dashed] (4,0)--(6,2);
+    \draw[vecb, dashed] (6,5)--(6,2);
+    \draw[vecb, dashed] (2,2)--(6,2);
+    \end{scope}
+
+
+
+    %\node [right,darkgray] at (-5,-6) {$\operatorname{LF}$ }; 
+
+    %\node [right,darkgray] at (5,5.5) {$\operatorname{F}$ }; 
+
+
+
+    %\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, thick] (A)--(B) node[left]{$\ba$};
+    %
+    %\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, thick] (A)--(C) node[above]{$\bb$};
+    %
+    %\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, thick] (A)--(D) node[above]{$\bc$};
+
+    \node [above right,darkgray] at (1.3,-3.5) {$\det \operatorname{L} = \dfrac{S(\LL\ba,\LL\bb,\LL\bc)}{S(\ba,\bb,\bc)} $};
+
+
+
+
+
+    \end{tikzpicture}
+
+\end{center}        
     
 
 \end{frame}
+
+
 
 
 \begin{frame}
