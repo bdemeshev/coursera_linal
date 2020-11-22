@@ -1,0 +1,526 @@
+% !TEX root = ../linal_lecture_03.tex
+
+\begin{frame} % название фрагмента
+
+\videotitle{Идея определителя}
+
+\end{frame}
+
+
+
+\begin{frame}{Краткий план:}
+  \begin{itemize}[<+->]
+    \item Определитель на плоскости;
+    \item Определитель в пространстве.
+  \end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Идея определителя}
+
+    Рассмотрим оператор преобразования плоскости, $\LL: \R^2 \to \R^2$. 
+
+    Пара векторов $\ba$, $\bb$ переходит в пару векторов $\LL\ba$, $\LL\bb$. 
+
+    \pause
+
+    Как меняется площадь параллелограмма образованного двумя векторами?
+
+    \pause
+
+    Меняется ли направление поворота от первого вектора ко второму?
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Идея определителя на картинке}
+
+
+    \begin{tikzpicture}[
+    scale=1.6,
+    MyPoints/.style={draw=blue,fill=white,thick},
+    Segments/.style={draw=blue!50!red!70,thick},
+    MyCircles/.style={green!50!blue!50,thin}, 
+    every node/.style={scale=1}
+    ]
+    %\grid;
+    \clip (-5.5,-2.5) rectangle (7.5,6.5);
+
+
+    %\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
+    \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-1)--(0,5) node[above left]{$x_2$};
+
+    \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-4,0)--(6.5,0) 
+    node[right]{$x_1$};
+
+
+    %{\verb!->!new, arrowhead = 2mm, line width=4pt}
+    %, arrowhead = 3mm
+    %, arrowhead = 0.2
+
+    % Feel free to change here coordinates of points A and B
+    \pgfmathparse{0}		\let\Xa\pgfmathresult
+    \pgfmathparse{0}		\let\Ya\pgfmathresult
+    \coordinate (A) at (\Xa,\Ya);
+
+    \pgfmathparse{4}		\let\Xb\pgfmathresult
+    \pgfmathparse{3}		\let\Yb\pgfmathresult
+    \coordinate (B) at (\Xb,\Yb);
+
+    \pgfmathparse{4}		\let\Xc\pgfmathresult
+    \pgfmathparse{0}		\let\Yc\pgfmathresult
+    \coordinate (C) at (\Xc,\Yc);
+
+
+
+
+    %\node [above right,darkgray] at (1,3.5) {$\det \operatorname{L} = \frac{S(\LL\ba, \LL\bb)}{S(\ba, \bb)} $};
+
+
+
+    \pgfmathparse{4}		\let\Xg\pgfmathresult
+    \pgfmathparse{0}		\let\Yg\pgfmathresult
+    \coordinate (G) at (\Xg,\Yg);
+
+    \pgfmathparse{4}		\let\Xh\pgfmathresult
+    \pgfmathparse{0}		\let\Yh\pgfmathresult
+    \coordinate (H) at (\Xh,\Yh);
+
+    \pgfmathparse{4}		\let\Xi\pgfmathresult
+    \pgfmathparse{0}		\let\Yi\pgfmathresult
+    \coordinate (I) at (\Xi,\Yi);
+
+
+
+    \begin{scope}[cm={1,1,1.5,0.5,(0,0)}]
+    \draw[pattern=north west lines, pattern color=blue!50, draw=none ] (0,0) rectangle (2,2);
+    \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (0,0)--(0,2) node[below]{$\ba$};
+    \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (0,0)--(2,0) node[above]{$\bb$};
+    \end{scope};
+
+
+    \pgfmathparse{3}		\let\Xd\pgfmathresult
+    \pgfmathparse{1}		\let\Yd\pgfmathresult
+    \coordinate (D) at (\Xd,\Yd);
+
+    \pgfmathparse{0}		\let\Xe\pgfmathresult
+    \pgfmathparse{0}		\let\Ye\pgfmathresult
+    \coordinate (E) at (\Xe,\Ye);
+
+    \pgfmathparse{2}		\let\Xf\pgfmathresult
+    \pgfmathparse{2}		\let\Yf\pgfmathresult
+    \coordinate (F) at (\Xf,\Yf);
+
+
+    \tkzMarkAngle[size=1, mark = none, arrows=->,line width=1pt, mkcolor=blue ](D,E,F);
+
+
+    \begin{scope}[cm={-1,2,-1.5,0.5,(0,0)}]
+    \draw[pattern=north west lines,pattern color=black!50, draw=none ] (0,0) rectangle (0.9,2);
+    \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, thick] (0,0)--(0,2) node[below]{$\operatorname{L} \ba$};
+    \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, thick] (0,0)--(0.9,0) node[above]{$\operatorname{L} \bb$};
+
+    \end{scope}
+
+
+
+    \pgfmathparse{-1}		\let\Xg\pgfmathresult
+    \pgfmathparse{2}		\let\Yg\pgfmathresult
+    \coordinate (G) at (\Xg,\Yg);
+
+    \pgfmathparse{-3}		\let\Xi\pgfmathresult
+    \pgfmathparse{1}		\let\Yi\pgfmathresult
+    \coordinate (I) at (\Xi,\Yi);
+
+    \tkzMarkAngle[size=1, mark = none, arrows=<-,line width=1pt, mkcolor=blue ](G,E,I);
+
+    \node [right,darkgray] at (-2.5,1.5) {$\operatorname{LF}$ }; 
+
+    \node [right,darkgray] at (2,1.5) {$\operatorname{F}$ }; 
+
+
+    %\tkzMarkAngle[size=1, mark = none, arrows=->,line width=1.5pt, mkcolor=red ](B,A,E);
+
+
+
+    \end{tikzpicture}
+
+        
+%    \[
+%    \det \LL  = \frac{S(\LL\ba, \LL\bb)}{S(\ba, \bb)}    
+%    \]
+    
+
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Ориентированная площадь}
+
+
+    \begin{block}{Определение}
+        Возьмём площадь параллелограмма со сторонами $\ba$ и $\bb$.
+        Если поворот от первого вектора ко второму идёт по часовой стрелке, то дополнительно домножим площадь на $(-1)$.
+
+        Полученное число назовём \alert{ориентированной площадью} параллелограмма и обозначим $S(\ba, \bb)$.    
+    \end{block}
+
+    \pause
+
+    Важен порядок векторов: 
+    \[
+        S(\ba, \bb) = - S(\bb, \ba).  
+    \]
+
+
+
+    
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Идея определителя}
+
+\begin{block}{Определение}
+    Возьмём любые два вектора $\ba$ и $\bb$ c $S(\ba, \bb)\neq 0$.
+
+    \alert{Определитель} оператора $\LL:\R^2 \to \R^2$ показывает во сколько раз изменяется
+    ориентированная площадь
+    \[
+    \det \LL = \frac{S(\LL\ba, \LL\ba)}{S(\ba, \bb)}    
+    \]
+\end{block}    
+    
+
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Определитель симметрии}
+
+
+    Рассмотрим оператор $\LL : \begin{pmatrix}
+      a_1 \\
+      a_2 \\
+    \end{pmatrix} \to 
+    \begin{pmatrix}
+      a_2 \\
+      a_1 \\
+    \end{pmatrix}$.
+    
+
+    \pause
+
+    Площадь параллелограмма не изменяется. 
+
+
+    Меняется направление поворота от первого вектора ко второму. 
+
+    \pause
+
+    \[
+    \det \LL = \frac{S(\LL \ba, \LL \bb )}{S(\ba, \bb )} = -1
+    \]
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+    \frametitle{Определитель растягивания компонент}
+
+
+    Рассмотрим оператор $\LL : \begin{pmatrix}
+      a_1 \\
+      a_2 \\
+    \end{pmatrix} \to 
+    \begin{pmatrix}
+      2a_1 \\
+      -3a_2 \\
+    \end{pmatrix}$.
+    
+
+    \pause
+
+    Одна сторона растягивается в два раза, вторая — в три раза.
+
+
+    Меняется направление поворота от первого вектора ко второму. 
+
+    \pause
+
+    \[
+    \det \LL = \frac{S(\LL \ba, \LL \bb )}{S(\ba, \bb )} = (-1)\cdot 2\cdot 3 = -6
+    \]
+
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Определитель поворота}
+
+
+    Оператор $\Rot: \R^2 \to \R^2$ вращает плоскость на $30^{\circ}$ против часовой стрелки.
+
+    \pause
+
+    При вращении не изменяется площадь параллелограмма.
+
+    При вращении не изменяется направление поворота от первого вектора ко второму.
+
+    \pause
+
+    \[
+    \det \Rot = \frac{\Rot(\LL \ba, \LL \bb )}{\Rot(\ba, \bb )} = 1     
+    \]
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Определитель проекции}
+
+
+    Оператор $\HH: \R^2 \to \R^2$ проецирует векторы на прямую $\ell$.  
+
+    \pause
+
+    При проекции любой параллелограмм «складывается» в отрезок нулевой площади.
+
+    \pause
+
+    \[
+    \det \HH = \frac{S(\HH \ba, \HH \bb )}{S(\ba, \bb )} = 0     
+    \]
+
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Чем прекрасна ориентированная площадь?}
+
+    \begin{block}{Утверждение}
+        Ориентированная площадь $S(\ba, \bb)$ линейна по каждому аргументу:
+        \[
+        S(\lambda \ba, \bb) = \lambda S(\ba, \bb), \quad S(\ba + \bb, \bc) = S(\ba, \bc) + S(\bb, \bc)    
+        \]
+    \end{block}
+
+    \pause
+
+    здесь картинка.
+
+    
+
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Корректность идеи определителя}
+
+    Величина $\det \LL = \frac{S(\LL\ba, \LL\bb)}{S(\ba, \bb)}$ не зависит от выбора $\ba$ и $\bb$!
+
+
+    \pause
+    \begin{block}{Идея доказательства}
+        Обозначим $\be_1 = \begin{pmatrix}
+            1 \\
+            0 \\
+        \end{pmatrix}$, $\be_2 = \begin{pmatrix}
+            0 \\
+            1 \\
+        \end{pmatrix}$.
+        \pause
+
+        Возьмём $\ba = 5\be_1 + 7\be_2$. Найдём $S(\LL\ba, \LL\be_2)/{S(\ba, \be_2)}$:
+        \pause
+        \[
+        \frac{S(\LL (5\be_1 + 7\be_2), \LL \be_2)}{S(5\be_1 + 7\be_2,\be_2)} =
+         \frac{S(\LL 5\be_1 , \LL \be_2) + S(\LL 7\be_2 , \LL \be_2)}{S(5\be_1,\be_2) + S(7\be_2,\be_2)} =
+        \]
+        \pause
+        \[
+         =\frac{5S(\LL \be_1 , \LL \be_2) + 0}{5S(\be_1,\be_2) + 0} =
+         \frac{S(\LL \be_1 , \LL \be_2)}{S(\be_1,\be_2)}
+        \]
+    \end{block}
+
+    
+
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Ещё один взгляд на определитель}
+    
+    Обозначим $\be_1 = \begin{pmatrix}
+        1 \\
+        0 \\
+    \end{pmatrix}$, $\be_2 = \begin{pmatrix}
+        0 \\
+        1 \\
+    \end{pmatrix}$.
+
+    \pause
+
+    \begin{block}{Определение}
+        Преобразуем параллелограмм, образованный векторами $\be_1$ и $\be_2$, с помощью оператора $\LL$. 
+        
+        Определитель линейного оператора $\LL:\R^2 \to \R^2$ равен ориентированной 
+        площади полученного параллелограмма.
+        \[
+        \det \LL = S(\LL\be_1, \LL\be_2)    
+        \]
+        
+    \end{block}
+    
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Определитель в пространстве}
+
+    Идея: заменим ориентированную площадь параллелограмма $S(\ba, \bb)$ 
+    на ориентированный объём параллелепипеда $S(\ba, \bb, \bc)$.
+    
+    \pause
+
+\begin{block}{Определение}
+    Возьмём любые три вектора $\ba$, $\bb$ и $\bc$, для которых $S(\ba, \bb, \bc)\neq 0$.
+
+    \alert{Определитель} оператора $\LL:\R^3 \to \R^3$ показывает во сколько раз изменяется
+    ориентированный объём
+    \[
+    \det \LL = \frac{S(\LL\ba, \LL\ba, \LL\bc)}{S(\ba, \bb, \bc)}    
+    \]
+\end{block} 
+
+
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{А что такое ориентированный объём?}
+
+\pause 
+
+Обозначим $\be_1 = \begin{pmatrix}
+    1 \\
+    0 \\
+    0 \\
+\end{pmatrix}$, $\be_2 = \begin{pmatrix}
+    0 \\
+    1 \\
+    0
+\end{pmatrix}$, $\be_3 = \begin{pmatrix}
+    0 \\
+    0 \\
+    1 \\
+\end{pmatrix}$.
+
+% Скажем, что $S(\be_1, \be_2, \be_3) = 1$.
+
+% Сопоставим большой, указательный и средний палец этим векторам.
+
+\pause
+
+\begin{block}{Определение}
+    Рассмотрим параллелепипед, образованный $\ba$, $\bb$ и $\bc$.
+
+    \pause
+
+    С помощью поворота: 
+
+    Cовместим вектор $\be_1$ с вектором $\ba$;
+
+    Затем вектор $\be_2$ «положим» в плоскость $\ba$, $\bb$.
+
+    \pause
+
+    \alert{Ориентированный объём} $S(\ba, \bb, \bc)$ объявим отрицательным,
+    если векторы $\be_3$ и $\bc$ смотрят в разные полупространства.
+    
+\end{block}
+
+
+
+    
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Определитель растягивания компонент}
+
+
+    Рассмотрим оператор $\LL : \begin{pmatrix}
+      a_1 \\
+      a_2 \\
+      a_3 \\
+    \end{pmatrix} \to 
+    \begin{pmatrix}
+      2a_1 \\
+      3a_2 \\
+      -5a_3 \\
+    \end{pmatrix}$.
+    
+
+    \pause
+
+    Одна сторона растягивается в два раза, вторая — в три раза, третья — в пять.
+
+
+    Первые два вектора не изменяют направления при преобразовании.
+
+    
+    Третий вектор меняет полупространство, в котором он лежит относительно первых двух. 
+
+    \pause
+
+    \[
+    \det \LL = \frac{S(\LL \ba, \LL \bb, \LL \bc )}{S(\ba, \bb, \bc )} = (-1)\cdot 2\cdot 3\cdot 5  = - 30
+    \]
+
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Определитель проекции}
+
+
+    Оператор $\HH : \R^3 \to \R^3$ проецирует векторы на плоскость $\alpha$. 
+
+    \pause
+
+    Любой параллелепипед «схлопывается» в плоскую фигуру нулевого объёма.
+
+    \pause
+
+    \[
+    \det \HH = \frac{S(\HH \ba, \HH \bb, \HH \bc )}{S(\ba, \bb, \bc )} = 0
+    \]
+
+\end{frame}
+
+
