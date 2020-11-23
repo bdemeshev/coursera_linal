@@ -1,0 +1,408 @@
+% !TEX root = ../linal_lecture_03.tex
+
+\begin{frame} % название фрагмента
+
+\videotitle{Свойства определителя}
+
+\end{frame}
+
+
+
+\begin{frame}{Краткий план:}
+  \begin{itemize}[<+->]
+    \item Ориентированный объём в $\R^n$;
+    \item Свойства определителя;
+    \item Явная формула для определителя.
+  \end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Формализация ориентированного объёма}
+
+    %Преобразование $\LL\R^n\to\R^n$, желаемые свойства $\det \LL$:
+
+    Вектор $\be_i$ содержит на $i$-м месте единицу, а на остальных — нули.
+    \pause
+
+    \begin{enumerate}
+        \item Верный гипер-объём базового гипер-кубика:
+        \[
+        S(\be_1, \be_2, \ldots, \be_n) = 1    
+        \]
+        \pause
+        \item Линейность по каждому аргументу:
+        \[
+            S(\textcolor{red}{\ba + \bb}, \bv_2, \bv_3, \ldots, \bv_n) =  S(\textcolor{red}{\ba}, \bv_2, \bv_3, \ldots, \bv_n) + 
+        \]
+        \[
+            + S(\textcolor{red}{\bb}, \bv_2, \bv_3, \ldots, \bv_n)          
+        \]
+        \[
+            S(\textcolor{red}{\lambda}\bv_1, \bv_2, \bv_3, \ldots, \bv_n) = \textcolor{red}{ \lambda } S(\bv_1, \bv_2, \bv_3, \ldots, \bv_n)
+        \]
+        \pause
+        \item Антисимметричность: 
+        \[
+          S(\textcolor{red}{\bv_1}, \textcolor{red}{\bv_2}, \bv_3, \ldots, \bv_n) = - S(\textcolor{red}{\bv_2}, \textcolor{red}{\bv_1}, \bv_3, \ldots, \bv_n)  
+        \]
+    \end{enumerate}
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Определитель во всей $n$-мерности}
+
+    \begin{block}{Определение}
+        Возьмём векторы $\bv_1$, \ldots, $\bv_n$, для которых $S(\bv_1, \ldots, \bv_n)\neq 0$.
+
+        \alert{Определитель} оператора $\LL:\R^n \to \R^n$ показывает во сколько раз изменяется
+        ориентированный гипер-объём произвольного параллелепипеда:
+        \[
+            \det \LL = \frac{S(\LL\bv_1, \ldots, \LL\bv_n)}{S(\bv_1, \ldots, \bv_n)}    
+        \]
+    \end{block}  
+    
+    \pause
+
+\begin{block}{Определение}
+
+    \alert{Определитель} оператора $\LL:\R^n \to \R^n$ показывает во сколько раз изменяется
+    ориентированный гипер-объём базового гипер-кубика:
+    \[
+        \det \LL = S(\LL\be_1, \ldots, \LL\be_n)
+    \]
+\end{block}  
+
+
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Определитель матрицы}
+
+    \begin{block}{Определение}
+        \alert{Определителем матрицы} называется определитель соответствующего линейного оператора. 
+    \end{block}
+    
+    \pause
+
+    В матрице $\LL$ $i$-й столбец равен $\LL\be_i$, поэтому 
+    \[
+    \det \LL = S(\col_1 \LL, \col_2 \LL, \ldots, \col_n \LL)    
+    \]
+
+    \pause
+    \begin{block}{Утверждение}
+        Определитель матрицы можно считать по строкам: 
+    \[
+    \det \LL = S(\row_1 \LL, \row_2 \LL, \ldots, \row_n \LL)    
+    \]    
+    \end{block}
+\end{frame}
+
+
+
+
+
+\begin{frame}
+    \frametitle{Быстрые признаки равенства нулю}
+
+    \begin{enumerate}
+        \item Если среди векторов есть два одинаковых, то 
+        гипер-объём параллелепипеда равен нулю. 
+        \[
+            S(\ba, \ba, \bv_3, \ldots, \bv_n) = 0
+        \]
+        \pause
+        \item Если среди векторов есть один нулевой, то 
+        гипер-объём параллелепипеда равен нулю. 
+        \[
+            S(\bzero, \bv_2, \bv_3, \ldots, \bv_n) = 0
+        \]
+        \end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Принцип Кавальери}
+
+        «Cкашивание» параллелепипеда вбок не изменяет гипер-объём:
+        \[
+            S(\ba, \bb, \bv_3, \ldots, \bv_n) = S(\ba + \bb, \bb, \bv_3, \ldots, \bv_n)
+        \]
+
+
+        картинка
+
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Принцип Кавальери на матрице}
+    
+    Единственным ненулевым элементом столбца можно «скосить» всю строку:
+
+    \[
+    \begin{pmatrix}
+        0 & 3 & -2 \\
+        \textcolor{red}{4} & 2 & 7 \\
+        0 & 1 & -5 \\
+    \end{pmatrix} \to  \pause 
+\begin{pmatrix}
+    0 & 3 & -2 \\
+    \textcolor{red}{4} & \textcolor{green}{0} & 7 \\
+    0 & 1 & -5 \\
+\end{pmatrix}  \to \pause 
+\begin{pmatrix}
+    0 & 3 & -2 \\
+    \textcolor{red}{4} & \textcolor{green}{0} & \textcolor{green}{0} \\
+    0 & 1 & -5 \\
+\end{pmatrix}  
+    \]
+
+    \pause
+    Единственным ненулевым элементом строки можно «скосить» весь столбец:
+    
+    \[
+    \begin{pmatrix}
+        3 & 3 & -2 \\
+        \textcolor{red}{4} & 0 & 0 \\
+        2 & 1 & -5 \\
+    \end{pmatrix} \to  \pause 
+\begin{pmatrix}
+    \textcolor{green}{0} & 3 & -2 \\
+\textcolor{red}{4} & 0 & 0 \\
+2 & 1 & -5 \\
+\end{pmatrix}  \to \pause 
+\begin{pmatrix}
+    \textcolor{green}{0} & 3 & -2 \\
+\textcolor{red}{4} & 0 & 0 \\
+\textcolor{green}{0} & 1 & -5 \\
+\end{pmatrix}  
+    \]
+    
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Определитель и ранг}
+
+    \begin{block}{Утверждение}
+        Для матрицы $\LL$ размера $n\times n$ четыре свойства эквиваленты:
+
+        \begin{enumerate}
+            \item Определитель равен нулю, $\det \LL = 0$.
+            \pause
+            \item Столбцы матрицы линейно зависимы.
+            \pause
+            \item Строки матрицы линейно зависимы.
+            \pause
+            \item Ранг матрицы меньше числа столбцов, $\rank \LL < n$.
+        \end{enumerate}
+    \end{block}
+
+
+    
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Определитель композиции}
+    \begin{block}{Утверждение}
+        Определитель композиции $A$ и $B$ равен произведению определителей:
+        \[
+          \det (AB) = \det A \det B  
+        \]
+    \end{block}
+    \pause
+    \begin{block}{Следствие}
+
+        \[
+        \det A \det A^{-1} = \det (A \cdot A^{-1}) = \det \Id = 1
+        \]
+    \end{block}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+    \frametitle{Спокойствие, только спокойствие!}
+
+    \begin{block}{Утверждение}
+        Свойства нормировки, линейности по аргументам и антисимметричности однозначно определяют функцию гипер-объёма $S(\bv_1, \ldots, \bv_n)$.
+    \end{block}
+
+    \pause
+
+\begin{block}{Утверждение}
+    Отношение гипер-объёмов $\det \LL = \frac{S(\LL\bv_1, \ldots, \LL\bv_n)}{S(\bv_1, \ldots, \bv_n)}$ не зависит от выбора $\bv_1$, \ldots, $\bv_n$.
+\end{block}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Формула с перестановками}
+
+    \begin{block}{Определение}
+        \alert{Перестановкой} называют последовательность из $n$ чисел, 
+        в которой каждое число от $1$ до $n$ встречается ровно один раз.
+    \end{block}
+
+    \pause
+    Примеры: $(12345)$, $(32145)$, $(21354)$.
+
+    \pause
+    \begin{block}{Определение}
+    Перестановку называют \alert{чётной}, если требуется чётное число смен местами двух чисел,
+    чтобы привести перестановку к $(1234\ldots n)$.
+
+    Если $\sigma$ — чётная перестановка, то пишут $\sign \sigma  = 1$,
+    для нечётной пишут $\sign\sigma = -1$.
+\end{block}
+\pause
+Примеры: 
+
+$\sign(12345) = 1$, $\sign(32145)=-1$, $\sign(21354)=1$.
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Расстановка ладей!}
+
+    Рассмотрим квадратную матрицу. 
+
+    Перестановку $\sigma$ будем трактовать как инструкцию, какой элемент взять из очередной строки матрицы.
+    
+    \[
+    (3124) \sim \begin{pmatrix}
+    . & . & * & . \\
+    * & . & . & . \\
+    . & * & . & . \\
+    . & . & . & * \\
+    \end{pmatrix}    
+    \]
+
+    \pause
+
+    С помощью $p(\sigma)$ обозначим произведение этих элементов. 
+
+    Например, $p(3124) = a_{13} \cdot a_{21} \cdot a_{32} \cdot a_{44}$.
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Явная формула}
+
+\begin{block}{Утверждение}
+Трём свойствам определителя (нормировке, линейности, антисимметричности) удовлетворяет единственная функция
+\[
+    \det \LL = \sum_{\sigma} \sign (\sigma) \cdot p(\sigma).
+\]
+
+Перестановку $\sigma$ трактуем как инструкцию, какой элемент взять из очередной строки матрицы.
+
+С помощью $p(\sigma)$ обозначено произведение этих элементов. 
+
+\end{block}
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Иллюстрация для $2\times 2$}
+
+    \[
+    \det \begin{pmatrix}
+        a & b \\
+        c & d \\
+    \end{pmatrix} = \pause
+    \underset{\textcolor{red}{\sign(12)=1}}{\begin{pmatrix}
+        a &  \\
+         & d \\
+    \end{pmatrix}} - 
+    \underset{\textcolor{blue}{\sign(21)=-1}}{\begin{pmatrix}
+         & b \\
+        c &  \\
+    \end{pmatrix}} = \pause  ad - bc
+    \]
+
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Иллюстрация для $3\times 3$}
+
+    \[
+    \det \begin{pmatrix}
+        a & b & c \\
+        d & e & f \\
+        g & h & i \\
+    \end{pmatrix} = \pause
+    \]
+\[
+= +\underset{\textcolor{red}{\sign(123)=1}}{\begin{pmatrix}
+    a &  &  \\
+     & e &  \\
+     &  & i \\
+\end{pmatrix}} +
+\underset{\textcolor{red}{\sign(312)=1}}{\begin{pmatrix}
+     &  & c \\
+    d &  &  \\
+     & h &  \\
+\end{pmatrix}} +
+\underset{\textcolor{red}{\sign(231)=1}}{\begin{pmatrix}
+     & b &  \\
+     &  & f \\
+    g &  &  \\
+\end{pmatrix}}
+\]
+\[
+- \underset{\textcolor{blue}{\sign(321)=-1}}{\begin{pmatrix}
+     &  & c \\
+     & e &  \\
+    g &  &  \\
+\end{pmatrix}} 
+- \underset{\textcolor{blue}{\sign(213)=-1}}{\begin{pmatrix}
+     & b & \\
+    d &  &  \\
+     &  & i \\
+\end{pmatrix}} 
+- \underset{\textcolor{blue}{\sign(132)=-1}}{\begin{pmatrix}
+    a &  &  \\
+     &  & f \\
+     & h &  \\
+\end{pmatrix}}=
+\]
+\pause
+\[
+= aei + cdh + bfg - ceg - bdi - afh
+\]
+
+
+
+
+\end{frame}
+
+
+
