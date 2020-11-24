@@ -1,0 +1,258 @@
+% !TEX root = ../linal_lecture_03.tex
+
+\begin{frame} % название фрагмента
+
+\videotitle{Поиск обратной матрицы: итоги}
+
+\end{frame}
+
+
+
+\begin{frame}{Краткий план:}
+  \begin{itemize}[<+->]
+    \item Метод Гаусса;
+    \item Метод Крамера;
+    \item Критерий наличия обратной матрицы.
+  \end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Как поймать двух зайцев?}
+
+    Если нужно решить две системы уравнений, $A \bx = \bb$ и $A \by = \bc$, то можно решать их одновременно!
+
+    \pause
+
+    Вместо двух систем
+    \[
+            \left(
+            \begin{array}{ccc|c}
+            1 & 3 & 3  & 10 \\
+            -1 & 1 & 1 & 2 \\
+            2 & 7 & 1  & 17 \\
+            \end{array}
+            \right), \quad
+            \left(
+            \begin{array}{ccc|c}
+            1 & 3 & 3  & 10 \\
+            -1 & 1 & 1 & 6 \\
+            2 & 7 & 1  & 6 \\
+            \end{array}
+            \right)    
+    \]
+    \pause
+
+    решаем систему \alert{с двойной правой частью}:
+\[
+        \left(
+        \begin{array}{ccc|cc}
+        1 & 3 & 3  & 10 & 10 \\
+        -1 & 1 & 1 & 2 & 6 \\
+        2 & 7 & 1  & 17 & 6 \\
+        \end{array}
+        \right).
+\]
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Как поймать двух зайцев?}
+
+    Решаем систему \alert{с двойной правой частью}:
+\[
+        \left(
+        \begin{array}{ccc|cc}
+        1 & 3 & 3  & 10 & 10 \\
+        -1 & 1 & 1 & 2 & 6 \\
+        2 & 7 & 1  & 17 & 6 \\
+        \end{array}
+        \right) 
+\]
+\pause
+Приводим левую часть к виду единичной матрицы используя гауссовские преобразования:
+\begin{itemize}
+    \item перестановку строк;
+    \item домножение строки на ненулевое число;
+    \item прибавление одной строки к другой с любым весом.
+\end{itemize}
+\pause
+\[
+\left(
+\begin{array}{ccc|cc}
+1 & 0 & 0  & 1 & -2 \\
+0 & 1 & 0 & 2 & 1 \\
+0 & 0 & 1  & 1 & 3 \\
+\end{array}
+\right)\pause \quad \text{Видим ответ: }  \bx = \begin{pmatrix}
+    1 \\
+    2 \\
+    1 \\
+\end{pmatrix}, \by = \begin{pmatrix}
+    -2 \\
+    1 \\
+    3 \\
+\end{pmatrix}
+\]
+
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+\begin{frame}
+    \frametitle{Метод Гаусса}
+Для нахождения обратной матрицы для $A$ нужно решить систему $A \cdot B = \Id$. 
+
+Для примера
+\[
+A = \begin{pmatrix}
+    3 & 2 & 4 \\
+    4 & 3 & 6 \\
+    6 & 4 & 9 \\
+\end{pmatrix}
+\]
+\pause
+Приписываем справа единичную матрицу $\Id$:
+\[
+\left(
+\begin{array}{ccc|ccc}
+3 & 2 & 4  & 1 & 0 & 0 \\
+4 & 3 & 6 & 0 & 1 & 0 \\
+6 & 4 & 9  & 0 & 0 & 1\\
+\end{array}
+\right)
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Метод Гаусса}
+
+Приписываем справа единичную матрицу $\Id$:
+\[
+\left(
+\begin{array}{ccc|ccc}
+3 & 2 & 4  & 1 & 0 & 0 \\
+4 & 3 & 6 & 0 & 1 & 0 \\
+6 & 4 & 9  & 0 & 0 & 1\\
+\end{array}
+\right)
+\]
+
+Если $\det A\neq 0$, то с помощью гауссовских преобразований получаем единичную слева:
+\[
+\left(
+\begin{array}{ccc|ccc}
+1 & 0 & 0  & 3 & -2 & 0 \\
+0 & 1 & 0 & 0 & 3 & -2 \\
+0 & 0 & 1  & -2 & 0 & 1\\
+\end{array}
+\right)
+\]
+\pause
+Решение системы, матрицу $A^{-1}$, читаем справа:
+\[
+A^{-1} =   \begin{pmatrix}
+ 3 & -2 & 0 \\
+ 0 & 3 & -2 \\
+ -2 & 0 & 1\\
+\end{pmatrix} 
+\]
+
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Метод Крамера}
+
+    Рассмотрим систему $A\bx = \bb$ из $n$ уравнений с $n$ неизвестными.
+
+    \pause
+
+    \begin{block}{Утверждение}
+        Если $\det A \neq 0$, то решение системы единственно и 
+        \[
+        x_i = \frac{\det A_i}{\det A},    
+        \]
+        где матрица $A_i$ получена из матрицы $A$ заменой $i$-го столбца на правую часть $\bb$.
+    \end{block}
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Метод Крамера для обратной матрицы}
+
+    Матрица $A$ имеет размер $n\times n$.
+
+    \pause
+
+    \begin{block}{Утверждение}
+        Если $\det A \neq 0$, то матрица $B=A^{-1}$ существует и
+        \[
+        b_{ij} = \frac{(-1)^{i+j}\det (A_{ji}^{\cross})}{\det A},    
+        \]
+        где матрица $A_{ji}^{\cross}$ получена из матрицы $A$ вычёркиванием строки $j$ и столбца $i$.
+    \end{block}
+    \pause
+
+    Напомним, что $(-1)^{i+j}\det (A_{ji}^{\cross})$ называется \alert{алгебраическим дополнением} к $a_{ji}$.
+
+\end{frame}
+
+
+\begin{frame}
+        \frametitle{Метод Крамера для обратной матрицы}
+    
+        Хотим обратить матрицу $A$.
+
+        \begin{enumerate}
+            \item Находим определитель $\det A$. Если $\det A = 0$, то матрица $A$ не обратимая. \pause
+            \item Для каждого элемента $A$ находим алгебраическое дополнение $C_{ij} = (-1)^{i+j}\det (A_{ij}^{\cross})$.
+            Помещаем все дополнения в матрицу $C$. \pause
+            \item Транспонируем матрицу $С$ и получаем \alert{присоединённую матрицу} $\adj A = C^T$.  \pause
+            \item Делим матрицу $\adj A$ на $\det A$ и получаем $A^{-1} = \adj A/\det A$.
+        \end{enumerate}
+        
+    
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Вырожденные и невырожденные матрицы}
+
+    Матрица $A$ размера $n\times n$ называется \alert{вырожденной}, если:
+
+    \begin{enumerate}
+        \item $\det A = 0$; \pause
+        \item Система $A \bx = \bzero$ имеет бесконечное количество решений; \pause
+        \item $\rank A < n$; \pause
+        \item $A^{-1}$ не существует; \pause
+    \end{enumerate}
+
+Матрица $A$ размера $n\times n$ называется \alert{невырожденной}, если:
+
+\begin{enumerate}
+    \item $\det A \neq 0$; \pause
+    \item Система $A \bx = \bb$ имеет единственное решение; \pause
+    \item $\rank A = n$; \pause
+    \item $A^{-1}$ существует;
+\end{enumerate}
+
+
+\end{frame}
