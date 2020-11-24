@@ -180,10 +180,221 @@
     \[
         S(\ba, \bb) = - S(\bb, \ba).  
     \]
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Ориентированная площадь}
+
+    \begin{minipage}[H]{0.48\linewidth}
 
 
+        \begin{tikzpicture}[
+        scale=1.75,
+        MyPoints/.style={draw=blue,fill=white,thick},
+        Segments/.style={draw=blue!50!red!70,thick},
+        MyCircles/.style={green!50!blue!50,thin}, 
+        every node/.style={scale=0.75}
+        ]
+        %\grid;
+        \clip (-1,-2.5) rectangle (5, 3.5);
+
+
+        %\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
+        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-1)--(0,3) node[above left]{$x_2$};
+
+        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-1,0)--(4.5,0) 
+        node[right]{$x_1$};
+
+
+        %{\verb!->!new, arrowhead = 2mm, line width=4pt}
+        %, arrowhead = 3mm
+        %, arrowhead = 0.2
+
+        % Feel free to change here coordinates of points A and B
+        \pgfmathparse{0}		\let\Xa\pgfmathresult
+        \pgfmathparse{0}		\let\Ya\pgfmathresult
+        \coordinate (A) at (\Xa,\Ya);
+
+        \pgfmathparse{4}		\let\Xb\pgfmathresult
+        \pgfmathparse{3}		\let\Yb\pgfmathresult
+        \coordinate (B) at (\Xb,\Yb);
+
+        \pgfmathparse{4}		\let\Xc\pgfmathresult
+        \pgfmathparse{0}		\let\Yc\pgfmathresult
+        \coordinate (C) at (\Xc,\Yc);
+
+
+
+
+        \pgfmathparse{4}		\let\Xg\pgfmathresult
+        \pgfmathparse{0}		\let\Yg\pgfmathresult
+        \coordinate (G) at (\Xg,\Yg);
+
+        \pgfmathparse{4}		\let\Xh\pgfmathresult
+        \pgfmathparse{0}		\let\Yh\pgfmathresult
+        \coordinate (H) at (\Xh,\Yh);
+
+        \pgfmathparse{4}		\let\Xi\pgfmathresult
+        \pgfmathparse{0}		\let\Yi\pgfmathresult
+        \coordinate (I) at (\Xi,\Yi);
+
+
+
+        \begin{scope}[cm={1,1,1.5,0.5,(0,0)}]
+        \draw[pattern=north west lines, pattern color=blue!50, draw=none ] (0,0) rectangle (2,2);
+        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (0,0)--(0,2) node[below]{$\ba$};
+        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (0,0)--(2,0) node[above]{$\bb$};
+        \end{scope};
+
+
+        \pgfmathparse{3}		\let\Xd\pgfmathresult
+        \pgfmathparse{1}		\let\Yd\pgfmathresult
+        \coordinate (D) at (\Xd,\Yd);
+
+        \pgfmathparse{0}		\let\Xe\pgfmathresult
+        \pgfmathparse{0}		\let\Ye\pgfmathresult
+        \coordinate (E) at (\Xe,\Ye);
+
+        \pgfmathparse{2}		\let\Xf\pgfmathresult
+        \pgfmathparse{2}		\let\Yf\pgfmathresult
+        \coordinate (F) at (\Xf,\Yf);
+
+
+        \tkzMarkAngle[size=1, mark = none, arrows=->,line width=1pt, mkcolor=blue ](D,E,F);
+
+
+
+
+
+        \pgfmathparse{-1}		\let\Xg\pgfmathresult
+        \pgfmathparse{2}		\let\Yg\pgfmathresult
+        \coordinate (G) at (\Xg,\Yg);
+
+        \pgfmathparse{-3}		\let\Xi\pgfmathresult
+        \pgfmathparse{1}		\let\Yi\pgfmathresult
+        \coordinate (I) at (\Xi,\Yi);
+
+
+        \node [above right,darkgray] at (1,-1) {$S(\ba,\bb)>0$};
+
+
+
+        %\tkzMarkAngle[size=1, mark = none, arrows=->,line width=1.5pt, mkcolor=red ](B,A,E);
+
+
+
+        \end{tikzpicture}
+
+
+
+
+    \end{minipage}
+    \begin{minipage}[H]{0.48\linewidth}
+
+
+        \begin{tikzpicture}[
+        scale=1.75,
+        MyPoints/.style={draw=blue,fill=white,thick},
+        Segments/.style={draw=blue!50!red!70,thick},
+        MyCircles/.style={green!50!blue!50,thin}, 
+        every node/.style={scale=0.75}
+        ]
+        %\grid;
+        \clip (-1,-2.5) rectangle (5, 3.5);
+
+
+        %\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
+        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-1)--(0,3) node[above left]{$x_2$};
+
+        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-1,0)--(4.5,0) 
+        node[right]{$x_1$};
+
+
+        %{\verb!->!new, arrowhead = 2mm, line width=4pt}
+        %, arrowhead = 3mm
+        %, arrowhead = 0.2
+
+        % Feel free to change here coordinates of points A and B
+        \pgfmathparse{0}		\let\Xa\pgfmathresult
+        \pgfmathparse{0}		\let\Ya\pgfmathresult
+        \coordinate (A) at (\Xa,\Ya);
+
+        \pgfmathparse{4}		\let\Xb\pgfmathresult
+        \pgfmathparse{3}		\let\Yb\pgfmathresult
+        \coordinate (B) at (\Xb,\Yb);
+
+        \pgfmathparse{4}		\let\Xc\pgfmathresult
+        \pgfmathparse{0}		\let\Yc\pgfmathresult
+        \coordinate (C) at (\Xc,\Yc);
+
+
+
+
+        \pgfmathparse{4}		\let\Xg\pgfmathresult
+        \pgfmathparse{0}		\let\Yg\pgfmathresult
+        \coordinate (G) at (\Xg,\Yg);
+
+        \pgfmathparse{4}		\let\Xh\pgfmathresult
+        \pgfmathparse{0}		\let\Yh\pgfmathresult
+        \coordinate (H) at (\Xh,\Yh);
+
+        \pgfmathparse{4}		\let\Xi\pgfmathresult
+        \pgfmathparse{0}		\let\Yi\pgfmathresult
+        \coordinate (I) at (\Xi,\Yi);
+
+
+
+        \begin{scope}[cm={1,1,1.5,0.5,(0,0)}]
+        \draw[pattern=north west lines, pattern color=blue!50, draw=none ] (0,0) rectangle (2,2);
+        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (0,0)--(0,2) node[below]{$\ba$};
+        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (0,0)--(2,0) node[above]{$\bb$};
+        \end{scope};
+
+
+        \pgfmathparse{3}		\let\Xd\pgfmathresult
+        \pgfmathparse{1}		\let\Yd\pgfmathresult
+        \coordinate (D) at (\Xd,\Yd);
+
+        \pgfmathparse{0}		\let\Xe\pgfmathresult
+        \pgfmathparse{0}		\let\Ye\pgfmathresult
+        \coordinate (E) at (\Xe,\Ye);
+
+        \pgfmathparse{2}		\let\Xf\pgfmathresult
+        \pgfmathparse{2}		\let\Yf\pgfmathresult
+        \coordinate (F) at (\Xf,\Yf);
+
+
+        \tkzMarkAngle[size=1, mark = none, arrows=<-,line width=1pt, mkcolor=blue ](D,E,F);
+
+
+
+
+
+        \pgfmathparse{-1}		\let\Xg\pgfmathresult
+        \pgfmathparse{2}		\let\Yg\pgfmathresult
+        \coordinate (G) at (\Xg,\Yg);
+
+        \pgfmathparse{-3}		\let\Xi\pgfmathresult
+        \pgfmathparse{1}		\let\Yi\pgfmathresult
+        \coordinate (I) at (\Xi,\Yi);
+
+
+        \node [above right,darkgray] at (1,-1) {$S(\bb,\ba)<0$};
+
+
+
+        %\tkzMarkAngle[size=1, mark = none, arrows=->,line width=1.5pt, mkcolor=red ](B,A,E);
+
+
+
+        \end{tikzpicture}
+
+    \end{minipage}
+    
 
     
+
 \end{frame}
 
 
@@ -207,39 +418,169 @@
 
 
 
-\begin{frame}
-    \frametitle{Определитель отражения}
-
-
-    Рассмотрим оператор $\LL : \begin{pmatrix}
-      a_1 \\
-      a_2 \\
-    \end{pmatrix} \to 
-    \begin{pmatrix}
-      a_2 \\
-      a_1 \\
-    \end{pmatrix}$, отражение относительно $x_1= x_2$.
-    
-
-    \pause
-
-    картинка
-
-\end{frame}
 
 
 \begin{frame}
 \frametitle{Определитель отражения}
 
-
-Рассмотрим оператор $\LL : \begin{pmatrix}
+Оператор $\LL : \begin{pmatrix}
   a_1 \\
   a_2 \\
 \end{pmatrix} \to 
 \begin{pmatrix}
   a_2 \\
   a_1 \\
-\end{pmatrix}$, отражение относительно $x_1= x_2$.
+\end{pmatrix}$ отражает относительно $x_1= x_2$.\pause
+
+
+
+
+\begin{center}
+
+
+\begin{tikzpicture}[
+scale=1.8,
+MyPoints/.style={draw=blue,fill=white,thick},
+Segments/.style={draw=blue!50!red!70,thick},
+MyCircles/.style={green!50!blue!50,thin}, 
+every node/.style={scale=1}
+]
+%\grid;
+\clip (-1,-2.5) rectangle (6.5, 6.5);
+
+
+%\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-1)--(0,6) node[above left]{$x_2$};
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-1,0)--(6,0) 
+node[right]{$x_1$};
+
+
+%{\verb!->!new, arrowhead = 2mm, line width=4pt}
+%, arrowhead = 3mm
+%, arrowhead = 0.2
+
+% Feel free to change here coordinates of points A and B
+\pgfmathparse{0}		\let\Xa\pgfmathresult
+\pgfmathparse{0}		\let\Ya\pgfmathresult
+\coordinate (A) at (\Xa,\Ya);
+
+\pgfmathparse{4}		\let\Xb\pgfmathresult
+\pgfmathparse{3}		\let\Yb\pgfmathresult
+\coordinate (B) at (\Xb,\Yb);
+
+\pgfmathparse{4}		\let\Xc\pgfmathresult
+\pgfmathparse{0}		\let\Yc\pgfmathresult
+\coordinate (C) at (\Xc,\Yc);
+
+
+
+
+\pgfmathparse{4}		\let\Xg\pgfmathresult
+\pgfmathparse{0}		\let\Yg\pgfmathresult
+\coordinate (G) at (\Xg,\Yg);
+
+\pgfmathparse{4}		\let\Xh\pgfmathresult
+\pgfmathparse{0}		\let\Yh\pgfmathresult
+\coordinate (H) at (\Xh,\Yh);
+
+\pgfmathparse{4}		\let\Xi\pgfmathresult
+\pgfmathparse{0}		\let\Yi\pgfmathresult
+\coordinate (I) at (\Xi,\Yi);
+
+
+
+\begin{scope}[cm={1.25,0.75,1.75,0.25,(0,0)}]
+\draw[pattern=north west lines, pattern color=blue!50, draw=none ] (0,0) rectangle (2,2);
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (0,0)--(0,2) node[below]{$\ba$};
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (0,0)--(2,0) node[above]{$\bb$};
+\end{scope};
+
+\begin{scope}[cm={0.75,1.25,0.25,1.75,(0,0)}]
+\draw[pattern=north west lines, pattern color=blue!50, draw=none ] (0,0) rectangle (2,2);
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (0,0)--(0,2) node[above]{$\operatorname{L}\ba$};
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (0,0)--(2,0) node[right]{$\operatorname{L}\bb$};
+\end{scope};
+
+
+\pgfmathparse{0.75}		\let\Xd\pgfmathresult
+\pgfmathparse{1.25}		\let\Yd\pgfmathresult
+\coordinate (D) at (\Xd,\Yd);
+
+\pgfmathparse{0}		\let\Xe\pgfmathresult
+\pgfmathparse{0}		\let\Ye\pgfmathresult
+\coordinate (E) at (\Xe,\Ye);
+
+\pgfmathparse{0.25}		\let\Xf\pgfmathresult
+\pgfmathparse{1.75}		\let\Yf\pgfmathresult
+\coordinate (F) at (\Xf,\Yf);
+
+
+\tkzMarkAngle[size=1, mark = none, arrows=<-,line width=1pt, mkcolor=blue ](D,E,F);
+
+
+
+\pgfmathparse{1.25}		\let\Xd\pgfmathresult
+\pgfmathparse{0.75}		\let\Yd\pgfmathresult
+\coordinate (D) at (\Xd,\Yd);
+
+\pgfmathparse{0}		\let\Xe\pgfmathresult
+\pgfmathparse{0}		\let\Ye\pgfmathresult
+\coordinate (E) at (\Xe,\Ye);
+
+\pgfmathparse{1.75}		\let\Xf\pgfmathresult
+\pgfmathparse{0.25}		\let\Yf\pgfmathresult
+\coordinate (F) at (\Xf,\Yf);
+
+
+\tkzMarkAngle[size=1, mark = none, arrows=->,line width=1pt, mkcolor=blue ](F,E,D);
+
+
+
+
+\pgfmathparse{-1}		\let\Xg\pgfmathresult
+\pgfmathparse{-1}		\let\Yg\pgfmathresult
+\coordinate (G) at (\Xg,\Yg);
+
+\pgfmathparse{6}		\let\Xi\pgfmathresult
+\pgfmathparse{6}		\let\Yi\pgfmathresult
+\coordinate (I) at (\Xi,\Yi);
+
+
+
+\draw[dashed] (G)--(I) node[near end, below right]{$x_1=x_2$};
+
+
+
+
+
+
+
+%\tkzMarkAngle[size=1, mark = none, arrows=->,line width=1.5pt, mkcolor=red ](B,A,E);
+
+
+
+\end{tikzpicture}
+
+
+
+    \end{center}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Определитель отражения}
+    
+
+Оператор $\LL : \begin{pmatrix}
+  a_1 \\
+  a_2 \\
+\end{pmatrix} \to 
+\begin{pmatrix}
+  a_2 \\
+  a_1 \\
+\end{pmatrix}$ отражает относительно $x_1= x_2$.
 
 
 \pause
@@ -300,11 +641,94 @@
     \frametitle{Определитель поворота}
 
 
-    Оператор $\Rot: \R^2 \to \R^2$ вращает плоскость на $30^{\circ}$ против часовой стрелки.
+    Оператор $\Rot: \R^2 \to \R^2$ вращает плоскость.
 
     \pause
 
-  картинка
+  \begin{center}
+
+
+      \begin{tikzpicture}[
+      scale=1.5,
+      MyPoints/.style={draw=blue,fill=white,thick},
+      Segments/.style={draw=blue!50!red!70,thick},
+      MyCircles/.style={green!50!blue!50,thin}, 
+      every node/.style={scale=1}
+      ]
+      %\grid;
+      \clip (-7,-2.5) rectangle (6.5, 5.5);
+
+
+
+      %{\verb!->!new, arrowhead = 2mm, line width=4pt}
+      %, arrowhead = 3mm
+      %, arrowhead = 0.2
+
+      % Feel free to change here coordinates of points A and B
+      \pgfmathparse{0}		\let\Xa\pgfmathresult
+      \pgfmathparse{0}		\let\Ya\pgfmathresult
+      \coordinate (A) at (\Xa,\Ya);
+
+
+
+
+      \pgfmathparse{2}		\let\Xb\pgfmathresult
+      \pgfmathparse{0.5}		\let\Yb\pgfmathresult
+      \coordinate (B) at (\Xb,\Yb);
+
+      \pgfmathparse{0.5}		\let\Xd\pgfmathresult
+      \pgfmathparse{1.5}		\let\Yd\pgfmathresult
+      \coordinate (D) at (\Xd,\Yd);
+
+      \pgfmathparse{130}		\let\angle\pgfmathresult;
+      \pgfmathparse{sqrt(10)}		\let\rad\pgfmathresult;
+
+
+      \pgfmathparse{\Xb*cos(\angle)  - \Yb*sin(\angle)}		\let\Xe\pgfmathresult
+      \pgfmathparse{\Xb*sin(\angle)  + \Yb*cos(\angle)}		\let\Ye\pgfmathresult
+      \coordinate (E) at (\Xe,\Ye);
+
+      \pgfmathparse{\Xd*cos(\angle)  - \Yd*sin(\angle)}		\let\Xf\pgfmathresult
+      \pgfmathparse{\Xd*sin(\angle)  + \Yd*cos(\angle)}		\let\Yf\pgfmathresult
+      \coordinate (F) at (\Xf,\Yf);
+
+      \tkzMarkAngle[size=1, mark = none, arrows=->,line width=1pt, mkcolor=blue ](D,A,F);
+
+
+      \begin{scope}[cm={\Xb,\Yb,\Xd,\Yd,(0,0)}]
+      \draw[pattern=north west lines, pattern color=blue!50, draw=none ] (0,0) rectangle (2,2);
+      \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (0,0)--(0,2) node[above left]{$\bb$};
+      \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (0,0)--(2,0) node[below right]{$\ba$};
+      \end{scope};
+
+      \begin{scope}[cm={\Xe,\Ye,\Xf,\Yf,(0,0)}]
+      \draw[pattern=north west lines, pattern color=blue!50, draw=none ] (0,0) rectangle (2,2);
+      \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (0,0)--(0,2) node[below right]{$\operatorname{R}\bb$};
+      \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (0,0)--(2,0) node[above right]{$\operatorname{R}\ba$};
+      \end{scope};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      %\tkzMarkAngle[size=1, mark = none, arrows=->,line width=1.5pt, mkcolor=red ](B,A,E);
+
+
+
+      \end{tikzpicture}
+
+
+  \end{center}
+
 
 \end{frame}
 
@@ -314,7 +738,7 @@
     \frametitle{Определитель поворота}
 
 
-    Оператор $\Rot: \R^2 \to \R^2$ вращает плоскость на $30^{\circ}$ против часовой стрелки.
+    Оператор $\Rot: \R^2 \to \R^2$ вращает плоскость.
 
     \pause
 
@@ -325,7 +749,7 @@
     \pause
 
     \[
-    \det \Rot = \frac{\Rot(\LL \ba, \LL \bb )}{\Rot(\ba, \bb )} = 1     
+    \det \Rot = \frac{S(\Rot \ba, \Rot \bb )}{S(\ba, \bb )} = 1     
     \]
 
 \end{frame}
@@ -338,24 +762,110 @@
     \frametitle{Определитель проекции}
 
 
+    Оператор $\HH: \R^2 \to \R^2$ проецирует векторы на прямую $\ell$.   \pause
+
+    \begin{center}
+
+        \begin{tikzpicture}[
+        scale=2,
+        MyPoints/.style={draw=blue,fill=white,thick},
+        Segments/.style={draw=blue!50!red!70,thick},
+        MyCircles/.style={green!50!blue!50,thin}, 
+        every node/.style={scale=1.2}
+        ]
+        %\draw[color=gray,step=1.0,dotted] (-2.1,-5.1) grid (7.6,2.1);
+        \clip (-1.5,-5.5) rectangle (6.5,2.5);
+
+        \pgfmathparse{3}		\let\Xa\pgfmathresult
+        \pgfmathparse{-3}		\let\Ya\pgfmathresult
+        \coordinate (A) at (\Xa,\Ya);
+
+        \pgfmathparse{6}		\let\Xb\pgfmathresult
+        \pgfmathparse{0}		\let\Yb\pgfmathresult
+        \coordinate (B) at (\Xb,\Yb);
+
+        \pgfmathparse{-1}		\let\Xc\pgfmathresult
+        \pgfmathparse{1}		\let\Yc\pgfmathresult
+        \coordinate (C) at (\Xc,\Yc);
+
+        \pgfmathparse{4}		\let\Xd\pgfmathresult
+        \pgfmathparse{-4}		\let\Yd\pgfmathresult
+        \coordinate (D) at (\Xd,\Yd);
+
+        \pgfmathparse{0}		\let\Xe\pgfmathresult
+        \pgfmathparse{0}		\let\Ye\pgfmathresult
+        \coordinate (E) at (\Xe,\Ye);
+
+        \pgfmathparse{3.5}		\let\Xf\pgfmathresult
+        \pgfmathparse{-0.5}		\let\Yf\pgfmathresult
+        \coordinate (F) at (\Xf,\Yf);
+
+        \pgfmathparse{4}		\let\Xg\pgfmathresult
+        \pgfmathparse{0}		\let\Yg\pgfmathresult
+        \coordinate (G) at (\Xg,\Yg);
+
+        \pgfmathparse{4.5}		\let\Xh\pgfmathresult
+        \pgfmathparse{1.5}		\let\Yh\pgfmathresult
+        \coordinate (H) at (\Xh,\Yh);
+
+
+
+        \begin{scope}[cm={1.5,0.5,1.5,-0.5,(0,0)}]
+        \draw[pattern=north west lines, pattern color=blue!50, draw=none ] (0,0) rectangle (2,2);
+        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (0,0)--(0,2) node[below]{$\ba$};
+        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (0,0)--(2,0) node[above]{$\bb$};
+        \end{scope};
+
+
+        \draw[ black,dashed] (C)--(D) node[below right]{$\ell$};
+
+        \draw[dashed] (A)--(B);
+
+        \draw[vecb,line width=0.5mm] (E)--(A) ;
+
+
+
+        \node [above right] at (0, 5) {$\operatorname{H} \bv = \bb$}; 
+
+
+
+        \tkzMarkRightAngle[size=0.3](B,A,C);
+
+
+        \end{tikzpicture}
+
+
+
+
+
+    \end{center}
+
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Определитель проекции}
+
+
     Оператор $\HH: \R^2 \to \R^2$ проецирует векторы на прямую $\ell$.  
 
-
-
-    картинка
 
 
     \pause
 
     При проекции любой параллелограмм «складывается» в отрезок нулевой площади.
 
-    \pause
 
     \[
     \det \HH = \frac{S(\HH \ba, \HH \bb )}{S(\ba, \bb )} = 0     
     \]
 
 \end{frame}
+
 
 
 
@@ -368,10 +878,101 @@
         S(\lambda \ba, \bb) = \lambda S(\ba, \bb), \quad S(\ba + \bb, \bc) = S(\ba, \bc) + S(\bb, \bc)    
         \]
     \end{block}
-
     \pause
+  \begin{center}
+      \begin{tikzpicture}[
+      scale=1.5,
+      MyPoints/.style={draw=blue,fill=white,thick},
+      Segments/.style={draw=blue!50!red!70,thick},
+      MyCircles/.style={green!50!blue!50,thin}, 
+      every node/.style={scale=1}
+      ]
+      %\grid;
+      \clip (-1,-2.5) rectangle (6.5, 4.5);
 
-    здесь картинка.
+
+
+
+
+      %{\verb!->!new, arrowhead = 2mm, line width=4pt}
+      %, arrowhead = 3mm
+      %, arrowhead = 0.2
+
+      % Feel free to change here coordinates of points A and B
+      \pgfmathparse{0}		\let\Xa\pgfmathresult
+      \pgfmathparse{0}		\let\Ya\pgfmathresult
+      \coordinate (A) at (\Xa,\Ya);
+
+      \pgfmathparse{4}		\let\Xb\pgfmathresult
+      \pgfmathparse{3}		\let\Yb\pgfmathresult
+      \coordinate (B) at (\Xb,\Yb);
+
+      \pgfmathparse{4}		\let\Xc\pgfmathresult
+      \pgfmathparse{0}		\let\Yc\pgfmathresult
+      \coordinate (C) at (\Xc,\Yc);
+
+
+
+
+      \pgfmathparse{4}		\let\Xg\pgfmathresult
+      \pgfmathparse{0}		\let\Yg\pgfmathresult
+      \coordinate (G) at (\Xg,\Yg);
+
+      \pgfmathparse{4}		\let\Xh\pgfmathresult
+      \pgfmathparse{0}		\let\Yh\pgfmathresult
+      \coordinate (H) at (\Xh,\Yh);
+
+      \pgfmathparse{4}		\let\Xi\pgfmathresult
+      \pgfmathparse{0}		\let\Yi\pgfmathresult
+      \coordinate (I) at (\Xi,\Yi);
+
+
+
+      \begin{scope}[cm={0.5,-1,1.5,0,(0,0)}]
+      \draw[pattern=north west lines, pattern color=blue!50, draw=none ] (0,0) rectangle (2,2);
+      \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (0,0)--(0,2);
+      \draw[{Latex[length=4.5mm, width=2.5mm]}-, >=stealth, vecb,thick] (0,0)--(2,0) node[midway, left]{$\ba$};
+      \draw[{Latex[length=4.5mm, width=2.5mm]}-, >=stealth, vecb,thick] (0,2)--(2,2) ;
+      \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (2,0)--(2,2) node[midway, below]{$\bc$};
+
+      \end{scope};
+
+      \begin{scope}[cm={1.5,0,1,2,(0,0)}]
+      \draw[pattern=north west lines, pattern color=blue!50, draw=none ] (0,0) rectangle (2,2);
+      \draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,thick] (0,0)--(0,2) node[midway, above left]{$\bb$};
+      \draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,thick] (2,0)--(2,2) ;
+      \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (0,2)--(2,2) node[midway, above ]{$\bc$};
+      \end{scope};
+
+
+      \draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,thick] (1,-2)--(2,4);
+
+
+      \draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecb,thick] (4,-2)--(5,4) node[midway, right ]{$\ba+\bb$};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      %\tkzMarkAngle[size=1, mark = none, arrows=->,line width=1.5pt, mkcolor=red ](B,A,E);
+
+
+
+      \end{tikzpicture}
+
+
+  \end{center}
+
+
 
     
 

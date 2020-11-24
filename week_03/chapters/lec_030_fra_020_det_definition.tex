@@ -36,18 +36,18 @@
         \pause
         \item Линейность по каждому аргументу:
         \[
-            S(\textcolor{red}{\ba + \bb}, \bv_2, \bv_3, \ldots, \bv_n) =  S(\textcolor{red}{\ba}, \bv_2, \bv_3, \ldots, \bv_n) + 
+            S(\red{\ba + \bb}, \bv_2, \bv_3, \ldots, \bv_n) =  S(\red{\ba}, \bv_2, \bv_3, \ldots, \bv_n) + 
         \]
         \[
-            + S(\textcolor{red}{\bb}, \bv_2, \bv_3, \ldots, \bv_n)          
+            + S(\red{\bb}, \bv_2, \bv_3, \ldots, \bv_n)          
         \]
         \[
-            S(\textcolor{red}{\lambda}\bv_1, \bv_2, \bv_3, \ldots, \bv_n) = \textcolor{red}{ \lambda } S(\bv_1, \bv_2, \bv_3, \ldots, \bv_n)
+            S(\red{\lambda}\bv_1, \bv_2, \bv_3, \ldots, \bv_n) = \red{ \lambda } S(\bv_1, \bv_2, \bv_3, \ldots, \bv_n)
         \]
         \pause
         \item Антисимметричность: 
         \[
-          S(\textcolor{red}{\bv_1}, \textcolor{red}{\bv_2}, \bv_3, \ldots, \bv_n) = - S(\textcolor{red}{\bv_2}, \textcolor{red}{\bv_1}, \bv_3, \ldots, \bv_n)  
+          S(\red{\bv_1}, \red{\bv_2}, \bv_3, \ldots, \bv_n) = - S(\red{\bv_2}, \red{\bv_1}, \bv_3, \ldots, \bv_n)  
         \]
     \end{enumerate}
 \end{frame}
@@ -104,6 +104,9 @@
     \det \LL = S(\row_1 \LL, \row_2 \LL, \ldots, \row_n \LL)    
     \]    
     \end{block}
+
+    Определитель обозначают $\det \LL$ или $|\LL|$.
+
 \end{frame}
 
 
@@ -136,10 +139,74 @@
         \[
             S(\ba, \bb, \bv_3, \ldots, \bv_n) = S(\ba + \bb, \bb, \bv_3, \ldots, \bv_n)
         \]
+    \pause
+    \begin{center}
+        \begin{tikzpicture}[
+        scale=1.7,
+        MyPoints/.style={draw=blue,fill=white,thick},
+        Segments/.style={draw=blue!50!red!70,thick},
+        MyCircles/.style={green!50!blue!50,thin}, 
+        every node/.style={scale=1.2}
+        ]
+        \clip (-.5,-1.5) rectangle (7.5,4.5);
 
 
-        картинка
+        %%\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
+        %\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-1)--(0,5) node[above left]{$x_2$};
+        %
+        %\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-1,0)--(6.5,0) 
+        %node[right]{$x_1$};
 
+        % Feel free to change here coordinates of points A and B
+        \pgfmathparse{0}		\let\Xa\pgfmathresult
+        \pgfmathparse{0}		\let\Ya\pgfmathresult
+        \coordinate (A) at (\Xa,\Ya);
+
+        \pgfmathparse{1}		\let\Xb\pgfmathresult
+        \pgfmathparse{4}		\let\Yb\pgfmathresult
+        \coordinate (B) at (\Xb,\Yb);
+
+        \pgfmathparse{3}		\let\Xc\pgfmathresult
+        \pgfmathparse{0}		\let\Yc\pgfmathresult
+        \coordinate (C) at (\Xc,\Yc);
+
+        \pgfmathparse{4}		\let\Xd\pgfmathresult
+        \pgfmathparse{4}		\let\Yd\pgfmathresult
+        \coordinate (D) at (\Xd,\Yd);
+
+
+        \pgfmathparse{7}		\let\Xe\pgfmathresult
+        \pgfmathparse{4}		\let\Ye\pgfmathresult
+        \coordinate (E) at (\Xe,\Ye);
+
+
+
+        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (A)--(B) node[midway,left]{$\ba$};
+
+        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (C)--(D);
+
+
+        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca,thick] (A)--(C) node[midway,below]{$\bb$};
+
+        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca,thick] (B)--(D) ;
+
+        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca,thick] (D)--(E) ;
+
+
+        \draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecc,thick] (A)--(D) node[midway,above, sloped]{$\ba+\bb$};
+
+        \draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecc,thick] (C)--(E) ;
+
+        % \node [above right,darkgray] at (1,-1.5) {$S(\ba,\bb)=S(\ba+\bb,\bb)$};
+
+
+        \end{tikzpicture}
+
+
+    \end{center}
+
+
+    
 \end{frame}
 
 
@@ -150,42 +217,42 @@
     Единственным ненулевым элементом столбца можно «скосить» всю строку:
 
     \[
-    \begin{pmatrix}
+    \begin{vmatrix}
         0 & 3 & -2 \\
-        \textcolor{red}{4} & 2 & 7 \\
+        \red{4} & 2 & 7 \\
         0 & 1 & -5 \\
-    \end{pmatrix} \to  \pause 
-\begin{pmatrix}
+    \end{vmatrix} =  \pause 
+\begin{vmatrix}
     0 & 3 & -2 \\
-    \textcolor{red}{4} & \textcolor{green}{0} & 7 \\
+    \red{4} & \blue{0} & 7 \\
     0 & 1 & -5 \\
-\end{pmatrix}  \to \pause 
-\begin{pmatrix}
+\end{vmatrix}  = \pause 
+\begin{vmatrix}
     0 & 3 & -2 \\
-    \textcolor{red}{4} & \textcolor{green}{0} & \textcolor{green}{0} \\
+    \red{4} & \blue{0} & \blue{0} \\
     0 & 1 & -5 \\
-\end{pmatrix}  
+\end{vmatrix}  
     \]
 
     \pause
     Единственным ненулевым элементом строки можно «скосить» весь столбец:
     
     \[
-    \begin{pmatrix}
+    \begin{vmatrix}
         3 & 3 & -2 \\
-        \textcolor{red}{4} & 0 & 0 \\
+        \red{4} & 0 & 0 \\
         2 & 1 & -5 \\
-    \end{pmatrix} \to  \pause 
-\begin{pmatrix}
-    \textcolor{green}{0} & 3 & -2 \\
-\textcolor{red}{4} & 0 & 0 \\
+    \end{vmatrix} = \pause 
+\begin{vmatrix}
+    \blue{0} & 3 & -2 \\
+\red{4} & 0 & 0 \\
 2 & 1 & -5 \\
-\end{pmatrix}  \to \pause 
-\begin{pmatrix}
-    \textcolor{green}{0} & 3 & -2 \\
-\textcolor{red}{4} & 0 & 0 \\
-\textcolor{green}{0} & 1 & -5 \\
-\end{pmatrix}  
+\end{vmatrix}  = \pause 
+\begin{vmatrix}
+    \blue{0} & 3 & -2 \\
+\red{4} & 0 & 0 \\
+\blue{0} & 1 & -5 \\
+\end{vmatrix}  
     \]
     
 \end{frame}
@@ -336,7 +403,7 @@ $\sign(12345) = 1$, $\sign(32145)=-1$, $\sign(21354)=1$.
         a & b \\
         c & d \\
     \end{pmatrix} = \pause
-    \underset{\textcolor{red}{\sign(12)=1}}{\begin{pmatrix}
+    \underset{\red{\sign(12)=1}}{\begin{pmatrix}
         a &  \\
          & d \\
     \end{pmatrix}} - 
@@ -361,17 +428,17 @@ $\sign(12345) = 1$, $\sign(32145)=-1$, $\sign(21354)=1$.
     \end{pmatrix} = \pause
     \]
 \[
-= +\underset{\textcolor{red}{\sign(123)=1}}{\begin{pmatrix}
+= +\underset{\red{\sign(123)=1}}{\begin{pmatrix}
     a &  &  \\
      & e &  \\
      &  & i \\
 \end{pmatrix}} +
-\underset{\textcolor{red}{\sign(312)=1}}{\begin{pmatrix}
+\underset{\red{\sign(312)=1}}{\begin{pmatrix}
      &  & c \\
     d &  &  \\
      & h &  \\
 \end{pmatrix}} +
-\underset{\textcolor{red}{\sign(231)=1}}{\begin{pmatrix}
+\underset{\red{\sign(231)=1}}{\begin{pmatrix}
      & b &  \\
      &  & f \\
     g &  &  \\

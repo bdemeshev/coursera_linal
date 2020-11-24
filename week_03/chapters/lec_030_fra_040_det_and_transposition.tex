@@ -1,0 +1,326 @@
+% !TEX root = ../linal_lecture_03.tex
+
+\begin{frame} % название фрагмента
+
+\videotitle{Определитель и транспонирование}
+
+\end{frame}
+
+
+
+\begin{frame}{Краткий план:}
+  \begin{itemize}[<+->]
+    \item Транспонирование матрицы;
+    \item Определитель и транспонирование;
+    \item Разложение определителя по строке.
+  \end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Конструктивный подход к транспонированию}
+
+    Определение транспонирования оператора основано на свойстве 
+    \[
+        \langle \LL \ba, \bb \rangle = \langle \ba, \LL^T\bb\rangle.
+    \]
+
+    \pause
+
+    Возьмём, к примеру, $\ba = \be_2$ и $\bb = \be_3$:
+    \[
+        \langle \col_2 \LL, \be_3 \rangle = \langle \be_2, \col_3 \LL^T \rangle
+    \]
+    \pause 
+    \[
+        \LL_{32} = \LL^T_{23}        
+    \]
+    \pause
+
+    Транспонирование меняет местами строки и столбцы матрицы!
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Транспонирование матрицы}
+
+    Пример:
+    \[
+    \LL = \begin{pmatrix}
+        1 & 2 & 3 & 4 \\
+        5 & 6 & 7 & 8 \\
+        9 & 10 & 11 & 12 \\
+    \end{pmatrix}    
+    \]
+    \pause
+    \[
+    \LL^T = \begin{pmatrix}
+        1 & 5 & 9 \\
+        2 & 6 & 10 \\
+        3 & 7 & 11 \\
+        4 & 8 & 12 \\
+    \end{pmatrix}    
+    \]
+    \pause
+    Заметим, что $\LL^{TT}=\LL$.
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Транспонирование и определитель}
+
+    Явная формула определителя:
+    \[    
+    \det \LL = \sum_{\sigma} \sign(\sigma) p(\sigma) 
+    \]
+    \pause
+    %
+    Перестановка диктует, какой элемент выбрать в каждой строке:
+    \[
+    (3124) \sim \begin{pmatrix}
+    . & . & * & . \\
+    * & . & . & . \\
+    . & * & . & . \\
+    . & . & . & * \\
+    \end{pmatrix}
+    \]
+    \pause
+    \begin{block}{Утверждение}
+        Если в матрице выбран один элемент в каждой строке и в каждом столбце, то при транспонировании это свойство сохраняется.
+    \end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Транспонирование и определитель}
+
+\begin{block}{Утверждение}
+    Чётности перестановок, кодирующих координаты элементов по строкам и по столбцам, одинаковые.
+\end{block}
+    %
+    \[
+        \begin{pmatrix}
+    . & . & \textcolor{red}{a} & . \\
+    \textcolor{red}{b} & . & . & . \\
+    . & c & . & . \\
+    . & . & . & d \\
+    \end{pmatrix}
+    \]   
+    %
+    \[
+        (\col_1 \leftrightarrow \col_3) \sim (\row_1 \leftrightarrow \row_2)
+    \]
+    \pause
+    \[
+        \sign(3124) = \sign(2314)
+    \]
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Транспонирование и определитель}
+
+Перестановка $\sigma$ выбирает элемент в каждой строке:
+\[    
+\det \LL = \sum_{\sigma} \sign(\sigma) p(\sigma) 
+\]
+
+Перестановка $\sigma$ выбирает элемент в каждом столбце:
+\[    
+\det \LL^T = \sum_{\sigma} \sign(\sigma) p^T(\sigma)
+\]
+
+\pause
+
+\begin{block}{Утверждение}
+\[
+    \det \LL = \det \LL^T
+\]
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Разложение по столбцу на примере}
+    Возьмём аддитивность:
+    \[
+\begin{vmatrix}
+    -1 & \red{2} & 3 \\
+    4 & \red{5} & 6 \\
+    7 & \red{8} & 9 \\
+\end{vmatrix}  =       
+\begin{vmatrix}
+    -1 & \red{2} & 3 \\
+    4 & 0 & 6 \\
+    7 & 0 & 9 \\
+\end{vmatrix} +
+\begin{vmatrix}
+    -1 & 0 & 3 \\
+    4 & \red{5} & 6 \\
+    7 & 0 & 9 \\
+\end{vmatrix} +
+\begin{vmatrix}
+    -1 & 0 & 3 \\
+    4 & 0 & 6 \\
+    7 & \red{8} & 9 \\
+\end{vmatrix} \pause
+    \]
+    Добавим немного принципа Кавальери:
+\[
+    \begin{vmatrix}
+        -1 & \red{2} & 3 \\
+        4 & \red{5} & 6 \\
+        7 & \red{8} & 9 \\
+    \end{vmatrix}  =       
+    \begin{vmatrix}
+        \blue{0} & \red{2} & \blue{0} \\
+        4 & 0 & 6 \\
+        7 & 0 & 9 \\
+    \end{vmatrix} +
+    \begin{vmatrix}
+        -1 & 0 & 3 \\
+\blue{0} & \red{5} & \blue{0} \\
+        7 & 0 & 9 \\
+    \end{vmatrix} +
+    \begin{vmatrix}
+        -1 & 0 & 3 \\
+        4 & 0 & 6 \\
+\blue{0} & \red{8} & \blue{0} \\
+    \end{vmatrix} \pause
+\]
+Взболтаем и переставим столбцы:
+\[
+    \begin{vmatrix}
+        -1 & \red{2} & 3 \\
+        4 & \red{5} & 6 \\
+        7 & \red{8} & 9 \\
+    \end{vmatrix}  =       
+    (-1)^1 \begin{vmatrix}
+        \red{2} & 0   & 0 \\
+        0 & 4  & 6 \\
+        0 & 7  & 9 \\
+    \end{vmatrix} +
+    (-1)^2 \begin{vmatrix}
+        \red{5} & 0 & 0 \\
+       0 & -1 & 3 \\
+        0 & 7 & 9 \\
+    \end{vmatrix} +
+    (-1)^3\begin{vmatrix}
+        \red{8} & 0 & 0 \\
+        0 & -1 & 3 \\
+        0 & 4 & 6 \\
+    \end{vmatrix} 
+\]
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Разложение по столбцу на примере}
+Взболтаем и переставим столбцы:
+\[
+    \begin{vmatrix}
+        -1 & \red{2} & 3 \\
+        4 & \red{5} & 6 \\
+        7 & \red{8} & 9 \\
+    \end{vmatrix}  =       
+    (-1)^1 \begin{vmatrix}
+        \red{2} & 0   & 0 \\
+        0 & 4  & 6 \\
+        0 & 7  & 9 \\
+    \end{vmatrix} +
+    (-1)^2 \begin{vmatrix}
+        \red{5} & 0 & 0 \\
+       0 & -1 & 3 \\
+        0 & 7 & 9 \\
+    \end{vmatrix} +
+    (-1)^3\begin{vmatrix}
+        \red{8} & 0 & 0 \\
+        0 & -1 & 3 \\
+        0 & 4 & 6 \\
+    \end{vmatrix} \pause
+\]
+Снизим размерность:
+\[
+    \begin{vmatrix}
+        -1 & \red{2} & 3 \\
+        4 & \red{5} & 6 \\
+        7 & \red{8} & 9 \\
+    \end{vmatrix}  =       
+    (-1)^1 \red{2} \begin{vmatrix}
+         4  & 6 \\
+         7  & 9 \\
+    \end{vmatrix} +
+    (-1)^2 \red{5}\begin{vmatrix}
+        -1 & 3 \\
+         7 & 9 \\
+    \end{vmatrix} +
+    (-1)^3 \red{8} \begin{vmatrix}
+         -1 & 3 \\
+         4 & 6 \\
+    \end{vmatrix} 
+\]
+
+
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Разложение по столбцу}
+
+    Выберем любой столбец и «пробежимся» вдоль него!
+
+    \[
+        \begin{vmatrix}
+            * & \red{a_{12}} & * \\
+            * & \red{a_{22}} & * \\
+            * & \red{a_{32}} & * \\
+        \end{vmatrix}  =      
+    \]
+    \[ 
+       =(-1)^{1+2} \red{a_{12}} \det A_{12}^{\cross} +
+        (-1)^{2+2} \red{a_{22}} \det A_{22}^{\cross} +
+        (-1)^{3+2} \red{a_{32}} \det A_{32}^{\cross}
+    \]
+    Матрица $A_{ij}^{\cross}$ получается из исходной $A$ вычеркиванием строки $i$ и
+    столбца $j$.
+    \pause
+    \begin{block}{Утверждение}       
+    \[
+    \det \LL = \sum_{i=1}^{n} (-1)^{i+j} a_{ij} \det A_{ij}^{\cross},
+    \]
+    \end{block}
+
+    
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Разложение по строке}
+
+    Можно раскладывать и по строке $i$:
+\begin{block}{Утверждение}
+\[
+\det A = \sum_{j=1}^{n} (-1)^{i+j} a_{ij} \det A_{ij}^{\cross},
+\]
+\end{block}
+
+    \begin{block}{Определение}
+        \alert{Алгебраическим дополнением} элемента $a_{ij}$ матрицы $A$ называют величину
+        \[
+        A_{ij} = (-1)^{i+j} \det A_{ij}^{\cross},    
+        \]
+    \end{block}
+
+    Матрица $A_{ij}^{\cross}$ получается из исходной $A$ вычеркиванием строки $i$ и
+    столбца $j$.
+
+\end{frame}
