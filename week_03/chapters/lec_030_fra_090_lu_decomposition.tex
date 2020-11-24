@@ -1,0 +1,344 @@
+% !TEX root = ../linal_lecture_03.tex
+
+\begin{frame} % название фрагмента
+
+\videotitle{LU-разложение}
+
+\end{frame}
+
+
+
+\begin{frame}{Краткий план:}
+  \begin{itemize}[<+->]
+    \item Гауссовские преобразования: другой взгляд;
+    \item LU-разложение;
+    \item Применение LU-разложения.
+  \end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Треугольные матрицы}
+
+    \begin{block}{Определение}
+        Квадратная матрица называется \alert{верхнетреугольной},
+        если ниже диагонали у неё стоят нулевые числа, например,
+        \[
+            \mathrm{U} = 
+        \begin{pmatrix}
+            4 & 5 & -1 & 2 \\
+            0 & 0 & 2 & 6 \\
+            0 & 0 & 3 & 1 \\
+            0 & 0 & 0 & -1 \\
+        \end{pmatrix}.    
+        \]
+    \end{block}
+\pause
+При перемножении верхнетреугольных матриц получается верхнетреугольная.
+\pause
+Определитель треугольной матрицы равен произведению диагональных элементов.
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Треугольные матрицы}
+
+    \begin{block}{Определение}
+        Квадратная матрица называется \alert{нижнетреугольной},
+        если ниже диагонали у неё стоят нулевые числа, например,
+        \[
+            \LL =
+        \begin{pmatrix}
+            4 & 0 & 0 & 0 \\
+            2 & 1 & 0 & 0 \\
+            3 & 3 & 0 & 0 \\
+            1 & 2 & 2 & -1 \\
+        \end{pmatrix}.    
+        \]
+    \end{block}
+    \pause
+    При перемножении нижнетреугольных матриц получается нижнетреугольная.
+    \pause
+    Определитель треугольной матрицы равен произведению диагональных элементов.
+
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Гауссовские преобразования}
+
+    Рассмотрим систему уравнений в матричном виде:
+    \[
+    \left(
+    \begin{array}{ccc|c}
+    1 & 3 & 3  & 10 \\
+    -1 & 1 & 1 & 2 \\
+    2 & 7 & 1  & 17 \\
+    \end{array}
+    \right)
+    \]
+    \pause
+
+    Гауссовские преобразования уравнений системы:
+    
+    \begin{enumerate}
+        \item Домножение строки на ненулевое число;
+        \item Перестановка двух строк местами;
+        \item Прибавление к одной строки другой строки, домноженной на произвольное $\lambda$.
+    \end{enumerate}
+    \pause
+    Каждое из этих действий можно закодировать умножением на матрицу!
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Домножение строки как матрица}
+
+
+    Домножим вторую строка матрицы $A$ на $7$:
+    \[
+    \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & \red{7} & 0 \\
+        0 & 0 & 1 \\
+    \end{pmatrix}   \cdot 
+    \begin{pmatrix}
+        a & b & c \\
+        d & e & f \\
+        g & h & i \\
+    \end{pmatrix} =\pause
+\begin{pmatrix}
+    a & b & c \\
+    \red{7d} & \red{7e} & \red{7f} \\
+    g & h & i \\
+\end{pmatrix}   
+    \]
+
+
+Левая матрица задаёт веса строк для правой матрицы!
+
+
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Перестановка строк как матрица}
+
+ 
+Переставим первую и вторую строки матрицы $A$:
+
+    \[
+    \begin{pmatrix}
+        0 & \red{1} & 0 \\
+        \red{1} & 0 & 0 \\
+        0 & 0 & 1 \\
+    \end{pmatrix}   \cdot 
+    \begin{pmatrix}
+        a & b & c \\
+        d & e & f \\
+        g & h & i \\
+    \end{pmatrix} =\pause
+\begin{pmatrix}
+    \red{d} & \red{e} & \red{f} \\
+    \red{a} & \red{b} & \red{c} \\
+    g & h & i \\
+\end{pmatrix}   
+    \]
+
+    Левая матрица задаёт веса строк для правой матрицы!
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Прибавление строки как матрица}
+
+    Из второй строки вычтем первую строку с весом $4$:
+
+    \[
+    \begin{pmatrix}
+        1 & 0 & 0 \\
+        \red{-4} & 1 & 0 \\
+        0 & 0 & 1 \\
+    \end{pmatrix}   \cdot 
+    \begin{pmatrix}
+        a & b & c \\
+        d & e & f \\
+        g & h & i \\
+    \end{pmatrix} =\pause
+\begin{pmatrix}
+    a & b & c \\
+    d -\red{4a} & e - \red{4b} & f-\red{4c} \\
+    g & h & i \\
+\end{pmatrix}   
+    \]
+    
+    %\vspace{10pt}
+    Левая матрица задаёт веса строк для правой матрицы!
+ \pause
+ Прибавлению строки к другой строке ниже соответствует нижнетреугольная матрица.
+
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Вычитание — антоним прибавления}
+
+    
+
+    \[
+    \begin{pmatrix}
+        1 & 0 & 0 \\
+        \red{-4} & 1 & 0 \\
+        0 & 0 & 1 \\
+    \end{pmatrix}   \cdot 
+\begin{pmatrix}
+    1 & 0 & 0 \\
+    \red{4} & 1 & 0 \\
+    0 & 0 & 1 \\
+\end{pmatrix} =
+\begin{pmatrix}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+\end{pmatrix}   
+    \]
+    
+\pause
+Левая матрица отвечает за вычитание первой строки из второй с весом $4$.
+\pause
+Левая матрица отвечает за прибавление первой строки ко второй с весом $4$.
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+    \frametitle{Переход к треугольной матрице}
+
+    С помощью метода Гаусса мы приводим квадратную матрицу к ступенчатому верхнетреугольному виду:
+
+    \[
+    A \overset{g_1}{\to} A_1  \overset{g_2}{\to} A_2 \overset{g_3}{\to} \ldots A_{k-1}\overset{g_k}{\to} \mathrm{U} 
+    \]
+    \pause
+
+    В матричном виде:
+    \[
+    \mathrm{U} = G_k \cdot G_{k-1} \cdot \ldots  \cdot  G_2 \cdot G_{1} A
+    \]    
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Уменьшим список разрешённых действий!}
+
+    \begin{block}{Алгоритм приведения к ступенчатому виду}
+    \begin{enumerate}
+        \item Выберем первое уравнение так, чтобы в нём была переменная $x_1$.
+        \item Вычитаем первое уравнение из остальных так, чтобы в них пропала переменная $x_1$.
+        \item Зафиксируем первое уравнение и работаем с остальными. 
+    \end{enumerate}
+    \end{block}
+    \pause
+    Выводы:
+    \begin{itemize}
+        \item Можно обойтись без домножения строк на число. \pause
+        \item Все перестановки строк можно сделать в начале. 
+\end{itemize}
+
+    
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{$LU$-разложение}
+
+    С помощью метода Гаусса мы приводим квадратную матрицу к ступенчатому верхнетреугольному виду:
+
+    \[
+    A \overset{p}{\to} A_1  \overset{\ell_1}{\to} A_2 \overset{\ell_2}{\to} \ldots A_{k-1}\overset{\ell_k}{\to} \mathrm{U} 
+    \]
+    \pause
+    В матричном виде: 
+    \[
+    \mathrm{U} = \LL_k \cdot \LL_{k-1} \cdot \ldots  \cdot  \LL_2 \cdot \LL_{1} \cdot \mathrm{P} \cdot A.\pause
+    \]
+    Отменим действия $\LL_i$.
+    \[
+        \LL_1^{-1} \cdot \LL_2^{-1} \cdot \ldots \cdot \LL_k^{-1} \cdot  \LL_k^{-1} \cdot \mathrm{U} =  \mathrm{P} \cdot A.\pause
+    \]
+    Гауссовские преобразования эквивалентны разложению
+    \[
+    \LL\cdot  \mathrm{U} = \mathrm{P} \cdot A.     
+    \]
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Зачем нужно $LU$-разложение?}
+
+    Если $LU$-разложение матрицы $A$ получено, то можно очень быстро
+    \begin{itemize}
+        \item найти определитель матрицы $A$;
+        \item решить любую систему $A\bx = \bb$.
+    \end{itemize}
+
+    \pause
+    \[
+    \begin{pmatrix}
+        1 & 0 & 0 \\
+        2 & 1 & 0 \\
+        -3 & 5 & 1 \\
+    \end{pmatrix} \cdot 
+    \begin{pmatrix}
+        -2 & 1 & 3 \\
+        0 & -1 & 2 \\
+        0 &  0 & 1 \\
+    \end{pmatrix} = 
+    \begin{pmatrix}
+-2 & 1 & 3 \\
+-4 & 1 & 8 \\
+6 &  -8 & 2 \\        
+    \end{pmatrix}
+    \]
+
+    \pause
+    \[
+    \det A = 1\cdot 1\cdot 1\cdot (-2) \cdot (-1) \cdot 1 = 2
+    \]    
+
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Резюме}
+
+    \begin{itemize}[<+->]
+    \item Определитель измеряет изменение площади и объёма.
+    \item Свойства определителя.
+    \item Обращение матрицы методом Гаусса.
+    \item Обращение матрицы методом Крамера.
+    \item Метод Гаусса как $LU$-разложение.
+    \item Бонус: комплексные числа.
+    \end{itemize}
+    \pause
+    \alert{Следующая лекция:} Спектральное разложение и диагонализация.
+        
+
+
+\end{frame}
