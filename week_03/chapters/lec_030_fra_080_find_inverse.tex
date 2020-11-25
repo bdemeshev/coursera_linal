@@ -12,7 +12,7 @@
   \begin{itemize}[<+->]
     \item Метод Гаусса;
     \item Метод Крамера;
-    \item Критерий наличия обратной матрицы.
+    \item Критерии наличия обратной матрицы.
   \end{itemize}
 
 \end{frame}
@@ -211,7 +211,7 @@ A^{-1} =   \begin{pmatrix}
     \end{block}
     \pause
 
-    Напомним, что $(-1)^{i+j}\det (A_{ji}^{\cross})$ называется \alert{алгебраическим дополнением} к $a_{ji}$.
+    Напомним, что $C_{ji}=(-1)^{i+j}\det (A_{ji}^{\cross})$ называется \alert{алгебраическим дополнением} к $a_{ji}$.
 
 \end{frame}
 
@@ -219,13 +219,13 @@ A^{-1} =   \begin{pmatrix}
 \begin{frame}
         \frametitle{Метод Крамера для обратной матрицы}
     
-        Хотим обратить матрицу $A$.
+        Алгоритм обращения матрицы $A$.
 
         \begin{enumerate}
             \item Находим определитель $\det A$. Если $\det A = 0$, то матрица $A$ не обратимая. \pause
             \item Для каждого элемента $A$ находим алгебраическое дополнение $C_{ij} = (-1)^{i+j}\det (A_{ij}^{\cross})$.
             Помещаем все дополнения в матрицу $C$. \pause
-            \item Транспонируем матрицу $С$ и получаем \alert{присоединённую матрицу} $\adj A = C^T$.  \pause
+            \item Транспонируем матрицу $C$ и получаем \alert{присоединённую матрицу} $\adj A = C^T$.  \pause
             \item Делим матрицу $\adj A$ на $\det A$ и получаем $A^{-1} = \adj A/\det A$.
         \end{enumerate}
         
@@ -234,16 +234,24 @@ A^{-1} =   \begin{pmatrix}
 
 
 \begin{frame}
-    \frametitle{Вырожденные и невырожденные матрицы}
+    \frametitle{Вырожденная матрица}
 
     Матрица $A$ размера $n\times n$ называется \alert{вырожденной}, если:
 
     \begin{enumerate}
         \item $\det A = 0$; \pause
         \item Система $A \bx = \bzero$ имеет бесконечное количество решений; \pause
+        \item Система $A \bx = \bb$ имеет ноль или бесконечное количество решений; \pause
         \item $\rank A < n$; \pause
+        \item Столбцы $A$ линейно зависимы; \pause
+        \item Строки $A$ линейно зависимы; \pause
         \item $A^{-1}$ не существует; \pause
     \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Невырожденная матрица}
+    
 
 Матрица $A$ размера $n\times n$ называется \alert{невырожденной}, если:
 
@@ -251,6 +259,8 @@ A^{-1} =   \begin{pmatrix}
     \item $\det A \neq 0$; \pause
     \item Система $A \bx = \bb$ имеет единственное решение; \pause
     \item $\rank A = n$; \pause
+    \item Столбцы $A$ линейно независимы; \pause
+    \item Строки $A$ линейно независимы; \pause
     \item $A^{-1}$ существует;
 \end{enumerate}
 
