@@ -10,7 +10,7 @@
 
 \begin{frame}{Краткий план:}
   \begin{itemize}[<+->]
-    \item Гауссовские преобразования: другой взгляд;
+    \item Треугольные квадратные матрицы;
     \item LU-разложение;
     \item Применение LU-разложения.
   \end{itemize}
@@ -280,7 +280,7 @@
     \]
     Отменим действия $\LL_i$.
     \[
-        \LL_1^{-1} \cdot \LL_2^{-1} \cdot \ldots \cdot \LL_k^{-1} \cdot  \LL_k^{-1} \cdot \mathrm{U} =  \mathrm{P} \cdot A.\pause
+        \LL_1^{-1} \cdot \LL_2^{-1} \cdot \ldots \cdot \LL_{k-1}^{-1} \cdot  \LL_k^{-1} \cdot \mathrm{U} =  \mathrm{P} \cdot A.\pause
     \]
     Гауссовские преобразования эквивалентны разложению
     \[
