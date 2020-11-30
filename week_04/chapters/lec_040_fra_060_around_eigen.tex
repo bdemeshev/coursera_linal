@@ -1,0 +1,129 @@
+% !TEX root = ../linal_lecture_04.tex
+
+\begin{frame} % название фрагмента
+
+\videotitle{Вокруг собственных чисел}
+
+\end{frame}
+
+
+
+\begin{frame}{Краткий план:}
+  \begin{itemize}[<+->]
+    \item Реинкарнация теоремы Виета. 
+    \item Обратимость и собственные числа.
+    \item Собственные числа проектора.
+  \end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Вид характеристического многочлена}
+
+
+    \begin{block}{Утверждение}
+        Характеристический многочлен $\charp_A(\lambda)$ матрицы $A$ размера $n\times n$ имеет вид
+        \[
+            \charp_A(\lambda) = (-1)^n (\lambda^n - \trace A \lambda^{n-1}) + \ldots + \det A
+        \]
+        
+    \end{block}
+    \pause
+
+    Пример. 
+    \[
+        A= \begin{pmatrix}
+            4 & 5 \\
+            1 & 2 \\
+        \end{pmatrix}, \; \charp_A(\lambda) = \lambda^2 - 6 \lambda + 3
+    \]
+    \pause
+    Пример.
+\[
+    B= \begin{pmatrix}
+        4 & 5 & 0 \\
+        1 & 2 & 0 \\
+        4 & 3 & 7 \\
+    \end{pmatrix}, \; \charp_B(\lambda) = -\lambda^3 + 13 \lambda^2 + \ldots + 21
+\]
+
+
+\end{frame}
+
+
+\begin{frame}{Реинкарнация теоремы Виета}
+\begin{block}{Утверждение}
+    Если у матрицы $A$ размера $n\times n$ ровно $n$ действительных собственных чисел $\lambda_1$, 
+    $\lambda_2$, \ldots, $\lambda_n$, то \pause
+    \[
+    \trace A = \sum_{i=1}^n \lambda_i; \pause
+    \]
+    \[
+    \det A = \prod_{i=1}^n \lambda_i.   
+    \]
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Пополним критерий вырожденности!}
+
+    Матрица $A$ размера $n\times n$ называется \alert{вырожденной}, если:
+
+    \begin{enumerate}
+        \item $\det A = 0$; 
+        \item Система $A \bx = \bzero$ имеет бесконечное количество решений; 
+        \item Система $A \bx = \bb$ имеет ноль или бесконечное количество решений; 
+        \item $\rank A < n$; 
+        \item Столбцы $A$ линейно зависимы; 
+        \item Строки $A$ линейно зависимы; 
+        \item $A^{-1}$ не существует; 
+        \item \alert{У матрицы $A$ есть $\lambda=0$.}
+    \end{enumerate}
+
+
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Собственные числа проектора}
+
+    Оператор $\HH: \R^n \to \R^n$ проецирует $\R^n$ на некоторую линейную оболочку $M$. \pause
+    
+    \begin{block}{Утверждение}
+        Собственные числа проектора $H$ равны $0$ или $1$. \pause
+        
+        Собственными векторами c $\lambda=0$ будут векторы, ортогональные $M$. \pause
+
+        Собственными векторами c $\lambda=1$ будут векторы из  $M$. \pause
+
+        У проектора ровно $n$ линейно независимых собственных векторов. 
+    \end{block}
+
+    
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Ранг и след проектора}
+
+Оператор $\HH: \R^n \to \R^n$ проецирует $\R^n$ на некоторую линейную оболочку $M$. \pause
+
+    Ранг проектора — число элементов в базисе $M$. \pause
+
+    След проектора — кратность собственного числа $\lambda=1$. \pause
+
+    \begin{block}{Утверждение}
+        Для проектора $\HH$ след и ранг равны размерности множества, на которое проецирует $\HH$,
+        \[
+        \rank \HH = \trace \HH.    
+        \]
+    \end{block}
+
+
+\end{frame}
