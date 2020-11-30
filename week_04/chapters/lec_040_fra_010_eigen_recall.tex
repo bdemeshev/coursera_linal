@@ -1,0 +1,318 @@
+% !TEX root = ../linal_lecture_04.tex
+
+\begin{frame} % название фрагмента
+
+\videotitle{Собственные числа и векторы}
+
+\end{frame}
+
+
+
+\begin{frame}{Краткий план:}
+  \begin{itemize}[<+->]
+    \item Собственные числа и собственные векторы матрицы.
+    \item Характеристический многочлен.
+    \item Алгебраическая кратность.
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{От оператора к матрице}
+
+\begin{block}{Определение}
+Если для оператора $\LL: \R^n \to \R^n$ найдётся такой ненулевой вектор $\bv$, 
+что $\LL \bv=\lambda \cdot \bv$, где $\lambda \in \R$, то:
+  \begin{itemize}
+    \item вектор $\bv$ называется \alert{собственным вектором};
+    \item число $\lambda$ называется \alert{собственным числом}.
+  \end{itemize} 
+\end{block}
+
+\begin{center}
+\begin{tikzpicture}[
+scale=1.6,
+MyPoints/.style={draw=blue,fill=white,thick},
+Segments/.style={draw=blue!50!red!70,thick},
+MyCircles/.style={green!50!blue!50,thin}, 
+every node/.style={scale=1.2}
+]
+%\grid;
+% \clip (-.5,-.5) rectangle (6.5,5.5);
+
+
+%%\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
+%\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-1)--(0,5) node[above left]{$x_2$};
+%
+%\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-1,0)--(6.5,0) 
+%node[right]{$x_1$};
+
+% Feel free to change here coordinates of points A and B
+\pgfmathparse{0}		\let\Xa\pgfmathresult
+\pgfmathparse{0}		\let\Ya\pgfmathresult
+\coordinate (A) at (\Xa,\Ya);
+
+\pgfmathparse{5}		\let\Xb\pgfmathresult
+\pgfmathparse{0}		\let\Yb\pgfmathresult
+\coordinate (B) at (\Xb,\Yb);
+
+\pgfmathparse{2.5}		\let\Xc\pgfmathresult
+\pgfmathparse{5}		\let\Yc\pgfmathresult
+\coordinate (C) at (\Xc,\Yc);
+
+\pgfmathparse{1.5}		\let\Xd\pgfmathresult
+\pgfmathparse{3}		\let\Yd\pgfmathresult
+\coordinate (D) at (\Xd,\Yd);
+
+\pgfmathparse{2}		\let\Xe\pgfmathresult
+\pgfmathparse{1.5}		\let\Ye\pgfmathresult
+\coordinate (E) at (\Xe,\Ye);
+
+
+
+% Let I be the midpoint of [AB]
+\pgfmathparse{(\Xb+\Xa)/2} \let\XI\pgfmathresult
+\pgfmathparse{(\Yb+\Ya)/2} \let\YI\pgfmathresult
+\coordinate (I) at (\XI,\YI);	
+
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, darkgray,thick] (A)--(B) node[above]{$\operatorname{L} \bb \neq \lambda \bb$};
+
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (A)--(E) node[midway,below]{$\bb$};
+
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, darkgray,thick] (A)--(C) node[above]{$\operatorname{L} \ba = \lambda \ba$};
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca,thick] (A)--(D) node[midway,left]{$\ba$};
+
+
+\end{tikzpicture}
+\end{center}    
+
+
+\end{frame}
+        
+
+
+
+\begin{frame}
+    \frametitle{Собственные числа и векторы матрицы}
+
+    \begin{block}{Определение}
+        \alert{Собственными числами} и \alert{собственными векторами} матрицы размера $n\times n$ называются собственные числа и векторы 
+        соответствующего линейного оператора.
+    \end{block}
+    \pause
+
+    Для абстрактного векторного пространства $V$ матрица $\LL_{\be \be}$ линейного оператора $\LL: V\to V$ зависит от выбора базиса $\be$.
+    При этом выбор базиса $\be$ никак не влияет на собственные числа и собственные векторы. 
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Количество собственных векторов}
+
+    Из уравнения $\LL \bv = \lambda \bv$ находим вектор $\bv$ и число $\lambda$.
+
+    \pause
+
+    Если найдётся один собственный вектор $\bv \neq \bzero$, то любой вектор $\bv' = c \cdot \bv$ также будет собственным:
+    \pause
+    \[
+    \LL \bv' = \LL c \bv = c \LL \bv = c \lambda \bv = \lambda \bv'.
+    \]
+
+    \pause
+    Система уравнений $\LL \bv = \lambda \bv$ должна иметь бесконечное количество решений!
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Как найти собственные числа?}
+
+    Перепишем систему $\LL \bv = \lambda \bv$ в виде $(\LL - \lambda \Id) \bv = \bzero$.
+    
+    \pause
+
+    Система имеет бесконечное количество решений, если и только если $\det (\LL - \lambda \Id) = 0$.
+
+    \pause
+
+    \begin{block}{Алгоритм}
+        \begin{enumerate}
+            \item Из уравнения $\det (\LL - \lambda \Id) = 0$ находим собственные числа $\lambda_1$, \ldots, $\lambda_k$. \pause
+            \item Для каждого $\lambda_i$ решаем систему $\det (\LL - \lambda_i \Id) \bv = \bzero$ относительно $\bv$, то есть находим все собственные векторы. 
+        \end{enumerate}
+    \end{block}
+
+    
+\end{frame}
+
+
+ \begin{frame}
+     \frametitle{Характеристический многочлен}
+
+     \begin{block}{Определение}
+         Многочлен $\charp_{\LL}(\lambda) = \det (\LL - \lambda \Id)$ называется
+         \alert{характеристическим многочленом} линейного оператора $\LL$.
+     \end{block}
+
+     \pause
+
+     Характеристическим многочленом матрицы называется характеристический многочлен соответствующего линейного оператора.
+    
+ \end{frame}
+
+
+ \begin{frame}{Характеристический многочлен: пример}
+
+    Рассмотрим матрицу $A = \begin{pmatrix}
+        4 & 6 & 0 \\
+        6 & 4 & 0 \\
+        0 & 0 & 7 \\
+    \end{pmatrix}.$
+
+    \pause
+    \[
+    \charp_A(\lambda) = \det (A - \lambda \Id) = \begin{bmatrix}
+4-\lambda & 6 & 0 \\
+6 & 4-\lambda & 0 \\
+0 & 0 & 7-\lambda \\        
+    \end{bmatrix} = \pause
+    \]
+    \[ = (7-\lambda) \begin{vmatrix}
+4-\lambda & 6  \\
+6 & 4-\lambda \\
+\end{vmatrix} = (7-\lambda)((4-\lambda)^2 - 36) = \pause
+\]
+\[
+ = -(\lambda - 7)(\lambda + 2)(\lambda - 10) = 
+ -\lambda^3  + 15\lambda^2   -36 \lambda  - 140  
+    \]
+
+ \end{frame}
+
+
+ \begin{frame}
+     \frametitle{Характеристический многочлен}
+
+     По характеристическому многочлену можно найти: \pause
+
+     \begin{enumerate}
+         \item Собственные числа из уравнения $\charp_{A}(\lambda) = 0$.
+         \[
+            \charp_{A}(\lambda)  = -(\lambda - 7)(\lambda + 2)(\lambda - 10)    
+         \]
+         \[
+         \lambda_1 = 7, \; \lambda_2 = -2, \; \lambda_3 = 10.    
+         \]
+         
+         \pause
+         \item Определитель $\det \LL$ из равенства $\charp_{A}(0) = \det \LL$.
+         \[
+            \charp_{A}(\lambda) =-\lambda^3  + 15\lambda^2   -36 \lambda  - 140 
+         \]
+         \[
+         \det A = \charp_A(0)=-140.
+         \]
+
+     \end{enumerate}
+ 
+ 
+ \end{frame}
+
+
+ \begin{frame}
+     \frametitle{Алгебраическая кратность}
+
+     \begin{block}{Утверждение}
+    По основной теореме алгебры любой многочлен $f$ с действительными коэффициентами можно единственным образом представить в виде:
+    \[
+    f(x) = (x-x_1)^{k_1}\ldots (x-x_p)^{k_p} g(x),
+    \]
+    где $x_1$, \ldots, $x_p \in \R$ — различные корни многочлена $f$, а многочлен $g$ действительных корней не имеет. 
+         
+     \end{block}
+ 
+     \pause
+     \begin{block}{Определение}
+        Число $k_i$ называется \alert{алгебраической кратностью} корня $x_i$.
+     \end{block}
+ 
+ \end{frame}
+
+
+ \begin{frame}
+     \frametitle{Алгебраическая кратность: пример}
+
+     Если $\charp_A(\lambda) = -(\lambda - 7)^2(\lambda + 3)$, то 
+     собственное число $\lambda = 7$ имеет алгебраическую кратность $2$, 
+     а собственное число $\lambda = -3$ имеет алгебраическую кратность $1$.
+ 
+     \pause
+     Если $\LL : \R^n \to \R^n$, то сумма алгебраических кратностей $k_i$ 
+     действительных собственных чисел $\lambda_i \in \R$
+     не превосходит $n$:
+    \[
+    \sum_{i=1}^p k_i \leq n.
+    \]
+
+ \end{frame}
+
+
+
+% \begin{frame}
+% \frametitle{Немного о комплексных числах}
+
+
+% \end{frame}
+
+
+% \begin{frame}
+%     \frametitle{Немного о комплексных числах}
+
+%     \begin{block}{Утверждение}
+%     По основной теореме алгебры любой многочлен $f$ с действительными коэффициентами можно единственным образом представить в виде:
+%     \[
+%     f(x) =a (x-x_1)^{k_1}\ldots (x-x_p)^{k_p},
+%     \]
+%     где $x_1$, \ldots, $x_p \in \mathbb{C}$ — различные корни многочлена $f$. 
+
+%      \end{block}
+%     \pause
+%     Любой оператор $\LL: \R^n \to \R^n$ имеет собственные числа, если допустить, что $\lambda \in \mathbb{C}$.
+
+%     \pause
+% Если $\LL : \R^n \to \R^n$, то сумма алгебраических кратностей $k_i$ 
+%  собственных чисел $\lambda_i \in \mathbb{C}$
+%  равна $n$, $\sum_{i=1}^p k_i = n$.
+
+    
+
+% \end{frame}
+
+ 
+\begin{frame}
+    \frametitle{Теорема Гамильтона-Кэли}
+
+    \begin{block}{Утверждение}
+        Если подставить матрицу $A$ в характеристический многочлен $\charp_A(\lambda)$, то получится матрица из нулей,
+        \[
+        \charp_A(A) = \bzero;     
+        \]
+    \end{block}
+
+%    \pause
+
+ %   Эта теорема позволяет, например, снижать степень матрицы. 
+
+    \pause
+    \vspace{10pt}
+    Пример. Если $\charp_A(\lambda) = \lambda^2 - 3\lambda + 8$, то $A^2 - 3A + 8\Id = \bzero$ и 
+    $A^2 = 3A - 8\Id$. 
+    
+
+\end{frame}
