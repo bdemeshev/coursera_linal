@@ -1,0 +1,349 @@
+% !TEX root = ../linal_lecture_04.tex
+
+\begin{frame} % название фрагмента
+
+\videotitle{Комплексные собственные числа}
+
+\end{frame}
+
+
+
+\begin{frame}{Краткий план:}
+  \begin{itemize}[<+->] 
+    \item Комплексные числа.
+    \item Основная теорема алгебры.
+  \end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}{Комплексные числа как мистика}
+
+    \begin{block}{}
+        Множество $\CC$ вида
+        \[
+        \CC = \{ a+ bi \mid a, b \in \R \}    
+        \]
+        с естественным сложением и умножением по правилу $i^2 = -1$ называется множеством \alert{комплексных чисел}.
+    \end{block}
+
+    \pause
+    Пример.
+    \[
+    (5 + 6i) + (2 + i) = 7 + 7i \pause 
+    \]
+    \[
+        (5 + 6i)(2+i) = 10 + 17i + 6i^2 = 10 - 6 + 17i = 4 + 17i \pause    
+    \]
+    \[
+    \frac{5+6i}{2-i } =     \frac{(5+6i)(2+i)}{(2-i)(2+i)} = \frac{4+17i}{4 - i^2}= \frac{4}{5} + \frac{17}{5}i
+    \]
+
+\end{frame}
+
+\begin{frame}{Комплексные числа как операторы}
+
+    \begin{block}{Идея}
+    Комплексное число $a + bi$ — способ записывать повороты плоскости,
+    растяжения плоскости и композиции этих действий.    
+    \end{block}
+
+    \pause
+    $a+ bi \; \leftrightarrow \;$ преобразование плоскости! 
+
+\end{frame}
+
+
+\begin{frame}{Комплексные числа как операторы}
+
+\begin{center}
+
+
+\begin{tikzpicture}[
+scale=1.8,
+MyPoints/.style={draw=blue,fill=white,thick},
+Segments/.style={draw=blue!50!red!70,thick},
+MyCircles/.style={green!50!blue!50,thin}, 
+every node/.style={scale=1}
+]
+%\draw[color=gray,step=1.0,dotted] (-1.9,-0.9) grid (5.5,6.5); 
+\clip (-1,-1.5) rectangle (6.5,3.5);
+
+%{\verb!->!new, arrowhead = 2mm, line width=4pt}
+%, arrowhead = 3mm
+%, arrowhead = 0.2
+
+
+%\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-0.5)--(0,3) node[left]{$\operatorname{Im}$};
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-0.5,0)--(6,0) 
+node[right]{$\operatorname{Re}$};
+
+
+
+% Feel free to change here coordinates of points A and B
+\pgfmathparse{0}		\let\Xa\pgfmathresult
+\pgfmathparse{0}		\let\Ya\pgfmathresult
+\coordinate (A) at (\Xa,\Ya);
+
+\pgfmathparse{0}		\let\Xb\pgfmathresult
+\pgfmathparse{2}		\let\Yb\pgfmathresult
+\coordinate (B) at (\Xb,\Yb);
+
+\pgfmathparse{4}		\let\Xc\pgfmathresult
+\pgfmathparse{2}		\let\Yc\pgfmathresult
+\coordinate (C) at (\Xc,\Yc);
+
+\pgfmathparse{4}		\let\Xd\pgfmathresult
+\pgfmathparse{0}		\let\Yd\pgfmathresult
+\coordinate (D) at (\Xd,\Yd);
+
+\pgfmathparse{1}		\let\Xe\pgfmathresult
+\pgfmathparse{0}		\let\Ye\pgfmathresult
+\coordinate (E) at (\Xe,\Ye);
+
+
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth,  veca] (A)--(C) node[above right]{$\ba+\bb i$};
+
+
+\draw (A)--(B) node[left]{$\bb$} ;
+
+\draw (A)--(D) node[below]{$\ba$};
+
+\draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth,  vecb] (A)--(E) node[below]{$\left(\begin{array}{l}1 \\ 0\end{array}\right)$};
+
+
+\draw[black, dashed, thick] (B)--(C);
+\draw[black, dashed, thick] (D)--(C);
+
+
+
+\end{tikzpicture}
+
+    \end{center}
+        
+\pause
+
+Число $a+bi$ кодирует преобразование плоскости $\begin{pmatrix}
+    1 \\
+    0 \\
+\end{pmatrix} \to \begin{pmatrix}
+    a \\
+    b \\
+\end{pmatrix}$.
+
+\end{frame}
+
+
+\begin{frame}{Никакой мистики!}
+
+
+Поворот на $90^{\circ}$:
+\[
+ \begin{pmatrix}
+    1 \\
+    0 \\
+\end{pmatrix} \to \begin{pmatrix}
+    0 \\
+    1 \\
+\end{pmatrix}   \leftrightarrow 0 + 1\cdot i = i \pause
+\]
+
+    Растягивание в 7 раз:
+\[
+ \begin{pmatrix}
+    1 \\
+    0 \\
+\end{pmatrix} \to \begin{pmatrix}
+    7 \\
+    0 \\
+\end{pmatrix}   \leftrightarrow 7 + 0\cdot i = 7 \pause
+\]
+       
+    Растягивание в $\sqrt{2}$ раз и 
+    вращение на $45^\circ$:
+\[
+ \begin{pmatrix}
+    1 \\
+    0 \\
+\end{pmatrix} \to \begin{pmatrix}
+    1 \\
+    1 \\
+\end{pmatrix}   \leftrightarrow 1 + 1\cdot i = 1 + i
+\]
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}{Никакой мистики!}
+
+
+    Поворот на $90^{\circ}$:
+    \[
+     \begin{pmatrix}
+        1 \\
+        0 \\
+    \end{pmatrix} \to \begin{pmatrix}
+        0 \\
+        1 \\
+    \end{pmatrix}   \leftrightarrow 0 + 1\cdot i = i 
+    \]
+
+    Два поворота подряд на $90^{\circ}$:
+    \[
+    \begin{pmatrix}
+        1 \\
+        0 \\
+    \end{pmatrix} \to \begin{pmatrix}
+        -1 \\
+        0 \\
+    \end{pmatrix} \leftrightarrow  -1 + 0i = -1  \pause
+    \]
+
+    Если повернуться на $90^{\circ}$, а затем повернуться ещё на $90^{\circ}$, то
+        развернёшься в обратную сторону, $\; i \cdot i = -1$.
+
+\end{frame}
+
+
+
+\begin{frame}{Комплексные числа как операторы}
+
+\begin{block}{Определение}
+    Множество $\CC$ преобразований плоскости, включающее повороты плоскости, 
+    растяжения плоскости в произвольное количество раз и композиции этих двух действий,
+    называется множеством \alert{комплексных чисел}.
+\end{block}
+
+\pause
+Растягивание в 7 раз $\leftrightarrow 7$.
+
+\pause
+Поворот на $90^{\circ} \; \leftrightarrow i$.
+
+\pause
+Для $z\in\CC$ определяют:
+
+Модуль $\abs{z}$ — во сколько раз изменяется длина вектора. 
+
+Аргумент $\arg{z}$ — на сколько изменяется угол вектора. 
+
+\end{frame}
+    
+
+
+% \begin{frame}{Комплексные числа как матрицы}
+
+% \begin{block}{Эквивалентное пределение}
+%     Множество $\CC$ матриц вида $\begin{pmatrix}
+%         r\cos \phi & -r\sin \phi \\
+%         r\sin \phi & r\cos \phi \\
+%     \end{pmatrix}$ называется множеством \alert{комплексных чисел}.
+% \end{block}
+
+% \pause 
+% Все матрицы в $\CC$ имеют вид $\begin{pmatrix}
+%     a  & -b  \\
+%     b  & a  \\
+% \end{pmatrix}$.
+
+% \pause 
+% Для краткости вместо матрицы 
+% $\begin{pmatrix}
+%     a  & -b  \\
+%     b  & a  \\
+% \end{pmatrix}$ пишут $a+bi$.
+
+% \end{frame}
+
+
+% \begin{frame}
+%     \frametitle{Комплексные числа как образ $\be_1$}
+
+    
+%     \[
+%         \begin{pmatrix}
+%         a  & -b  \\
+%         b  & a  \\
+%     \end{pmatrix} \cdot \begin{pmatrix}
+%         1 \\
+%         0 
+%     \end{pmatrix} = 
+%     \begin{pmatrix}
+%         a \\
+%         b 
+%     \end{pmatrix}
+%     \]
+
+
+% \end{frame}
+
+    
+
+
+
+
+
+\begin{frame}
+    \frametitle{Основная теорема алгебры}
+    \begin{block}{Утверждение}
+        Любой многочлен $f(z)$ степени $n$ имеет ровно $n$ корней,
+        если считать корни $z\in \CC$ с учётом алгебраической кратности.
+\pause
+\[
+f(z) = a(z-z_1)(z-z_2)\cdot \ldots \cdot (z-z_n)    
+\]
+    \end{block}    
+
+    \pause
+    \begin{block}{Следствие}
+        У любой квадратной матрицы размера $n\times n$ найдётся ровно $n$ 
+        комплексных собственных чисел $\lambda \in \CC$ с учётом алгебраической кратности.
+    \end{block}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{След линейного оператора}
+
+    \begin{block}{Определение}
+        \alert{Следом} линейного оператора $\LL:\R^n\to\R^n$ называют сумму всех его комплексных собственных чисел $\lambda_i \in \CC$,
+        \[
+        \trace \LL = \lambda_1 + \lambda_2 + \ldots + \lambda_n.
+        \]
+    \end{block}
+
+    \pause
+    Пример. Если $\charp_{A}(\lambda) = -(\lambda-1)(\lambda-5)^2$, то $\trace A = 1 + 5 + 5 = 11$.
+
+    \pause
+    Пример. Если $\charp_{A}(\lambda) = -(\lambda-1)(\lambda-2+3i)(\lambda-2-3i)$, то $\trace A = 1 + (2-3i) + (2+3i) = 5$.
+
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Определитель линейного оператора}
+
+    \begin{block}{Утверждение}
+        Определитель линейного оператора $\LL:\R^n\to\R^n$ равен произведению всех его комплексных собственных чисел $\lambda_i \in \CC$,
+        \[
+        \det \LL = \lambda_1 \cdot \lambda_2 \cdot \ldots \cdot \lambda_n.
+        \]
+    \end{block}
+
+
+\end{frame}
+

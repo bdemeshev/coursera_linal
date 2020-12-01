@@ -21,7 +21,7 @@
 
 
 \begin{frame}
-    \frametitle{Вид характеристического многочлена}
+    \frametitle{След и характеристический многочлен}
 
 
     \begin{block}{Утверждение}
@@ -50,6 +50,25 @@
     \end{pmatrix}, \; \charp_B(\lambda) = -\lambda^3 + 13 \lambda^2 + \ldots + 21
 \]
 
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{След и характеристический многочлен}
+
+    Откуда след в характеристическом многочлене?
+    \pause
+    \[
+    \charp_B(\lambda) = \det(B -\lambda\Id) = \begin{vmatrix}
+        4 - \lambda & 5 & 0 \\
+        1 & 2 - \lambda & 0 \\
+        4 & 3 & 7 -\lambda \\
+    \end{vmatrix} =   \pause
+    \]
+    \[
+    = (4-\lambda)(2-\lambda)(7-\lambda) + \ldots = -\lambda^3 + \lambda^2 ( 4 + 2 + 7) + \ldots    
+    \]
+    
 
 \end{frame}
 
@@ -116,7 +135,11 @@
 
     Ранг проектора — число элементов в базисе $M$. \pause
 
-    След проектора — кратность собственного числа $\lambda=1$. \pause
+    След проектора — кратность собственного числа $\lambda=1$:
+    \[
+    \trace H = \lambda_1 + \lambda_2 + \ldots + \lambda_n    
+    \]
+    \pause
 
     \begin{block}{Утверждение}
         Для проектора $\HH$ след и ранг равны размерности множества, на которое проецирует $\HH$,
