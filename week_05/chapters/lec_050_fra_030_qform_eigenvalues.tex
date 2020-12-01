@@ -1,0 +1,168 @@
+% !TEX root = ../linal_lecture_05.tex
+
+\begin{frame} % название фрагмента
+
+\videotitle{Диагонализация квадратичной формы}
+
+\end{frame}
+
+
+
+\begin{frame}{Краткий план:}
+  \begin{itemize}[<+->]
+    \item Симметричная матрица и собственные числа.
+    \item Диагонализация квадратичной формы.
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Всегда диагонализуема!}
+    \begin{block}{Утверждение}
+        Если $A$ — симметричная матрица, $A^T = A$, то у неё всегда найдётся
+        ровно $n$ \alert{действительных} собственных чисел $\lambda_i$ \pause 
+        и ровно $n$ линейно независимых \alert{ортогональных} собственных векторов.
+    \end{block}
+    \pause
+    \begin{block}{Следствие}
+        У симметричной $A$ можно найти $n$ ортогональных собственных векторов единичной длины.
+
+        Симметричная матрица $A$ всегда диагонализуема!
+    \end{block}
+\end{frame}    
+
+
+\begin{frame}
+    \frametitle{Чем хороши ортогональные векторы?}
+
+    Векторы $\bv_1$, \ldots, $\bv_n$ — ортогональные и единичной длины.
+    \[
+    P = \begin{pmatrix}
+        \vdots & \vdots & \vdots \\
+        \bv_1 & \vdots & \bv_n \\
+        \vdots & \vdots & \vdots \\
+    \end{pmatrix}    \pause \quad
+    P^T = \begin{pmatrix}
+        \ldots & \bv_1^T & \ldots \\
+    \ldots & \ldots & \ldots \\
+    \ldots & \bv_n^T & \ldots \\
+    \end{pmatrix}    \pause
+    \]
+%
+    \[
+    P^T P = \begin{pmatrix}        
+        1 & 0 & \ldots & 0 \\
+        0 & 1 & \ldots & 0 \\
+        0 & 0 & \ldots & 0 \\
+        0 & 0 & \ldots & 1 \\
+    \end{pmatrix}  = \Id   \pause
+    \]
+%
+    \[
+    P^T = P^{-1}    
+    \]
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Диагонализация формы}
+
+    \begin{block}{Утвеждение}
+        Квадратичная форма $f(\bx) = \bx^T A \bx$ с симметричной $A$ представима в виде
+        \[
+        f(\bx) = \bx^T PDP^{-1} \bx,    
+        \] 
+        где $D$ — диагональная матрица из собственных чисел матрицы $A$, 
+        а $P$ — матрица из линейно независимых собственных векторов матрицы $A$.
+    \end{block}
+    \pause
+\begin{block}{Утвеждение}
+    Всегда можно выбрать ортогональные собственные векторы $A$ единичной длины, 
+    при этом представление примет вид:
+    \[
+    f(\bx) = \bx^T PDP^T \bx = (P^T \bx)^T D (P^T \bx),    
+    \] 
+\end{block}
+    
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Диагонализация формы}
+\begin{block}{Утвеждение}
+    Всегда можно выбрать ортогональные собственные векторы единичной длины, 
+    при этом представление примет вид:
+    \[
+    f(\bx) = \bx^T PDP^T \bx = (P^T \bx)^T D (P^T \bx),    
+    \] 
+    где $D$ — диагональная матрица из собственных чисел матрицы $A$, 
+    а $P$ — матрица из собственных векторов матрицы $A$.
+\end{block}
+    \pause
+    \[
+    f(\bx) =  (P^T \bx)^T D (P^T \bx) = \by^T D \by = 
+    \]
+    \[
+    = \lambda_1 y_1^2 + \lambda_2 y_2^2 + \ldots + \lambda_n y_n^2
+    \]
+    \pause
+    Это просто удачная замена переменных $\by=P^T \bx$!
+\end{frame}
+
+\begin{frame}
+    \frametitle{Определённость формы}
+    Пример, $f(\bx) = 5 y_1^2 + 6y_2^2 - 9y_3^2$. \pause
+
+    Квадратичная форма $f$ неопределена. 
+    \pause
+\begin{block}{Утверждение}
+    Квадратичная форма 
+    \[
+      f(\bx) = \lambda_1 y_1^2 + \lambda_2 y_2^2 + \ldots + \lambda_n y_n^2  
+    \]
+    является\ldots\pause 
+
+    положительно определённой, если все $\lambda_i >0$.\pause
+
+    отрицательно определённой, если все $\lambda_i <0$.\pause
+
+    положительно полуопределённой, если все $\lambda_i \geq 0$.\pause
+
+    отрицательно полуопределённой, если все $\lambda_i \leq 0$.\pause
+
+    неопределённой, если найдётся $\lambda_i >0$ и $\lambda_j < 0$.
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Кусочек доказательства}
+
+    \begin{block}{Утверждение}
+        Для симметричной матрицы $A$, $A^T=A$, собственные вектора, 
+        соответствующие разным $\lambda$, ортогональны. 
+    \end{block}
+
+    \pause
+
+\begin{block}{Доказательство}
+К примеру, $A\bx = 5\bx$ и $A\by = 7\by$. \pause
+\[
+\begin{array}{c} 
+    \langle A\bx, \by \rangle = \langle 5\bx, \by \rangle = 5 \langle \bx, \by \rangle \pause \\
+    \langle \bx, A\by \rangle = \langle \bx, 7\by \rangle = 7 \langle \bx, \by \rangle \pause \\
+    \langle A\bx, \by \rangle =  \langle \bx, A^T\by \rangle =  \langle \bx, A \by \rangle \pause \\
+ \end{array}
+\]
+
+Равенство возможно, только если $\bx \perp \by$:
+\[
+    5 \langle \bx, \by \rangle = 7 \langle \bx, \by \rangle
+\]
+
+\end{block}
+
+
+    
+
+\end{frame}
