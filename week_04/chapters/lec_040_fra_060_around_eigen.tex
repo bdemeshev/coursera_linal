@@ -19,15 +19,38 @@
 
 
 
+\begin{frame}
+    \frametitle{Характеристический многочлен и след}
+
+Рассмотрим пример характеристического многочлена:
+\[
+\charp_B(\lambda) = \det(B -\lambda\Id) = \begin{vmatrix}
+    \blue{4 - \lambda} & 5 & 6 \\
+    1 & \blue{2 - \lambda} & 2 \\
+    4 & 3 & \blue{7 -\lambda} \\
+\end{vmatrix} =   \pause
+\]
+\[
+= (4-\lambda)(2-\lambda)(7-\lambda) + \ldots = -\lambda^3 + \lambda^2 ( 4 + 2 + 7) + \ldots    
+\]
+\pause
+\[
+= -\lambda^3 + \trace A \cdot \lambda^2 + \ldots    
+\]
+
+\end{frame}
+
+
 
 \begin{frame}
-    \frametitle{След и характеристический многочлен}
+    \frametitle{Характеристический многочлен и след}
 
 
     \begin{block}{Утверждение}
-        Характеристический многочлен $\charp_A(\lambda)$ матрицы $A$ размера $n\times n$ имеет вид
+        В характеристическом многочлене $\charp_A(\lambda)$ матрицы $A$ размера $n\times n$ 
+        перед $\lambda^{n-1}$ стоит $(-1)^{n-1} \trace A$:
         \[
-            \charp_A(\lambda) = (-1)^n (\lambda^n - \trace A \lambda^{n-1}) + \ldots + \det A
+            \charp_A(\lambda) = (-1)^n \lambda^n  + (-1)^{n-1}\trace A \lambda^{n-1} + \ldots 
         \]
         
     \end{block}
@@ -44,33 +67,15 @@
     Пример.
 \[
     B= \begin{pmatrix}
-        4 & 5 & 0 \\
-        1 & 2 & 0 \\
+        4 & 5 & 6 \\
+        1 & 2 & 2 \\
         4 & 3 & 7 \\
-    \end{pmatrix}, \; \charp_B(\lambda) = -\lambda^3 + 13 \lambda^2 + \ldots + 21
+    \end{pmatrix}, \; \charp_B(\lambda) = -\lambda^3 + 13 \lambda^2 + \ldots 
 \]
 
 
 \end{frame}
 
-\begin{frame}
-    \frametitle{След и характеристический многочлен}
-
-    Откуда след в характеристическом многочлене?
-    \pause
-    \[
-    \charp_B(\lambda) = \det(B -\lambda\Id) = \begin{vmatrix}
-        4 - \lambda & 5 & 0 \\
-        1 & 2 - \lambda & 0 \\
-        4 & 3 & 7 -\lambda \\
-    \end{vmatrix} =   \pause
-    \]
-    \[
-    = (4-\lambda)(2-\lambda)(7-\lambda) + \ldots = -\lambda^3 + \lambda^2 ( 4 + 2 + 7) + \ldots    
-    \]
-    
-
-\end{frame}
 
 
 \begin{frame}{Реинкарнация теоремы Виета}
@@ -78,12 +83,19 @@
     Если у матрицы $A$ размера $n\times n$ ровно $n$ действительных собственных чисел $\lambda_1$, 
     $\lambda_2$, \ldots, $\lambda_n$, то \pause
     \[
-    \trace A = \sum_{i=1}^n \lambda_i; \pause
-    \]
-    \[
-    \det A = \prod_{i=1}^n \lambda_i.   
+    \charp_A(\lambda) = (\lambda_1 - \lambda) (\lambda_2 - \lambda) \cdot \ldots \cdot (\lambda_n - \lambda)
     \]
 \end{block}
+\pause
+\begin{block}{Следствия}
+\[
+\det A = \prod_{i=1}^n \lambda_i; \pause
+\]
+\[
+\trace A = \sum_{i=1}^n \lambda_i; 
+\]    
+\end{block}
+
 
 \end{frame}
 
