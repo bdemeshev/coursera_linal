@@ -74,6 +74,15 @@
 cross/.default={5pt}}
 
 
+\newcommand{\spike}[2]% #1 = size of spike, #2 = centered text
+{\bgroup
+  \sbox0{#2}%
+  \rlap{\usebox0}%
+  \hspace{0.5\wd0}%
+  \makebox[0pt][c]{\rule[\dimexpr \ht0+1pt]{0.5pt}{#1}}% top spike
+  \makebox[0pt][c]{\rule[\dimexpr -\dp0-#1-1pt]{0.5pt}{#1}}% bottom spike
+  \hspace{0.5\wd0}%
+\egroup}
 
 
 
