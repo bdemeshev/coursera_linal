@@ -144,7 +144,7 @@ every node/.style={scale=1.2}
     \begin{block}{Алгоритм}
         \begin{enumerate}
             \item Из уравнения $\det (\LL - \lambda \Id) = 0$ находим собственные числа $\lambda_1$, \ldots, $\lambda_k$. \pause
-            \item Для каждого $\lambda_i$ решаем систему $\det (\LL - \lambda_i \Id) \bv = \bzero$ относительно $\bv$, то есть находим все собственные векторы. 
+            \item Для каждого $\lambda_i$ решаем систему $(\LL - \lambda_i \Id) \bv = \bzero$ относительно $\bv$, то есть находим все собственные векторы. 
         \end{enumerate}
     \end{block}
 
@@ -202,7 +202,7 @@ every node/.style={scale=1.2}
      По характеристическому многочлену можно найти: \pause
 
      \begin{enumerate}
-         \item Собственные числа из уравнения $\charp_{A}(\lambda) = 0$.
+         \item Собственные числа $A$ из уравнения $\charp_{A}(\lambda) = 0$.
          \[
             \charp_{A}(\lambda)  = -(\lambda - 7)(\lambda + 2)(\lambda - 10)    
          \]
@@ -211,7 +211,7 @@ every node/.style={scale=1.2}
          \]
          
          \pause
-         \item Определитель $\det A$ из равенства $\charp_{A}(0) = \det (A - 0\Id)$.
+         \item Определитель $A$ из равенства $\charp_{A}(0) = \det (A - 0\cdot \Id)$.
          \[
             \charp_{A}(\lambda) =-\lambda^3  + 15\lambda^2   -36 \lambda  - 140 
          \]
@@ -231,7 +231,7 @@ every node/.style={scale=1.2}
      \begin{block}{Утверждение}
     По основной теореме алгебры любой многочлен $f$ с действительными коэффициентами можно единственным образом представить в виде:
     \[
-    f(x) = (x-x_1)^{k_1}\ldots (x-x_p)^{k_p} g(x),
+    f(x) = (x-x_1)^{k_1} \cdot \ldots  \cdot (x-x_p)^{k_p} g(x),
     \]
     где $x_1$, \ldots, $x_p \in \R$ — различные корни многочлена $f$, а многочлен $g$ действительных корней не имеет. 
          
