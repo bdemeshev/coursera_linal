@@ -40,16 +40,17 @@
 \begin{frame}
     \frametitle{Основное свойство следа}
 
-    \begin{block}{Утверждение}
+    \onslide<1->{\begin{block}{Утверждение}
         Если матрицы $A$ и $B$ имеют размер $n\times k$, то
         \[
         \trace A^T B = \sum_{ij} a_{ij} b_{ij} = \trace B^T A
         \]
 
-    \end{block}
-    \pause
+    \end{block}}
 
-    Пример. $A = \begin{pmatrix}
+    \begin{overlayarea}{\textwidth}{0.4\textheight}
+
+    \only<2>{Пример. $A = \begin{pmatrix}
         a_1 & a_2 \\
         a_3 & a_4 \\ 
     \end{pmatrix},  \;
@@ -60,34 +61,37 @@
 
     \[
     \trace A^T B = a_1 b_1 + a_2 b_2 + a_3 b_3 + a_4 b_4    
-    \]
-
-\end{frame}
-
-
-\begin{frame}
-    \frametitle{Основное свойство следа}
-
-\begin{block}{Утверждение}
-    Если матрицы $A$ и $B$ имеют размер $n\times k$, то
-    \[
-    \trace A^T B = \sum_{ij} a_{ij} b_{ij} = \trace B^T A
-    \]
-
-\end{block}
-\pause
-
-    \begin{block}{Доказательство}
+    \]} %
+    \only<3>{\begin{block}{Доказательство}
         \[
         \trace A^T B = \sum_i \langle \row_i A^T, \col_i B \rangle =
         \]
         \[ 
          = \sum_i \langle \col_i A, \col_i B \rangle = \sum_{ij} a_{ij} b_{ij}
         \]
-    \end{block}
-    
+    \end{block}}
+    \end{overlayarea}
+
 
 \end{frame}
+
+
+% \begin{frame}
+%     \frametitle{Основное свойство следа}
+
+% \begin{block}{Утверждение}
+%     Если матрицы $A$ и $B$ имеют размер $n\times k$, то
+%     \[
+%     \trace A^T B = \sum_{ij} a_{ij} b_{ij} = \trace B^T A
+%     \]
+
+% \end{block}
+% \pause
+
+    
+    
+
+% \end{frame}
 
 
 \begin{frame}
