@@ -15,4 +15,5 @@ linal_lecture_$(file_name).pdf: linal_lecture_$(file_name).tex chapters/ figures
 	echo To make pngs use 'make png'
 
 png:
+	mkdir -p slides
 	pdftocairo linal_lecture_$(file_name).pdf slides/la-$(file_name) -png -r 300 -transp 
