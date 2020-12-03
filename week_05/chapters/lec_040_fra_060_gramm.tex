@@ -1,0 +1,116 @@
+% !TEX root = ../linal_lecture_05.tex
+
+\begin{frame} % название фрагмента
+
+\videotitle{Матрица Грамма}
+
+\end{frame}
+
+
+
+\begin{frame}{Краткий план:}
+  \begin{itemize}[<+->]
+    \item Матрица Грама.
+    \item Матрица Грама и проекция.
+    \item Ортогональный базис.
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Матрица Грама}
+
+    \begin{block}{Определение}
+        Возьмём векторы $\bx_1$, $\bx_2$, \ldots, $\bx_k$ из $\R^n$. 
+        Матрица их попарных скалярных произведений называется \alert{матрицей Грама},
+        \[
+            M =  \begin{pmatrix}
+                \langle \bx_1, \bx_1 \rangle &  \langle \bx_1, \bx_2 \rangle & \ldots & \langle \bx_1, \bx_k \rangle \\
+                \langle \bx_2, \bx_1 \rangle &  \langle \bx_2, \bx_2 \rangle & \ldots & \langle \bx_2, \bx_k \rangle \\
+                \ldots & \ldots & \ldots & \ldots \\
+                \langle \bx_k, \bx_1 \rangle &  \langle \bx_k, \bx_2 \rangle & \ldots & \langle \bx_k, \bx_k \rangle \\ 
+            \end{pmatrix} = X^T X\pause
+        \]      
+
+        А определитель этой матрицы называется \alert{определителем Грама}, $G=\det M$.
+    \end{block}
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Свойства матрицы Грама}
+
+    \begin{block}{Утверждение}
+        Векторы $\bx_1$, $\bx_2$, \ldots, $\bx_k$ линейно независимы если и только если определитель Грама отличен от нуля, $G\neq 0$. \pause
+    \end{block}
+
+    \begin{block}{Утверждение}
+        Матрица Грама положительно полуопределена. \pause
+    \end{block}
+
+
+    \begin{block}{Утверждение}
+        Если $\bx_1$, $\bx_2$, \ldots, $\bx_n$ лежат в $\R^n$, то определитель Грама $G$ равен квадрату объёма параллелепипеда, 
+        образованного векторами $\bx_1$,  $\bx_2$, \ldots, $\bx_n$.
+    \end{block}
+
+\end{frame}
+
+\begin{frame}{Положительная полуопределённость}
+
+    \begin{block}{Утверждение}
+        Матрица Грама положительно полуопределена. \pause
+    \end{block} 
+
+    \begin{block}{Доказательство}
+        \[
+        \bv^T M \bv  = \sum_{ij} v_i v_j \langle \bx_i, \bx_j \rangle = \sum_{ij} \langle v_i \bx_i, v_j \bx_j \rangle =   \pause
+        \]
+        \[
+        =  \langle \sum_i v_i  \bx_i, \sum_j v_j \bx_j \rangle = \langle \ba, \ba \rangle \geq 0
+        \]
+    \end{block}
+    
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Поиск проекции}
+    Хотим найти проекцию $\bhy$ вектора  $\by$ на $\Span\{ \bx_1, \bx_2, \ldots, \bx_k \}$. \pause
+
+    Проекция $\bhy$ — линейная комбинация $\bx_1, \bx_2, \ldots, \bx_k$,
+\[
+\bhy = v_1 \bx_1 + \ldots + v_k \bx_k = X \bv    \pause
+\]
+Условия первого порядка:
+\[
+X^T X  \bv = X^T y \pause \; \text{ или } \; M \bv = X^Ty    \pause 
+\]    
+\[
+    \bv = M^{-1} X^Ty.    
+\]
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Ортогональные вектора}
+
+    \begin{block}{Утверждение}
+        Если векторы $\bx_1$, $\bx_2$, \ldots, $\bx_k$ ортогональны, то их матрица Грама —
+        диагональная.
+        \[
+            M  = \begin{pmatrix}
+                \langle \bx_1, \bx_1 \rangle & 0 & \ldots & 0 \\
+                0 & \langle \bx_2, \bx_2 \rangle &  \ldots & 0 \\
+                \ldots & \ldots & \ldots & \ldots \\
+                0 & 0 & \ldots & \langle \bx_k, \bx_k \rangle \\
+            \end{pmatrix}
+        \]      
+
+    \end{block}
+    
+
+\end{frame}
