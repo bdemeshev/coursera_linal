@@ -66,22 +66,22 @@
 
 \begin{frame}
     \frametitle{Проецировать бывает легко!}
-    Хотим найти проекцию $H_k(\bv_{k+1})$ вектора  $\bv_{k+1}$ на $\Span\{ \bff_1, \bff_2, \ldots, \bff_k \}$. 
+    Хотим найти проекцию $H_p(\bv_{p+1})$ вектора  $\bv_{p+1}$ на $\Span\{ \bff_1, \bff_2, \ldots, \bff_p \}$. 
 
-    Проекция $H_k(\bv_{k+1})$ — линейная комбинация $\bff_1, \bff_2, \ldots, \bff_k$,
+    Проекция $H_p(\bv_{p+1})$ — линейная комбинация $\bff_1, \bff_2, \ldots, \bff_p$,
     \[
-        H_k(\bv_{k+1}) = \alpha_1 \bff_1 + \ldots + \alpha_k \bff_k = F \alpha    \pause
+        H_k(\bv_{p+1}) = \alpha_1 \bff_1 + \ldots + \alpha_k \bff_p = F \alpha    \pause
     \]
     \[
-    \alpha = (F^TF)^{-1} F^T \bv_{k+1} \pause    
+    \alpha = (F^TF)^{-1} F^T \bv_{p+1} \pause    
     \]
     Столбцы матрицы $F$ ортогональны, поэтому проецировать очень легко!
     \[
     \alpha = \begin{pmatrix}
-        \langle \bv_{k+1}, \bff_1 \rangle / \langle \bff_1, \bff_1 \rangle \\
-        \langle \bv_{k+1}, \bff_2 \rangle / \langle \bff_2, \bff_2 \rangle \\
+        \langle \bv_{p+1}, \bff_1 \rangle / \langle \bff_1, \bff_1 \rangle \\
+        \langle \bv_{p+1}, \bff_2 \rangle / \langle \bff_2, \bff_2 \rangle \\
         \ldots \\
-\langle \bv_{k+1}, \bff_k \rangle / \langle \bff_k, \bff_k \rangle \\
+\langle \bv_{p+1}, \bff_p \rangle / \langle \bff_p, \bff_p \rangle \\
     \end{pmatrix}    
     \]
 
@@ -182,5 +182,25 @@
     Утверждение верно, даже если $V$ — необратимая матрица.
 
     В этом случае матрица $R$ также будет необратимой.
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Резюме}
+
+    \begin{itemize}[<+->]
+    \item Квадратичная форма.
+    \item Определённость квадратичной формы
+    \item Метод полных квадратов, собственные числа и критерий Сильвестра.
+    \item Матрица Грама.
+    \item Ортогонализация Грама-Шмидта.
+    \item $QR$-разложение.
+    \item Бонусное видео: задача о переливании красок.
+    \end{itemize}
+    \pause
+    \alert{Следующая лекция:} сингулярное разложение.
+        
+
 
 \end{frame}
