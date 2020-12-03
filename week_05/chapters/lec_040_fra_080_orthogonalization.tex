@@ -1,0 +1,186 @@
+% !TEX root = ../linal_lecture_05.tex
+
+\begin{frame} % название фрагмента
+
+\videotitle{Ортогонализация Грама-Шмидта}
+
+\end{frame}
+
+
+
+\begin{frame}{Краткий план:}
+  \begin{itemize}[<+->]
+    \item Ортогонализация.
+    \item $QR$-разложение.
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Ортогонализация Грама-Шмидта}
+
+    \begin{block}{Постановка задачи}
+        Исходя из стартового независимого набора векторов 
+        $\{\bv_1, \bv_2, \ldots, \bv_k\}$
+
+        получить новый набор векторов $\{\bff_1, \bff_2, \ldots, \bff_k\}$ 
+        
+        со свойствами:\pause
+        \[
+            \begin{array}{l}
+                \bff_1, \bff_2, \ldots, \bff_k — \text{ ортогональны;} \\
+            \Span \bv_1 = \Span \bff_1; \\ \pause 
+            \Span \{ \bv_1, \bv_2 \} = \Span \{ \bff_1, \bff_2\}; \\ \pause 
+\Span \{ \bv_1, \bv_2, \bv_3 \} = \Span \{ \bff_1, \bff_2, \bff_3 \}; \\
+                \ldots \\
+            \end{array}
+        \]
+
+    \end{block}
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Ортогонализация Грама-Шмидта}
+    
+    \begin{block}{Обозначение}
+        С помощью $H_p(\bv)$ обозначим проекцию $\bv$ на $\Span \{ \bv_1, \bv_2, \ldots, \bv_p \} = \Span \{ \bff_1, \bff_2, \ldots, \bff_p \}$. \pause
+    \end{block}
+
+    \begin{block}{Алгоритм}
+        \begin{enumerate}
+            \item $\bff_1 = \bv_1$; \pause
+            \item $\bff_2 = \bv_2 - H_1(\bv_2)$; \pause
+            \item $\bff_3 = \bv_3 - H_2(\bv_3)$; \pause
+            \item \ldots
+        \end{enumerate}        \pause
+    \end{block}
+
+    Если нужно получить ортогональные вектора $\bq_i$ единичной длины, то дополнительно масштабируют
+    $\bq_i = \bff_i / \norm{\bff_i}$.
+    
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Проецировать бывает легко!}
+    Хотим найти проекцию $H_k(\bv_{k+1})$ вектора  $\bv_{k+1}$ на $\Span\{ \bff_1, \bff_2, \ldots, \bff_k \}$. 
+
+    Проекция $H_k(\bv_{k+1})$ — линейная комбинация $\bff_1, \bff_2, \ldots, \bff_k$,
+    \[
+        H_k(\bv_{k+1}) = \alpha_1 \bff_1 + \ldots + \alpha_k \bff_k = F \alpha    \pause
+    \]
+    \[
+    \alpha = (F^TF)^{-1} F^T \bv_{k+1} \pause    
+    \]
+    Столбцы матрицы $F$ ортогональны, поэтому проецировать очень легко!
+    \[
+    \alpha = \begin{pmatrix}
+        \langle \bv_{k+1}, \bff_1 \rangle / \langle \bff_1, \bff_1 \rangle \\
+        \langle \bv_{k+1}, \bff_2 \rangle / \langle \bff_2, \bff_2 \rangle \\
+        \ldots \\
+\langle \bv_{k+1}, \bff_k \rangle / \langle \bff_k, \bff_k \rangle \\
+    \end{pmatrix}    
+    \]
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Ортогонализация Грама-Шмидта}
+    
+    \begin{block}{Алгоритм}
+        \begin{enumerate}
+            \item $\bff_1 = \bv_1$; \pause
+            \item $\bff_2 = \bv_2 - \frac{ \langle \bv_{2}, \bff_1 \rangle}{\langle \bff_1, \bff_1 \rangle } \bff_1$; \pause
+            \item $\bff_3 = \bv_3 - \frac{ \langle \bv_{3}, \bff_1 \rangle}{\langle \bff_1, \bff_1 \rangle } \bff_1  - \frac{ \langle \bv_{3}, \bff_2 \rangle}{\langle \bff_2, \bff_2 \rangle } \bff_2$; \pause
+            \item \ldots
+        \end{enumerate}        \pause
+    \end{block}
+
+    Если нужно получить ортогональные вектора $\bq_i$ единичной длины, то дополнительно масштабируют
+    $\bq_i = \bff_i / \norm{\bff_i}$.
+    
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Подметим особенность!}
+
+    \begin{block}{Утверждение}
+        В процедуре Грама-Шмидта: \\
+
+        Вектор $\bff_i$ является линейной комбинацией $\bv_1$, $\bv_2$, \ldots, $\bv_i$. \pause
+
+        Вектор $\bv_i$ является линейной комбинацией $\bff_1$, $\bff_2$, \ldots, $\bff_i$. \pause    
+    \end{block} \pause
+
+    На лаконичном языке матриц:
+    \[
+        F = VU =  \begin{pmatrix}
+            \vert &  & \vert \\
+            \bv_1 & \ldots & \bv_k \\
+            \vert &  & \vert \\
+        \end{pmatrix}  \cdot 
+            \begin{pmatrix}
+                u_{11} & u_{12} & \ldots & u_{1k} \\
+                0 & u_{22} & \ldots & u_{2k} \\
+\ldots & \ldots & \ldots & \ldots \\
+0 & 0 & \ldots & u_{kk} \\        
+            \end{pmatrix}, \pause
+    \]
+    Матрица $U$ — верхнетреугольная обратимая.
+
+    
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Осталось поделить на длину}
+
+    Деление столбцов матрицы $F$ на длину можно реализовать с помощью диагональной матрицы $D$: \pause
+    \[
+    Q = F D  = \begin{pmatrix}
+        \vert &  & \vert \\
+        \bff_1 & \ldots & \bff_k \\
+        \vert &  & \vert \\
+    \end{pmatrix}  \cdot \begin{pmatrix}
+        1/ \norm{\bff_1} & 0 & \ldots & 0 \\
+0 & 1/ \norm{\bff_2} & \ldots & 0 \\
+\ldots & \ldots & \ldots & \ldots \\
+0 & 0 & \ldots & 1/ \norm{\bff_k} \\
+    \end{pmatrix} \pause
+    \]
+
+    \[
+    \begin{array}{l}
+    Q = FD = VUD \\
+    V = Q(UD)^{-1} = QR
+    \end{array}
+    \]
+    
+    Матрица $R$ — верхнетреугольная обратимая.
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{$QR$-разложение}
+
+    \begin{block}{Утверждение}
+        Любая квадратная матрица $V$ может быть представлена в виде
+        \[
+        V = QR, 
+        \]
+        где матрица $Q$ ортогональная, $Q^T Q= \Id$, а матрица $R$ — верхнетреугольная. \pause
+    \end{block}
+    
+    Утверждение верно, даже если $V$ — необратимая матрица.
+
+    В этом случае матрица $R$ также будет необратимой.
+
+\end{frame}
