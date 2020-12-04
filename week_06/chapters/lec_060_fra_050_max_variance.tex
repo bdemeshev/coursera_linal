@@ -1,0 +1,170 @@
+% !TEX root = ../linal_lecture_06.tex
+
+\begin{frame} % название фрагмента
+
+\videotitle{PCA: максимизация разброса}
+
+\end{frame}
+
+
+
+\begin{frame}{Краткий план:}
+  \begin{itemize}[<+->]
+    \item Последовательное построение компонент.
+    \item Свойства компонент.
+  \end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+  \frametitle{Метод главных компонент}
+
+
+  Есть матрица $X$ исходных наблюдений:
+
+  наблюдения отложены по строкам, а переменные — по столбцам. \pause
+
+
+  Переменных очень много. \pause
+
+
+  А мы хотим визуализировать данные. \pause
+
+
+  Или хотим иметь небольшое количество переменных, которые бы почти без потерь 
+  содержали всю информацию в исходных переменных. 
+
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Метод главных компонент}
+
+  Все исходные переменные предварительно стандартизируем! \pause
+
+  Для каждого столбца $\bx$ выполнены условия $\bar x =0$, $sd(\bx)=1$. \pause
+
+
+  На базе столбцов $\bx_1$, $\bx_2$, \ldots, $\bx_k$ матрицы $X$ мы создадим 
+  $d\leq k$ новых переменных $\bp_1$, $\bp_2$, \ldots, $\bp_d$. \pause
+
+  Новые переменные будем создавать по-очереди. \pause
+
+  Новые переменные будем называть \alert{главными компонентами}.
+
+  PCA — \alert{principal component analysis}.
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Максимизация разброса}
+
+  Главные компоненты $\bp_1$, $\bp_2$, \ldots, $\bp_d$ будут линейными 
+  комбинациями столбцов $X$. \pause
+
+  \begin{block}{Алгоритм}
+    \begin{enumerate}
+      \item Компоненту $\bp_1 = X \bv_1$ подберём так, чтобы 
+      выборочная дисперсия $\bp_1$ была максимальной при условии, что $\norm{\bv_1}=1$. \pause
+    \item Компоненту $\bp_2 = X \bv_2$ подберём так, чтобы 
+    выборочная дисперсия $\bp_2$ была максимальной при условии, что $\bv_2 \perp \bv_1$ и $\norm{\bv_2}=1$. \pause
+  \item Компоненту $\bp_3 = X \bv_3$ подберём так, чтобы 
+  выборочная дисперсия $\bp_3$ была максимальной при условии, что $\bv_3 \perp \bv_2,\, \bv_1$ и $\norm{\bv_3}=1$. 
+      \item \ldots
+    \end{enumerate}
+    
+  \end{block}
+  
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Картинка}
+
+
+
+  
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Это завуалированный $SVD$!}
+
+  Если $X = U\Sigma V^T$, то $P = XV = U\Sigma$. \pause
+
+  \[
+    \begin{array}{l}
+    \begin{pmatrix}
+        \vert &  & \vert \\
+        \bp_1 & \ldots & \bp_k \\
+        \vert &    & \vert \\
+      \end{pmatrix}  = 
+      \begin{pmatrix}
+        \vert &  & \vert \\
+        \bx_1 & \ldots & \bx_k \\
+        \vert &    & \vert \\
+      \end{pmatrix}
+      \begin{pmatrix}
+        \vert &  & \vert \\
+        \bv_1 & \ldots & \bv_k \\
+        \vert &    & \vert \\
+      \end{pmatrix} \\
+      \begin{pmatrix}
+        \vert &  & \vert \\
+        \bp_1 & \ldots & \bp_k \\
+        \vert &    & \vert \\
+      \end{pmatrix}  = 
+      \begin{pmatrix}
+        \vert &  & \vert \\
+        \bu_1 & \ldots & \bu_n \\
+        \vert &    & \vert \\
+      \end{pmatrix}
+      \begin{pmatrix}
+        \sigma_1 & 0 & \ldots & 0 \\
+         0 & \sigma_2 & \ldots & 0 \\
+        \ldots & \ldots & \ldots & \ldots \\
+    0 & 0 & \ldots & \sigma_k \\
+    0 & 0 & \ldots & 0 \\
+    \ldots & \ldots & \ldots & \ldots \\
+    0 & 0 & \ldots & 0 \\
+      \end{pmatrix} 
+    \end{array} \pause
+  \]
+
+  % Если вектор $\bu_1$ растянуть в $\sigma_1$ раз, то получится первая главная компонента $\bp_1$. \pause
+
+  % Если вектор $\bu_2$ растянуть в $\sigma_2$ раз, то получится первая главная компонента $\bp_2$. 
+
+
+%  \ldots
+
+  
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Несколько соотношений}
+
+  Главные компоненты находятся из $SVD$ разложения, $\bp_i = \sigma_i \bu_i$. \pause
+
+  Главные компоненты ортогональны. \\
+
+  Если $X = U\Sigma V^T$, то корреляционная матрица имеет вид $C=X^TX = V\Sigma^T \Sigma V^T$. \pause
+
+  Векторы весов $\bv_i$, с которыми исходные переменные входят в компоненты, являются
+  собственными векторами матрицы $C$.
+
+  Сингулярные значения матрицы $X$ в квадрате являются собственными числами 
+  корреляционной матрицы $C$, $\lambda_i = \sigma_i^2$.
+
+
+\end{frame}
