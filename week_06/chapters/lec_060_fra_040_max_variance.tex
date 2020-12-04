@@ -1,0 +1,96 @@
+% !TEX root = ../linal_lecture_06.tex
+
+\begin{frame} % название фрагмента
+
+\videotitle{PCA: максимизация разброса}
+
+\end{frame}
+
+
+
+\begin{frame}{Краткий план:}
+  \begin{itemize}[<+->]
+    \item Немного статистики.
+    \item Метод главных компонент.
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Центрирование}
+
+
+  \begin{block}{Определение}
+    Для вектора чисел $\bx = (x_1, x_2, \ldots, x_n)$ \alert{выборочным средним} называют величину
+    \[
+    \bar x = \frac{x_1 + x_2 + \ldots + x_n}{n}. \pause
+    \]
+  \end{block}
+
+  \begin{block}{Определение}
+    \alert{Центрирование переменной} — переход от набора чисел
+    $(x_1, x_2, \ldots, x_n)$ к набору чисел $(x_1 - \bar x, x_2 - \bar x, \ldots, x_n - \bar x)$. \pause
+  \end{block}
+
+  Пример. $(4, 2, 3, 3) \to (1, -1, 0, 0)$.
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Свойства центрирования}
+
+  \begin{block}{Утверждение}
+Если $\bx'$ — это центрированный вектор $\bx$, $y_i = x_i - \bar x$, то 
+$\bar x' = 0$. \pause
+\[
+\sum_{i=1}^n x'_i = \sum_{i=1}^n (x_i - \bar x) = \sum_{i=1}^n x_i - n\bar x =0  \pause
+\]
+  \end{block}
+
+  С геометрической точки зрения:
+  
+  $(\bar x, \bar x, \ldots, \bar x)$ — проекция вектора $\bx$ на $\Span \bv$, где
+  $\bv = (1, 1, \ldots, 1)$. \pause
+
+
+$(x_1 - \bar x, x_2 - \bar x, \ldots, x_n - \bar x)$ — проекция вектора $\bx$ на $\Span^{\perp} \bv$.
+
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Выборочная дисперсия}
+
+  \begin{block}{Определение}
+    \alert{Выборочной дисперсией} набора чисел $(x_1, x_2, \ldots, x_n)$ 
+    называют величину $\norm{\bx'}^2 / (n-1)$, где вектор $\bx'$ — это 
+    центрированный вектор $\bx$. \pause
+  \end{block}
+
+  Выборочная дисперсия вектора показывает «разброс» $x_i$, 
+  насколько далеки $x_i$ от своего среднего $\bar x$.
+  
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Выборочная корреляция}
+
+  \begin{block}{Определение}
+    \alert{Выборочной корреляцией} двух наборов чисел $\bx$ и $\by$
+    называют косинус угла между их центрированными версиями:
+    \[
+    \rho(\bx, \by) = \cos \angle (\bx', \by') = \frac{\langle \bx', \by' \rangle}{\norm{\bx'} \norm{\by'}},   
+    \]
+    где $x'_i = x_i - \bar x$ и $y_i' = y_i - \bar y$. \pause
+  \end{block}
+
+ Если после центрирования вектора ортогональны, то выборочная корреляция равна $0$. \pause
+
+ Выборочная корреляция лежит в диапазоне от $-1$ до $1$. 
+
+\end{frame}
