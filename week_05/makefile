@@ -7,10 +7,10 @@ linal_lecture_$(file_name).pdf: linal_lecture_$(file_name).tex chapters/ figures
 
 	# create pdf
 	# will automatically run pdflatex/biber if necessary
-	latexmk -xetex $(file_name).tex
+	latexmk -xelatex linal_lecture_$(file_name).tex
 
 	# clean auxillary files
-	latexmk -c $(file_name).tex
+	latexmk -c linal_lecture_$(file_name).tex
 
 	echo To make pngs use 'make png'
 
