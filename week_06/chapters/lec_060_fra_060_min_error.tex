@@ -1,0 +1,220 @@
+% !TEX root = ../linal_lecture_06.tex
+
+\begin{frame} % название фрагмента
+
+\videotitle{PCA: минимизация ошибки}
+
+\end{frame}
+
+
+
+\begin{frame}{Краткий план:}
+  \begin{itemize}[<+->]
+    \item Последовательное построение компонент.
+    \item Свойства компонент.
+  \end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+  \frametitle{Метод главных компонент}
+
+
+  Есть матрица $X$ исходных наблюдений:
+
+  наблюдения отложены по строкам, а переменные — по столбцам. 
+
+
+  Переменных очень много. 
+
+
+  А мы хотим визуализировать данные. 
+
+
+  Или хотим иметь небольшое количество переменных, которые бы почти без потерь 
+  содержали всю информацию в исходных переменных. 
+
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Поиск наилучшего приближения}
+
+  Хотим найти матрицу $\hat X$ такую, чтобы
+  при заданном ранге $\rank \hat X = d$ матрица $\hat X$ была бы поближе к $X$:
+
+  \[
+  \sum_{ij} (x_{ij} - \hat x_{ij})^2 = \trace ((X - \hat X)^T (X - \hat X)) \to \min \pause 
+  \]
+
+  Аппроксимация с рангом $d$ обозначим $\hat X_d$.
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Метод главных компонент}
+
+  Все исходные переменные предварительно стандартизируем! 
+
+  Для каждого столбца $\bx$ выполнены условия $\bar x =0$, $sd(\bx)=1$. 
+
+
+  На базе столбцов $\bx_1$, $\bx_2$, \ldots, $\bx_k$ матрицы $X$ мы создадим 
+  $d\leq k$ новых переменных $\bp_1$, $\bp_2$, \ldots, $\bp_d$. 
+
+  Новые переменные будем создавать по-очереди. 
+
+  Новые переменные будем называть \alert{главными компонентами}.
+
+  PCA — \alert{principal component analysis}.
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Минимизация ошибки приближения}
+
+
+  Главные компоненты $\bp_1$, $\bp_2$, \ldots, $\bp_d$ будут линейными 
+  комбинациями столбцов $X$. \pause
+
+  Матрица $\hat X_i$ содержит проекции столбцов матрицы $X$ на $\Span\{ \bp_1, \bp_2, \ldots, \bp_i\}$.
+
+
+  \begin{block}{Алгоритм}
+    \begin{enumerate}
+      \item Компоненту $\bp_1 = X \bv_1$ подберём так, чтобы 
+      матрица $\hat X_1$ была наилучшей аппроксимацией $X$, $\sum_{ij} (x_{ij} - \hat{x}_{ij})^2 \to\min$. \pause
+
+\item Компоненту $\bp_2 = X \bv_2$ подберём так, чтобы 
+матрица $\hat X_2$ была наилучшей аппроксимацией $X$, $\sum_{ij} (x_{ij} - \hat{x}_{ij})^2 \to\min$
+ при условии, что $\bv_2 \perp \bv_1$ и $\norm{\bv_2}=1$. \pause
+%\item Компоненту $\bp_3 = X \bv_3$ подберём так, чтобы 
+%матрица $\hat X_3$ была наилучшей аппроксимацией $X$, $\sum_{ij} (x_{ij} - \hat_{x}_ij)^2 \to\min$
+ % при условии, что $\bv_3 \perp \bv_2,\, \bv_1$ и $\norm{\bv_3}=1$. 
+      \item \ldots
+    \end{enumerate}
+    
+  \end{block}
+  
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Картинка}
+
+
+\begin{tikzpicture}[
+  scale=1.4,
+  MyPoints/.style={draw=blue,fill=white,thick},
+  Segments/.style={draw=blue!50!red!70,thick},
+  MyCircles/.style={green!50!blue!50,thin}, 
+  every node/.style={scale=1}
+  ]
+%	\draw[color=gray,step=1.0,dotted] (-8,-6) grid (8,6);
+  \clip (-8,-6) rectangle (8,6);
+
+
+  %\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
+  \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (0,-5)--(0,5) node[above left]{$x_2$};
+
+  \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth] (-6,0)--(6,0) 
+  node[right]{$x_1$};
+
+
+  %{\verb!->!new, arrowhead = 2mm, line width=4pt}
+  %, arrowhead = 3mm
+  %, arrowhead = 0.2
+
+  % Feel free to change here coordinates of points A and B
+  \pgfmathparse{0}		\let\Xa\pgfmathresult
+  \pgfmathparse{0}		\let\Ya\pgfmathresult
+  \coordinate (A) at (\Xa,\Ya);
+
+  \pgfmathparse{-1}		\let\Xb\pgfmathresult
+  \pgfmathparse{1}		\let\Yb\pgfmathresult
+  \coordinate (B) at (\Xb,\Yb);
+
+  \pgfmathparse{1}		\let\Xc\pgfmathresult
+  \pgfmathparse{1}		\let\Yc\pgfmathresult
+  \coordinate (C) at (\Xc,\Yc);
+
+
+
+
+
+
+  \begin{scope}
+  \clip[rotate=45] (0, 0) ellipse (4 and 2);
+  \foreach \p in {1,...,800}
+  { \fill[black, rotate = 45]  (0 + 4*rand,3*rand) circle (0.035);
+  }
+  \end{scope}
+  \pause
+
+
+  \draw[line width = 0.5mm, ->, vecb] (-4, -4) -- (4, 4) node[above left]{$p_{1}$}; \pause
+
+
+  \draw[line width = 0.5mm, ->, vecb] (3, -3) -- (-3, 3) node[above right]{$p_{2}$}; 
+\tkzMarkRightAngle[size=0.3, vecb, line width = 0.3mm](B,A,C);
+
+
+  \end{tikzpicture}
+
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+\begin{frame}
+  \frametitle{И это завуалированный $SVD$!}
+
+  Если $X = U\Sigma V^T$, то $P = XV = U\Sigma$. \pause
+
+
+  Аппроксимация $\hat X_d$ с рангом $\rank \hat X_d = d$ строится так:
+  \[
+  \hat X_d = U \Sigma_d V^T,  
+  \]
+  где матрицу $\Sigma_d$ получили из матрицы $\Sigma$ оставив в ней только $d$ штук
+  самых больших сингулярных значений и занулив остальные.
+
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Свойства}
+
+  Главные компоненты находятся из $SVD$ разложения, $\bp_i = \sigma_i \bu_i$. 
+
+  Главные компоненты ортогональны. 
+
+  Величины $\sigma^2_i$ равны квадратам длин $\norm{\bp_i}^2$ 
+  и пропорциональны выборочным дисперсиям $\bp_i$.  \pause
+
+  Значение максимума суммы 
+  \[
+    \norm{\bp_1}^2 + \norm{\bp_2}^2 + \ldots + \norm{\bp_k}^2
+  \]
+  одинаковое при пошаговой и одновременной максимизации.
+
+
+\end{frame}
+
