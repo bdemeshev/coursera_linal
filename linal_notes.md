@@ -331,6 +331,29 @@ https://www.youtube.com/playlist?list=PLRWArSIxYUsnj96tcYxnwz4TfgojjkqRO
 
 
 
+
+Монтаж курса Бориса Демешева
+День 5 https://www.youtube.com/playlist?list=PLRWArSIxYUsn1wK6r7O9anMNfFJO9c_lz
+
+День 6 https://www.youtube.com/playlist?list=PLRWArSIxYUsmZom8hgx92H_iEc6CE1Xhi
+День 7 https://www.youtube.com/playlist?list=PLRWArSIxYUsk3l2qYo10opZ4y05i4dTxS
+День 8 https://www.youtube.com/playlist?list=PLRWArSIxYUsnUqoTpBwOyD4c1q1pkjM1a
+ 
+Также внесены правки в день 2-4 (без пробной съемки).
+ 
+Таблица правок https://www.theurlist.com/fcs_maths
+ 
+ 
+День 9 
+https://www.youtube.com/playlist?list=PLRWArSIxYUslw3W0R0su6N70gKbVDOzXe
+
+
+
+
+
+
+
+
 Здравствуй, дорогой слушатель!
 Меня зовут БД и я приглашаю тебя на курс 
 Линейная Алгебра от идеи к формуле
