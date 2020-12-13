@@ -146,7 +146,7 @@
         MyCircles/.style={green!50!blue!50,thin}, 
         every node/.style={scale=1.2}
         ]
-        \clip (-.5,-1.5) rectangle (7.5,4.5);
+        \clip (-3.5,-1.5) rectangle (5.5,4.5);
 
 
         %%\draw[->, >=stealth] (-1,0)--(6.5,0) node[right]{$x_1$};
@@ -173,27 +173,27 @@
         \coordinate (D) at (\Xd,\Yd);
 
 
-        \pgfmathparse{7}		\let\Xe\pgfmathresult
+        \pgfmathparse{-2}		\let\Xe\pgfmathresult
         \pgfmathparse{4}		\let\Ye\pgfmathresult
         \coordinate (E) at (\Xe,\Ye);
 
 
 
-        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (A)--(B) node[midway,left]{$\ba$};
+        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (A)--(B);
 
-        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (C)--(D);
-
-
-        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca,thick] (A)--(C) node[midway,below]{$\bb$};
-
-        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca,thick] (B)--(D) ;
-
-        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca,thick] (D)--(E) ;
+        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, vecb,thick] (C)--(D) node[midway,left]{$\ba$};
 
 
-        \draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecc,thick] (A)--(D) node[midway,above, sloped]{$\ba+\bb$};
+        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca,thick] (C)--(A) node[midway,below]{$\bb$};
 
-        \draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecc,thick] (C)--(E) ;
+        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca,thick] (D)--(B) ;
+
+        \draw[-{Latex[length=4.5mm, width=2.5mm]}, >=stealth, veca,thick] (B)--(E) ;
+
+
+        \draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecc,thick] (C)--(B) node[midway,above, sloped]{$\ba+\bb$};
+
+        \draw[-{Latex[length=4.5mm, width=1.5mm]}, >=stealth, vecc,thick] (A)--(E) ;
 
         % \node [above right,darkgray] at (1,-1.5) {$S(\ba,\bb)=S(\ba+\bb,\bb)$};
 
