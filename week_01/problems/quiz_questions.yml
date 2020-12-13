@@ -1,0 +1,328 @@
+
+
+- variations: 
+    - typeName: numeric
+      prompt: |-
+          Даны два вектора \(a=(7,8,9), b=(6,3,5)\). Найдите \(\|a-b\|\).
+        
+          Округлите полученный ответ с точностью до двух знаков после запятой.
+      defaultFeedback: ''
+      answers: 
+        - range: (6.4, 6.5]
+          isCorrect: true
+          feedback: \(\|a-b\| = \sqrt{1^2 + 5^2 + 4^2} = \sqrt{42} \).
+          _id: '0.2275353551968352'
+      _id: q8N8hSvxEeu2wBLMtWtcYw
+    - typeName: numeric
+      prompt: Даны два вектора \(a=(7,8,9), b=(6,3,5)\). Найдите \(\langle a, b \rangle\).
+      defaultFeedback: ''
+      answers: 
+        - value: 111.0
+          isCorrect: true
+          feedback: \(\langle a, b \rangle = 42+24+ 45 = 111 \).
+          _id: '0.4426666968620474'
+      _id: Guoq1iwDEeuh-A774NSZOQ
+
+- variations: 
+    - typeName: numeric
+      prompt: |-
+          Даны два вектора \(a=(7,8,9), b=(6,3,5)\). Найдите \(\cos \left(a, b\right)\).
+        
+          Округлите полученный ответ с точностью до двух знаков после запятой.
+      defaultFeedback: ''
+      answers: 
+        - range: (0.93, 0.98)
+          isCorrect: true
+          feedback: \(\cos \left(a, b\right) = \dfrac{111}{\sqrt{194}\cdot\sqrt{70}} \).
+          _id: '0.8915535740210339'
+      _id: TUkQVSwDEeuX5QrgHIFx4Q
+    - typeName: numeric
+      prompt: |-
+          Даны два вектора \(a=(7,8,9), b=(6,3,5)\). Найдите \(\langle a+2b, b-a
+          \rangle\).
+      defaultFeedback: ''
+      answers: 
+        - value: -165.0
+          isCorrect: true
+          feedback: |-
+              \(a+2b = (19, 14, 19)\),
+            
+              \(b-a = (-1, -5, -4)\);
+            
+              \(\langle a+2b, b-a \rangle = -19 - 5\cdot14 - 4\cdot19 = -165 \).
+          _id: '0.37709478990367706'
+      _id: taDywCwDEeu2wBLMtWtcYw
+
+- variations: 
+    - typeName: numeric
+      prompt: |-
+          Для преобразования \[A: \begin{pmatrix} x_{1} \\ x_{2} \end{pmatrix}
+          \rightarrow \begin{pmatrix} x_{1}+3 x_{2} \\ x_{1}-4 x_{2} \end{pmatrix} \]
+        
+          Найдите все вектора \(v = \begin{pmatrix} v_{1} \\ v_{2} \end{pmatrix} \), для
+          которых \(v \perp Av\).
+        
+          В ответе укажите отношение \(v_{2}/ v_{1}\) (ответ округлите до двух знаков
+          после запятой). Если получено несколько соотношений, для которых выполняется
+          \(v \perp Av\), укажите большее из них.
+      defaultFeedback: ''
+      answers: 
+        - range: (1.15, 1.3)
+          isCorrect: true
+          feedback: |-
+              \[v_{1} ( v_{1}+3 v_{2} ) + v_{2} (v_{1}-4 v_{2}) = 0\] \[v_{1}^2 + 4 v_{1}
+              v_{2} -4 v_{2}^2 = 0\] \[ v_{2}/ v_{1} = 1/2 \pm \sqrt{2}/2 \]
+          _id: '0.4426666968620474'
+      _id: nmVQ53
+
+- variations: 
+    - typeName: numeric
+      prompt: |-
+          Найдите \(t\), такое, что \(\langle t,1,3 \rangle \perp \langle 2,7,8
+          \rangle\).
+      defaultFeedback: ''
+      answers: 
+        - value: -15.5
+          isCorrect: true
+          feedback: |-
+              \( 2t + 1\cdot7 + 3\cdot 8 = 0 \)
+            
+              \( t = -15.5 \)
+          _id: UCfVgx
+      _id: 5xbuJr
+
+- variations: 
+    - typeName: numeric
+      prompt: |-
+          Найдите ближайшую к точке \((5, 6)\) точку, лежащую на прямой \(2x+7y=8\).
+        
+          В ответе укажите координату по оси абсцисс. Ответ округлите до двух знаков
+          после запятой.
+      defaultFeedback: ''
+      answers: 
+        - range: (5.1, 5.2)
+          isCorrect: true
+          feedback: |-
+              \(l_1 = \begin{pmatrix} 0 \\ 8 \\ \end{pmatrix} + t \begin{pmatrix} 7 \\ -2 \\
+              \end{pmatrix} \)
+            
+              \(l_2 = \begin{pmatrix}5 \\6 \\ \end{pmatrix} + s \begin{pmatrix} 2 \\ 7 \\
+              \end{pmatrix} \)
+            
+              \(5 + 2s = 7t\)
+            
+              \(6+ 7 s = 8 -2t\)
+            
+              \(s = 4/53\)
+            
+              \( \begin{pmatrix} 5 \\ 6 \\ \end{pmatrix} + 4/53 \begin{pmatrix} 2 \\ 7 \\
+              \end{pmatrix} = \begin{pmatrix}273/53 \\346/53 \\ \end{pmatrix} \)
+          _id: TmVvUM
+      _id: sqXVOy
+
+- variations: 
+    - typeName: numeric
+      prompt: |-
+          Пусть \(A: \begin{pmatrix}v_{1} \\v_{2}\end{pmatrix} \to \begin{pmatrix}v_{2}
+          \\v_{1} \end{pmatrix}, \) \(v = \begin{pmatrix}1 \\2\end{pmatrix}.\)
+        
+          Найдите \( w = A^{21} v \). В ответе укажите \(\langle w, v \rangle\).
+      defaultFeedback: ''
+      answers: 
+        - value: 4.0
+          isCorrect: true
+          feedback: |-
+              \(w = \begin{pmatrix}2 \\1\end{pmatrix};\)
+            
+              \(\langle w, v \rangle = 4\)
+          _id: hrn0bb
+      _id: h69vZR
+
+- variations: 
+    - typeName: numeric
+      prompt: |-
+          Пусть \(A: \begin{pmatrix}v_{1} \\v_{2}\end{pmatrix} \to \begin{pmatrix}- v_{2}
+          \\v_{1} \end{pmatrix}, \) \(x = \begin{pmatrix}1 \\2\end{pmatrix}.\)
+        
+          Найдите \( v = A^{21} x, w = A^{15} x \). В ответе укажите \(\langle w, v
+          \rangle\).
+      defaultFeedback: ''
+      answers: 
+        - value: -5.0
+          isCorrect: true
+          feedback: |-
+              \(v = \begin{pmatrix}-2 \\1\end{pmatrix};\)
+            
+              \(w = \begin{pmatrix}2 \\-1\end{pmatrix};\)
+            
+              \(\langle w, v \rangle = -5\)
+          _id: PD7efV
+      _id: glDItp
+
+- variations: 
+    - typeName: multipleChoice
+      prompt: |-
+          Пусть для \(\phi: \mathbb{R}^{3} \rightarrow \mathbb{R}\) верно
+        
+          \(\phi(1,1,0)=-1, \quad \phi(-1,1,1)=1, \quad \phi(1,-1,-1)=1\).
+        
+          Выберите верное утверждение.
+      shuffleOptions: false
+      options: 
+        - answer: \(\phi\) является линейной функцией.
+          isCorrect: false
+          feedback: ''
+          _id: fgVVAQ
+        - answer: \(\phi\) может быть линейной функцией.
+          isCorrect: false
+          feedback: ''
+          _id: FsUPxb
+        - answer: \(\phi\) не может быть линейной функцией.
+          isCorrect: true
+          feedback: ''
+          _id: KGR9qw
+      _id: UbTcpo
+
+- variations: 
+    - typeName: multipleChoice
+      prompt: |-
+          Пусть \(v = \begin{pmatrix}v_{1} \\v_{2}\end{pmatrix} \).
+        
+          Найдите операцию \(A\), которая поворачивает вектор \(v\) на 45 градусов по
+          часовой стрелке:
+      shuffleOptions: true
+      options: 
+        - answer: |-
+              \(A: \begin{pmatrix} v_{1} \\ v_{2} \end{pmatrix} \to \begin{pmatrix}
+              1/\sqrt{2} \cdot v_{1} + 1/\sqrt{2} \cdot v_{2} \\ -1/\sqrt{2} \cdot v_{1} +
+              1/\sqrt{2} \cdot v_{2} \end{pmatrix} \).
+          isCorrect: true
+          feedback: ''
+          _id: FV5oob
+        - answer: |-
+              \(A: \begin{pmatrix} v_{1} \\ v_{2} \end{pmatrix} \to \begin{pmatrix}
+              1/\sqrt{2} \cdot v_{1} - 1/\sqrt{2} \cdot v_{2} \\ -1/\sqrt{2} \cdot v_{1} -
+              1/\sqrt{2} \cdot v_{2} \end{pmatrix} \).
+          isCorrect: false
+          feedback: ''
+          _id: EiPGYG
+        - answer: |-
+              \(A: \begin{pmatrix} v_{1} \\ v_{2} \end{pmatrix} \to \begin{pmatrix}
+              1/\sqrt{2} \cdot v_{1} + 1/\sqrt{2} \cdot v_{2} \\ 1/\sqrt{2} \cdot v_{1} -
+              1/\sqrt{2} \cdot v_{2} \end{pmatrix} \).
+          isCorrect: false
+          feedback: ''
+          _id: l7XNy1
+        - answer: |-
+              \(A: \begin{pmatrix} v_{1} \\ v_{2} \end{pmatrix} \to \begin{pmatrix} 1/{2}
+              \cdot v_{1} - \sqrt{3}/2 \cdot v_{2} \\ \sqrt{3}/2 \cdot v_{1} + 1/{2} \cdot
+              v_{2} \end{pmatrix} \).
+          isCorrect: false
+          feedback: ''
+          _id: T1Ibrh
+      _id: FR7Fgm
+    - typeName: multipleChoice
+      prompt: |-
+          Пусть \(v = \begin{pmatrix}v_{1} \\v_{2}\end{pmatrix} \).
+        
+          Найдите операцию \(A\), которая поворачивает вектор \(v\) на 45 градусов против
+          часовой стрелки с последующим отражением по горизонтальной оси:
+      shuffleOptions: true
+      options: 
+        - answer: |-
+              \(A: \begin{pmatrix} v_{1} \\ v_{2} \end{pmatrix} \to \begin{pmatrix}
+              1/\sqrt{2} \cdot v_{1} - 1/\sqrt{2} \cdot v_{2} \\ 1/\sqrt{2} \cdot v_{1} +
+              1/\sqrt{2} \cdot v_{2} \end{pmatrix} \).
+          isCorrect: false
+          feedback: ''
+          _id: orQnKv
+        - answer: |-
+              \(A: \begin{pmatrix} v_{1} \\ v_{2} \end{pmatrix} \to \begin{pmatrix}
+              1/\sqrt{2} \cdot v_{1} - 1/\sqrt{2} \cdot v_{2} \\ -1/\sqrt{2} \cdot v_{1} -
+              1/\sqrt{2} \cdot v_{2} \end{pmatrix}. \)
+          isCorrect: true
+          feedback: ''
+          _id: LeNIm3
+        - answer: |-
+              \(A: \begin{pmatrix} v_{1} \\ v_{2} \end{pmatrix} \to \begin{pmatrix}
+              1/\sqrt{2} \cdot v_{1} + 1/\sqrt{2} \cdot v_{2} \\ 1/\sqrt{2} \cdot v_{1} -
+              1/\sqrt{2} \cdot v_{2} \end{pmatrix} \).
+          isCorrect: false
+          feedback: ''
+          _id: eVsldG
+        - answer: |-
+              \(A: \begin{pmatrix} v_{1} \\ v_{2} \end{pmatrix} \to \begin{pmatrix} 1/{2}
+              \cdot v_{1} - \sqrt{3}/2 \cdot v_{2} \\ \sqrt{3}/2 \cdot v_{1} + 1/{2} \cdot
+              v_{2} \end{pmatrix} \).
+          isCorrect: false
+          feedback: ''
+          _id: ssueyM
+      _id: UoXm5g
+
+- variations: 
+    - typeName: checkbox
+      prompt: |-
+          Пусть \(A: \begin{pmatrix}v_{1} \\v_{2}\end{pmatrix} \to \begin{pmatrix}1/{2}
+          \cdot v_{1} + \sqrt{3}/2 \cdot v_{2} \\-\sqrt{3}/2 \cdot v_{1} + 1/{2} \cdot
+          v_{2} \end{pmatrix} \).
+        
+          Выберите верные утверждения:
+      shuffleOptions: true
+      allowPartialScoring: true
+      options: 
+        - answer: |-
+              Операция \(A\) отражает вектор \(v\) по горизонтальной оси с последующим
+              вращением на 60 градусов по часовой стрелке.
+          isCorrect: false
+          feedback: ''
+          _id: NyVXF2
+        - answer: Операция \(A\) поворачивает вектор \(v\) на 60 градусов против часовой стрелки.
+          isCorrect: false
+          feedback: ''
+          _id: QvLyAZ
+        - answer: |-
+              Операция \(A\) поворачивает вектор \(v\) на 60 градусов против часовой стрелки
+              с последующим отражением по горизонтальной оси.
+          isCorrect: false
+          feedback: ''
+          _id: 0BbtyK
+        - answer: Операция \(A\) поворачивает вектор \(v\) на 60 градусов по часовой стрелке.
+          isCorrect: true
+          feedback: ''
+          _id: Zii5BK
+      _id: 3MqFSg
+    - typeName: checkbox
+      prompt: |-
+          Пусть \(A: \begin{pmatrix}v_{1} \\v_{2}\end{pmatrix} \to
+          \begin{pmatrix}1/\sqrt{2} \cdot v_{1} + 1/\sqrt{2} \cdot v_{2} \\1/\sqrt{2}
+          \cdot v_{1} - 1/\sqrt{2} \cdot v_{2} \end{pmatrix} \).
+        
+          Выберите верные утверждения:
+      shuffleOptions: true
+      allowPartialScoring: true
+      options: 
+        - answer: |-
+              Операция \(A\) отражает вектор \(v\) по горизонтальной оси с последующим
+              вращением на 45 градусов по часовой стрелке.
+          isCorrect: false
+          feedback: ''
+          _id: zeT9ku
+        - answer: |-
+              Операция \(A\) отражает вектор \(v\) по горизонтальной оси с последующим
+              вращением на 45 градусов против часовой стрелки.
+          isCorrect: true
+          feedback: ''
+          _id: 90jprt
+        - answer: |-
+              Операция \(A\) поворачивает вектор \(v\) на 45 градусов против часовой стрелки
+              с последующим отражением по горизонтальной оси.
+          isCorrect: false
+          feedback: ''
+          _id: k18lzK
+        - answer: |-
+              Операция \(A\) поворачивает вектор \(v\) на 45 градусов по часовой стрелке с
+              последующим отражением по горизонтальной оси.
+          isCorrect: true
+          feedback: ''
+          _id: 7LaqjA
+      _id: SzjPgU

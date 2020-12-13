@@ -1,0 +1,334 @@
+%!TEX TS-program = xelatex
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+
+
+%%%%%%%%%% Шрифты %%%%%%%%
+\usepackage[english, russian]{babel} % выбор языка для документа
+\usepackage[utf8]{inputenc} % задание utf8 кодировки исходного tex файла
+\usepackage[X2,T2A]{fontenc}        % кодировка
+
+\usepackage{fontspec}         % пакет для подгрузки шрифтов
+\setmainfont{Times New Roman}       % задаёт основной шрифт документа
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+\usepackage{hyphenat}
+
+
+\usepackage{bbold}
+\usepackage{verbatim}
+\RequirePackage{lastpage}
+\RequirePackage{epsfig}
+\RequirePackage{graphicx}
+\RequirePackage{float}
+\RequirePackage{subfigure}
+%\RequirePackage{overcite}
+\RequirePackage{psfrag}
+\RequirePackage{ifthen}
+\RequirePackage{xcolor}
+\RequirePackage{hyperref}
+%\RequirePackage{cleveref}
+
+\usepackage{indentfirst}
+
+\textwidth=6.5in
+\textheight=9in
+\topmargin=-0.25in
+\headheight=0in
+\headsep=0in
+\topskip=0in
+\oddsidemargin=0in
+\evensidemargin=0in
+
+\newcommand{\PHNote}[1]{\ColorNote{red}{PH}{#1}}
+
+\renewcommand{\maketitle}{%
+	\begin{center}
+		\noindent{\bf \Large  Линейная алгебра. Задачи}
+		\\\vspace{1pt}
+	\end{center}
+}
+
+ \usepackage{multirow}
+
+\usepackage[backend=biber, style=numeric-comp,
+	sorting=ynt,  
+	defernumbers=true,
+	 babel=other]{biblatex}
+
+\addbibresource{references.bib}
+
+\usepackage{unicode-math}      % пакет для установки математического шрифта
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\var}{\mathbb{V}}
+\newcommand{\heta}{\hat{\eta}}
+\newcommand{\hgamma}{\hat{\gamma}}
+\newcommand{\Bor}{\mathcal{B}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Xtn}{\tilde{X}^n}
+\newcommand{\clawn}{\underset{n\rightarrow
+		+\infty}{\Longrightarrow}} 
+\newcommand{\convn}{\underset{n\rightarrow
+		+\infty}{\longrightarrow}} 
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\pperp}{\perp \! \! \! \perp}
+\newcommand{\Var}{\text{Var}}
+\newcommand{\lam}{\lambda}
+\newcommand{\convps}{\underset{n\rightarrow +\infty}{\overset{\text{p.s.}}{\longrightarrow}}}
+\newcommand{\convpsm}{\underset{m\rightarrow +\infty}{\overset{\text{p.s.}}{\longrightarrow}}}
+\newcommand{\convproba}{\underset{n\rightarrow +\infty}{\overset{\text{proba.}}{\longrightarrow}}}
+\newcommand{\convloi}{\underset{n\rightarrow +\infty}{\overset{\text{d}}{\longrightarrow}}}
+\newcommand{\convlp}{\underset{n\rightarrow +\infty}{\overset{L^p}{\longrightarrow}}}
+\newcommand{\convldeux}{\underset{n\rightarrow +\infty}{\overset{L^2}{\longrightarrow}}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\simU}{\sim \mathcal{U}([0;1])}
+\newcommand{\Yh}{\hat{Y}}
+\newcommand{\uh}{\hat{u}}
+\newcommand{\Yb}{\bar{Y}}
+\newcommand{\Xb}{\bar{X}}
+\newcommand{\uhb}{\bar{\hat{u}}}
+\renewcommand{\b}{\beta}
+\newcommand{\1}{\mathbb{1}}
+
+
+\usepackage{enumitem}
+\setenumerate[1]{label={(\alph*)}} 
+
+\newcounter{rtaskno}
+\DeclareRobustCommand{\rtask}[1]{%
+	\refstepcounter{rtaskno}%
+	\thertaskno\label{#1}}
+
+
+\usepackage{comment}
+%Uncomment below to hide/show solution
+\includecomment{teacher}
+%\excludecomment{teacher}
+
+\begin{document}
+\maketitle
+
+\section{Неделя 1. Открытые вопросы}
+
+
+\textbf{Задача \rtask{1}}  
+
+%  Stanford p.57\(
+
+\begin{enumerate}
+	\item Введем обозначения \(\alpha=\|a\|, \beta=\|b\|\). 
+	Выразите  \(\|\beta a-\alpha b\|^{2}\) 
+	через  \( \|a\|, \|b\|\)   и  
+	\(\langle a,b \rangle\).
+	\item Докажите неравенство Коши — Буняковского,  \(\left|a^{T} b\right| \leq\|a\|\|b\|\), пользуясь свойствами нормы.
+	\item Докажите неравенство треугольника,  \(\|a+b\| \leq\|a\|+\|b\|\),  пользуясь неравенством Коши — Буняковского.	
+\end{enumerate}
+
+
+
+
+
+\textbf{Задача \rtask{1}}  
+
+Пусть \(a\) и \(b\) — векторы одинаковой размерности. 
+
+При каких условиях верно, что
+
+\begin{enumerate}
+	\item    \((a+b)^{T}(a-b)=\|a\|^{2}-\|b\|^{2}\)?
+	\item \(\|a+b\|^{2}+\|a-b\|^{2}=2\left(\|a\|^{2}+\|b\|^{2}\right)\)?
+	\item   \(\|a+b\|=\sqrt{\|a\|^{2}+\|b\|^{2}}\)?
+	
+\end{enumerate}
+
+\textit{ Ответ: }
+
+\begin{enumerate}
+	\item Всегда.
+	\item  Всегда  (тождество параллелограмма). 
+	\item  Верно при \(\langle a, b \rangle =  0 \).
+\end{enumerate} 
+
+
+
+
+
+\textbf{Задача \rtask{1}}  
+
+
+Расстояние между булевыми векторами. Предположим, что \(x\) и 
+\(y\) -- булевы  
+\(n\)-мерные векторы 
+(т.е. \(x_i, y_i \in \{0,1\} \)). 
+Чему равно расстояние между векторами  \(\|x - y\|\)?
+
+
+Ответ: \(\|x - y\| = \sqrt{\sum_{i=1}^{n} x_i\oplus y_i} = \sqrt{\sum_{i=1}^{n}   (x_i + y_i) \bmod 2 } \)
+
+
+
+\textbf{Задача \rtask{1}}  
+
+Пусть \(x\) и 
+\(y\) -- два ненулевых 
+\(n\)-мерных вектора, таких, 
+что  \(x_i \geq 0, y_i\geq0, \forall i=1,\dots n\).  
+
+
+\begin{enumerate}
+	\item В каких пределах лежит \(\cos(x,y)\)? 
+	\item Если \(n = 2\),  какие векторы являются ортогональными? 
+\end{enumerate}
+
+\textit{Ответ:}
+
+
+\begin{enumerate}
+	\item \(\cos(x,y) \in [0,1]\). 
+	\item \(\begin{pmatrix} a \\ 	0  	\end{pmatrix}\) 
+	и  \(\begin{pmatrix} 	0 \\ 	b   	\end{pmatrix}\), 
+	где \(a,b\geq0\).
+\end{enumerate}
+
+
+
+\textbf{Задача \rtask{1}}  
+
+Пусть \( с = \begin{pmatrix} 1 \\ 0  \end{pmatrix}\).
+
+Приведите  пример такие два  вектора  \(a,b\), для которых: 
+
+\(\|a-c\| < \|b-c\| \) 
+
+\(\angle (a,c)  > \angle (b,c) \).
+
+
+\textbf{Задача \rtask{1}}  
+
+Пусть  \(f(x)=\|x-c\|^{2}-\|x-d\|^{2}\). 
+
+Верно ли (или при каком условии верно), что  \(f\) -- линейный оператор? 
+
+\textit{ Ответ:}
+
+\(\langle x, x \rangle  - 2\langle x, c \rangle + \langle c, c \rangle - \langle x, x \rangle + 2\langle x, d \rangle - \langle d, d \rangle  \Rightarrow \)  верно, 
+при \(\|c\| = \|d\|.\)   
+
+
+
+
+
+\textbf{Задача \rtask{1}}  
+
+Вася кодирует многочлен вида \(ax^2 + bx + c \)  с помощью вектора   
+\(\begin{pmatrix}a \\b \\c\end{pmatrix}\).
+
+Пусть оператор \(D_1\) берет первую производную,  
+а \(D_2\)  -- вторую производную. 
+
+Найдите \(D_1\begin{pmatrix}a \\b \\c\end{pmatrix}\) 
+и  \(D_2\begin{pmatrix}a \\b \\c  \end{pmatrix}\).
+
+Является ли \(D_1\)   линейным оператором? 
+Является ли \(D_2\)   линейным оператором? 
+
+
+\textbf{Задача \rtask{1}}
+
+Пусть \(A: \begin{pmatrix}	v_{1} \\	v_{2} \\ 	\end{pmatrix} \to \begin{pmatrix}	5  v_{1}   \\	3  v_{2} 	\end{pmatrix}   \) -- операция растягивания, \(B: \begin{pmatrix}	v_{1} \\	v_{2}	\end{pmatrix} \to \begin{pmatrix}	v_{2}   \\	v_{1} 	\end{pmatrix}  \) -- операция перестановки координат. 
+
+
+Покажите, что 	\(A+B\) -- линейный оператор.
+
+
+\textbf{Задача \rtask{1}} 
+
+% Stanford p.60
+
+Пусть \(h: v \to \bar{v} \cdot u  \), 
+где  \(u = \begin{pmatrix}1 \\\vdots \\ 1\end{pmatrix}\), 
+\(\bar{v} = \dfrac{v_1 + \dots + v_n}{n} \)
+
+
+
+\begin{enumerate}
+	\item Найдите \(h\begin{pmatrix}	5 \\	6 \\ 	3	\end{pmatrix}\) .
+	\item  Является ли \(h\) линейным оператором?  
+	\item  Найдите \(h^2\).
+\end{enumerate}
+
+\textbf{Задача \rtask{1}}  
+
+
+\textit{Результаты  анкетирования.} В анкете журнала ``Коммерсантъ''  30 вопросов, разбитых на
+два блока из 15 вопросов.  
+На каждый из вопросов читатель журнала может ответить   
+``Редко'', ``Иногда'' или ``Часто''. Ответы записываются в виде 30-мерного вектора \(a\), 
+где \(a_i\) принимает значение
+\( 1, 2\)  или  
+\(3\), 
+если ответ на вопрос \(i\) был     ``Редко'', ``Иногда'' или ``Часто'', соответственно. 
+
+При подсчете результатов опроса
+\begin{itemize}
+	\item за каждый ответ ``Иногда'' в вопросах 1-15 добавляется 1 балл, в вопросах 16-30 добавляется 2 балла; 
+	\item  за каждый ответ ``Часто'' в вопросах 1-15 добавляется 2  балла, в вопросах 16-30 добавляется 4 балла;
+	\item  за  ответ ``Редко'' баллы не добавляются.	   
+\end{itemize}
+
+\begin{enumerate}
+	\item Найдите функцию \(f\), подсчитывающую сумму баллов.  
+	\item Запишите её в виде \(s = \langle w, a  \rangle + c  \), где
+	\(w\) --   30-мерный вектор, 
+	\(c\) -- скаляр.  
+	\item Линейна ли эта функция? 
+\end{enumerate}
+
+
+
+\textbf{Задача \rtask{1}}  
+
+
+
+\textit{Энергия  сигнала по Дирихле.} 
+Пусть временной ряд (или сигнал) задается  \(T\)-мерным 
+вектором \(x\).
+
+Тогда энергия сигнала по Дирихле
+\[\mathcal{D}(x)=\left(x_{1}-x_{2}\right)^{2}+\cdots+\left(x_{T-1}-x_{T}\right)^{2},\]
+рассчитывается как сумма квадратов разностей соседних значений сигнала. Энергия Дирихле -- это мера того, насколько сильно колеблется сигнал.
+
+Введем следующие обозначения: \(x_{-1}\)  -- вектор
+\(x\) без 1-ого наблюдения, 
+\(x_{-T}\)  -- вектор
+\(x\) без последнего наблюдения. 
+
+\begin{enumerate}
+	\item Представьте \(\mathcal{D}(x)\)  в векторной записи.
+	\item Каково минимальное значение \(\mathcal{D}(x)\)?  Какие сигналы имеют минимальную энергию?
+	\item Пусть вектор \(x'\):  
+	\(x_i \in [0,1], \forall i=1,\dots,T\).  Какие сигналы, в таком случае,  будут иметь  максимальную энергию?  Каково максимальное значение 
+	\(\mathcal{D}'(x)\)?  
+\end{enumerate}
+
+\textit{Ответ:}
+
+\begin{enumerate}
+	\item \(\mathcal{D}(x)=\| x_{-T} - x_{-1} \|^2\).
+	\item \(\min \mathcal{D}(x) = 0\).
+	\item \(\max \mathcal{D}'(x) = T-1\). 
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
