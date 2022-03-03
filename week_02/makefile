@@ -1,6 +1,6 @@
 file_name = 02
 
-linal_lecture_$(file_name).pdf: linal_lecture_$(file_name).tex chapters/ figures/ linal_preamble.tex
+linal_lecture_$(file_name).pdf: linal_lecture_$(file_name).tex chapters/ linal_preamble.tex
 	# protection against biber error
 	# http://tex.stackexchange.com/questions/140814/
 	rm -rf `biber --cache`
